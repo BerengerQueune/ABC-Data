@@ -1,0 +1,22 @@
+# Retourne que les 'Movie' et 'tvmovie':
+Movies_DF = basics_DF[basics_DF['titleType'].str.contains('Movie|movie')]
+
+# Dropna akas_DF['region']:
+Akas_country_dropna_DF = akas_DF.dropna(subset = ['region'])
+
+# Drop Akas_country_dropna_DF['region'] !='\\N':
+Akas_country_dropna_DF = Akas_country_dropna_DF[Akas_country_dropna_DF['region'] != '\\N']
+
+# Liaison des DF Movies_DF et Akas_country_dropna_DF : 
+Films_by_Country= pd.merge(Movies_DF,Akas_country_dropna_DF, how = 'inner', left_on=['tconst'], right_on=['titleId'])
+
+# Values_count :
+Films_by_Country_values = Films_by_Country['region'].value_counts()
+
+print(Films_by_Country_values)
+
+# Barplot Films_by_Country :
+Films_by_Country['region'].value_counts().head(15).plot.bar()
+
+# countplot : 
+sns.countplot(x= 'region', data = Films_by_Country, order = Films_by_Country.region.value_counts().iloc[:15].index)
