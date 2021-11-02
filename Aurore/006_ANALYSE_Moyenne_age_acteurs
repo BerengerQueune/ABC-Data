@@ -1,0 +1,81 @@
++# Filtre sur les movie/tvmovie sur Act_Movie_DF :
+Act_Movie_DF= Act_Basics_DF[Act_Basics_DF['titleType'].str.contains('movie|tvMovie')]
+
+# Age des acteurs de films :
+
+# 1/ Nettoyage de la colonne 'birthYear' : 
+BirthYear_Act_Movie_DF = Act_Movie_DF[Act_Movie_DF['birthYear'] != '\\N']
+# Drop des cellules vides de la colonne 'birthYear':
+BirthYear_Act_Movie_DF = BirthYear_Act_Movie_DF.dropna(subset = ['birthYear'])
+# Transformation de la colonne 'birthYear' en int : 
+BirthYear_Act_Movie_DF['birthYear'] = BirthYear_Act_Movie_DF['birthYear'].astype(int)
+
+BirthYear_Act_Movie_DF.info()
+
+# 2/ Nettoyage de la colonne 'startYear' : 
+Birth_Start_Year_Act_Movie_DF = BirthYear_Act_Movie_DF[BirthYear_Act_Movie_DF['startYear'] != '\\N']
+# Drop des cellules vides de la colonne 'startYear':
+Birth_Start_Year_Act_Movie_DF = Birth_Start_Year_Act_Movie_DF.dropna(subset = ['startYear'])
+# Transformation de la colonne 'startYear' en int : 
+Birth_Start_Year_Act_Movie_DF['startYear'] = Birth_Start_Year_Act_Movie_DF['startYear'].astype(int)
+
+Birth_Start_Year_Act_Movie_DF.info()
+
+# Ajout de la colonne "Age" :
+Birth_Start_Year_Act_Movie_DF['Age'] = Birth_Start_Year_Act_Movie_DF['startYear'] - Birth_Start_Year_Act_Movie_DF['birthYear']
+
+Birth_Start_Year_Act_Movie_DF.head(5)
+
+# Suppression des outliers : 
+Birth_Start_Year_Out_Act_Movie_DF1 = Birth_Start_Year_Act_Movie_DF[Birth_Start_Year_Act_Movie_DF['Age'] <= 110]
+Birth_Start_Year_Out_Act_Movie_DF2 = Birth_Start_Year_Out_Act_Movie_DF1[Birth_Start_Year_Out_Act_Movie_DF1['Age'] >= 0]
+
+# Moyenne âge acteurs de films :
+# Calcul de la moyenne d'âge avec .mean() + utilisation de round() pour arrondir le résultat : 
+
+Moy_Age_Act_Films = round(Birth_Start_Year_Out_Act_Movie_DF2['Age'].mean())
+print("La moyenne d'âge des acteurs de films est de", Moy_Age_Act_Films, "ans au moment du tournage.")
+
+# BoxPlot Comparaison âge acteurs//actrices :
+Birth_Start_Year_Out_Act_Movie_DF2.boxplot(column='Age', by='category', showmeans=True)
+plt.ylabel('Age')
+plt.xlabel('Sexe')
+plt.title('Age des acteurs et actrices : Zoom')
+
+plt.show()
+
+sns.boxplot( data=Birth_Start_Year_Out_Act_Movie_DF2, palette='Spectral',x='category', y='Age', showmeans=True)
+plt.ylabel('Age')
+plt.xlabel('Sexe')
+plt.title('Age des acteurs et actrices : Zoom')
+
+plt.show()
+
+fig, axes = plt.subplots(figsize=(30, 20))
+
+sns.set_style("whitegrid")
+boxplot = sns.boxplot(data=Birth_Start_Year_Out_Act_Movie_DF2,  x="category", y="Age", hue = 'titleType',
+                        showmeans=True, meanprops={"marker": "+", "markeredgecolor": "black", "markersize": "20"})
+
+
+boxplot.axes.set_title('Age des acteurs et actrices : Zoom',fontsize=50)
+boxplot.set_xlabel("Sexe", size = 30)
+boxplot.set_ylabel('Age', size = 30)
+boxplot.tick_params(labelsize = 20)
+boxplot.legend(loc = 'upper right', prop={'size': 30}, borderaxespad=0.)
+
+plt.show()
+
+Moyenne_age_act_DF = Birth_Start_Year_Out_Act_Movie_DF2[['primaryName', 'category', 'titleType', 'Age']]
+Moyenne_age_act_DF
+
+stats_ages = Moyenne_age_act_DF.describe()
+stats_ages
+
+stats_Mean_ages_pivot = ((Moyenne_age_act_DF.pivot_table(values='Age', index='category', columns='titleType', aggfunc='mean')).round()).astype(int)
+stats_Median_ages_pivot = Moyenne_age_act_DF.pivot_table(values='Age', index='category', columns='titleType', aggfunc='median')
+print(" Age des acteurs et actrices : Statistiques :")
+print(' ')
+print("Voici les moyennes d'âge par sexe et par catégorie de film: \n", stats_Mean_ages_pivot)
+print(' ')
+print("Voici l'âge central des populations sexe et par catégorie de film:\n", stats_Median_ages_pivot)
