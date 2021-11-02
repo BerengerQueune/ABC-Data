@@ -1,0 +1,59 @@
++# Liste des personnalités nettoyée des NaN dans colonne 'primaryProfession': 
+
+# Utilisation de .dropna() :
+List_Act_Clean_DF = name_DF.dropna(subset = ['primaryProfession', 'knownForTitles'])
+
+# Liste nettoyée des \N dans colonnes 'primaryProfession' et 'knownForTitles':
+List_Act_Clean_DF2 = List_Act_Clean_DF[List_Act_Clean_DF['primaryProfession'] != '\\N']
+# List_Act_Clean_DF3 = List_Act_Clean_DF2[List_Act_Clean_DF2['knownForTitles'] != '\\N']
+
+# Liste des acteurs/Actrices - utilisation de .str.contains('x|y') :
+List_Act_Clean_DF2 = List_Act_Clean_DF2[List_Act_Clean_DF2['primaryProfession'].str.contains('actor|actress')]
+
+# !!!ATTENTION!!!
+# le split de la colonne apporte des doublons par la suite car la liaison des tables ne se fait pas sur la colonne 'knownForTitles'
+# --> drop de cette colonne :
+
+List_Act_Clean_DF5 = List_Act_Clean_DF2.drop('knownForTitles',axis = 1, inplace = True)
+
+List_Act_Clean_DF2.head(5)
+
+# Filtre sur les acteurs sur principals_DF : 
+Actors_in_principals_DF = principals_DF[principals_DF['category'].str.contains('actor|actress')]
+
+# Liaison acteurs vs principals_DF : 
+
+# SELECT t1.*, t2.*
+# FROM df_1 t1
+# INNER JOIN df_2 t2
+# ON t1.index = t2.index
+
+
+Principals_vs_act_DF = pd.merge(List_Act_Clean_DF2,Actors_in_principals_DF, how = 'inner', left_on=['nconst'], right_on=['nconst'])
+
+# Liaison Principals_vs_act_DF vs basics_DF (pour n'avoir que les movie et tv movie) : 
+
+# SELECT t1.*, t2.*
+# FROM df_1 t1
+# INNER JOIN df_2 t2
+# ON t1.index = t2.index
+
+Act_Basics_DF = pd.merge(Principals_vs_act_DF,basics_DF, how = 'inner', left_on=['tconst'], right_on=['tconst'])
+
+# Filtre sur les movie/tvmovie sur Act_Movie_DF :
+Act_Movie_DF= Act_Basics_DF[Act_Basics_DF['titleType'].str.contains('movie|tvMovie')]
+
+# Ajout de filtres sur la colonne 'characters' :
+Act_Movie_DF = Act_Movie_DF[Act_Movie_DF['characters'] != '\\N']
+Act_Movie_DF = Act_Movie_DF[Act_Movie_DF['characters'] != 'Narrator']
+Act_Movie_DF = Act_Movie_DF[Act_Movie_DF['characters'] != 'Various']
+# Act_Movie_DF = Act_Movie_DF[Act_Movie_DF['characters'] != 'Various Characters']
+Act_Movie_DF = Act_Movie_DF[Act_Movie_DF['characters'] != 'Additional Voices']
+
+# Ajout de filtres sur la colonne 'runtimeMinutes' :
+Act_Movie_DF = Act_Movie_DF[Act_Movie_DF['runtimeMinutes'] != '\\N']
+Act_Movie_DF = Act_Movie_DF.astype({"runtimeMinutes": int})
+Act_Movie_DF = Act_Movie_DF[Act_Movie_DF['runtimeMinutes'] > 45]
+
+Act_Movie_most_present = Act_Movie_DF['primaryName'].value_counts(sort = True, ascending = False).head(10)
+print('Les 10 acteurs/actrices les plus présents quel que soit le type de production (films, séries..) sont : \n',Act_Movie_most_present)
