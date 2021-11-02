@@ -1,0 +1,20 @@
+**List of actors, actress, directors.. with birtYear, deathYear, primaryProfession...**
+name_DF = pd.read_csv("name_basics.tsv", sep = "\t", low_memory = False)
+
+** List of titles with countries and languages**
+akas_DF = pd.read_csv("title_akas.tsv", sep = "\t", low_memory = False)
+
+**List of titles with startYear, genres, runtime...**
+basics_DF = pd.read_csv("title_basics.tsv", sep = "\t", low_memory = False)
+
+**List of series**
+episode_DF = pd.read_csv("title_episode.tsv", sep = "\t", low_memory = False)
+
+**Castings**
+principals_DF = pd.read_csv("title_principals.tsv", sep = "\t", low_memory = False)
+
+**Ratings : numVotes and averageRating**
+ratings_DF = pd.read_csv("title_ratings.tsv", sep = "\t", low_memory = False)
+
+**List of crews (directors and writers**
+crew_DF = pd.read_csv("title_crew.tsv", sep = "\t", low_memory = False)
