@@ -1,0 +1,23 @@
+
+# Filtre sur les movie/tvmovie sur Act_Movie_DF :
+Act_Movie_DF= Act_Basics_DF[Act_Basics_DF['titleType'].str.contains('movie|tvMovie')]
+
+Act_Movie_StartY_DF = Act_Movie_DF[Act_Movie_DF['startYear'] != '\\N']
+Act_Movie_StartY_DF['startYear'] = Act_Movie_StartY_DF['startYear'].astype(int)
+
+# Drop des cellules vides de la colonne 'startYear':
+Act_Movie_StartY_DF = Act_Movie_StartY_DF.dropna(subset = ['startYear'])
+# Suppression des films produits après 1960 : 
+Act_Movie_DF_Post_1960 = Act_Movie_StartY_DF[Act_Movie_StartY_DF['startYear']>= 1960]
+
+Act_Movie_DF_Post_1960_reset_ok = Act_Movie_DF_Post_1960.reset_index()
+
+# Ajout d'une colonne "Période" pour définir les décénnies : 
+Act_Movie_DF_Post_1960_reset_ok['Période'] = (Act_Movie_DF_Post_1960_reset_ok['startYear'] //10) *10
+
+Act_most_recur_by_Decades_DF = Act_Movie_DF_Post_1960_reset_ok.groupby('Période')['primaryName'].value_counts()
+Act_most_recur_by_Decades_DF
+
+groupedDf = Act_Movie_DF_Post_1960_reset_ok.groupby(['Période', 'primaryName'] ).size()
+df_final  = pd.DataFrame({'count' : groupedDf.groupby(level='Période').nlargest(5).reset_index(level=0, drop=True)})
+df_final.reset_index()
