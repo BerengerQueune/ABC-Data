@@ -1,0 +1,34 @@
++# Suppression des \N et NaN des colonnes 'averageRating' et 'numVotes" du DF 'ratings_DF':
+ratings_clean1_DF = ratings_DF[ratings_DF['averageRating'] != '\\N']
+ratings_clean2_DF = ratings_clean1_DF[ratings_clean1_DF['numVotes'] != '\\N']
+ratings_clean3_DF = ratings_clean2_DF.dropna(subset = ['averageRating'])
+ratings_clean4_DF = ratings_clean3_DF.dropna(subset = ['numVotes'])
+
+# Filtre sur les movie/tvmovie sur Act_Movie_DF :
+Act_Movie_DF= Act_Basics_DF[Act_Basics_DF['titleType'].str.contains('movie|tvMovie')]
+
+# Reprise du DF relatif aux films Movies_DF pour nettoyage des colonnes 'startYear' et 'runtimeMinutes' + transformation des valeurs en int :
+Movies_clean1_DF = Movies_DF[Movies_DF['startYear'] != '\\N']
+Movies_clean2_DF = Movies_clean1_DF[Movies_clean1_DF['runtimeMinutes'] != '\\N']
+Movies_clean3_DF = Movies_clean2_DF.dropna(subset = ['startYear'])
+Movies_clean4_DF = Movies_clean3_DF.dropna(subset = ['runtimeMinutes'])
+Movies_clean4_DF['startYear'] = Movies_clean4_DF['startYear'].astype(int)
+Movies_clean4_DF['startYear'] = Movies_clean4_DF['startYear'].astype(int)
+
+# Reprise du DF relatif aux films Movies_DF et fusion avec DF relatif au ratings après nettoyage :
+Films_ratings= pd.merge(Movies_DF,ratings_clean4_DF, how = 'inner', left_on=['tconst'], right_on=['tconst']).sort_values(by =['numVotes'], ascending = False).head(10)
+Films_ratings
+
+# Définition des bornes permettant de juger de la pertinence de l'averageRating :
+
+# Définition du nombre median de votes :
+#Median_Nb_Votes = Films_ratings['numVotes'].median()
+
+# Sélection des lignes dont le nombre de votes est supérieur ou égal à la moyenne :
+Films_ratings_numvotes_sup_moy = Films_ratings[Films_ratings['numVotes'] >= 1000000]
+
+# Top 10 des films les mieux notés :
+Top_10_movies_by_ratings = Films_ratings_numvotes_sup_moy.sort_values(by =['averageRating'], ascending = False).head(10)
+
+
+Top_10_movies_by_ratings
