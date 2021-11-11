@@ -9,6 +9,8 @@ import ipywidgets as widgets
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
+st.beta_set_page_config( layout='wide')
+
 st.title("Projet : recommandation de films")  # add a title
 clicked = st.button("Coucou")
 st.write("Ce projet effectué au sein de l'école Wild Code School a pour but de nous faire créer un moteur de recommandation de films.")
