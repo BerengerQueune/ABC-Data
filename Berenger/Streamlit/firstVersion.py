@@ -23,7 +23,7 @@ st.write("- Les acteurs de série sont-ils les mêmes qu’au cinéma ?")
 st.write("- Les acteurs ont en moyenne quel âge ?")
 st.write("- Quels sont les films les mieux notés ? Partagent-ils des caractéristiques communes ?")
 
-
+col1, col2 = st.columns(2)
 
 
 
@@ -64,7 +64,7 @@ fig.layout.updatemenus[0].buttons[0].args[1]["frame"]["duration"] = 1000
 
 fig.update_layout(showlegend=False, title_x=0.5)
 
-st.plotly_chart(fig)
+col1.st.plotly_chart(fig)
 
 test5 = px.bar(top10, x='Pays', y='Nb de films', color="Nb de films", color_continuous_scale=px.colors.sequential.Viridis, title = 'Pays produisants le plus de film depuis 1960', width=700, height=500)
 
