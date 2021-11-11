@@ -4,7 +4,7 @@ import numpy as np
 import altair as alt
 import pydeck as pdk
 
-import matplotlib.pyplot as plt
+
 import datetime as dt
 from scipy import stats
 import plotly.express as px
