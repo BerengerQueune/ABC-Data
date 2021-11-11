@@ -7,13 +7,13 @@ import datetime as dt
 import plotly.express as px
 import ipywidgets as widgets
 
-df = pd.read_csv("https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/B%C3%A9renger/Database_projet/table_finale.csv?token=AU6BUZTSDWGQT72TG2OURMTBSZVT4")  # read a CSV file inside the 'data" folder next to 'app.py'
+df = pd.read_csv("https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/table_finale.csv?token=AU6BUZUYDW7RGQADLHKLGQDBSZ2OO")  # read a CSV file inside the 'data" folder next to 'app.py'
 # df = pd.read_excel(...)  # will work for Excel files
 
 st.title("Hello world!")  # add a title
 st.write(df)  # visualize my dataframe in the Streamlit app
 
-acteur_par_periode = pd.read_csv("https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/B%C3%A9renger/Database_projet/acteur_par_periode.csv?token=AU6BUZT4SLQ5IMKG7ZXG673BRZWZS")
+acteur_par_periode = pd.read_csv("https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/acteur_par_periode.csv?token=AU6BUZWYJ6GYLJLQVDQCLZTBSZ2NK")
 
 
 fig = px.bar(acteur_par_periode, x = 'count', y="rank", text ='primaryName', color = 'primaryName',
