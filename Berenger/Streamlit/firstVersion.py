@@ -9,7 +9,19 @@ import ipywidgets as widgets
 
 st.title("Projet : recommandation de films")  # add a title
 clicked = st.button("Coucou")
-st.write("Ce projet effectué au sein de l'école Wild Code School a pour but de nous faire créer un système de recommandation de films. Un cinéma en perte de vitesse situé dans la Creuse vous contacte. Il a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux.")
+st.write("Ce projet effectué au sein de l'école Wild Code School a pour but de nous faire créer un moteur de recommandation de films. Un cinéma en perte de vitesse situé dans la Creuse vous contacte. Il a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux.")
+
+st.write("Pour commencer, nous devons explorer la base de données afin de répondre à plusieurs questions.")
+st.write("- Quels sont les pays qui produisent le plus de films ?")
+st.write("- Quels sont les acteurs les plus présents ? À quelle période ?")
+st.write("- La durée moyenne des films s’allonge ou se raccourcit avec les années ?")
+st.write("- Les acteurs de série sont-ils les mêmes qu’au cinéma ?")
+st.write("- Les acteurs ont en moyenne quel âge ?")
+st.write("- Quels sont les films les mieux notés ? Partagent-ils des caractéristiques communes ?")
+
+
+
+
 
 acteur_par_periode = pd.read_csv("https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/acteur_par_periode.csv?token=AU6BUZWYJ6GYLJLQVDQCLZTBSZ2NK")
 link = 'https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/top10.csv?token=AU6BUZSEQED65VJVLNSX4FLBS2IYO'
