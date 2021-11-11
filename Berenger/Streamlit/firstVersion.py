@@ -7,7 +7,9 @@ import datetime as dt
 import plotly.express as px
 import ipywidgets as widgets
 
-st.title("Hello world!")  # add a title
+st.title("Projet : recommandation de films")  # add a title
+clicked = st.button("Coucou")
+st.write("Ce projet effectué au sein de l'école Wild Code School a pour but de nous faire créer un système de recommandation de films. Un cinéma en perte de vitesse situé dans la Creuse vous contacte. Il a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux.")
 
 acteur_par_periode = pd.read_csv("https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/acteur_par_periode.csv?token=AU6BUZWYJ6GYLJLQVDQCLZTBSZ2NK")
 link = 'https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/top10.csv?token=AU6BUZSEQED65VJVLNSX4FLBS2IYO'
