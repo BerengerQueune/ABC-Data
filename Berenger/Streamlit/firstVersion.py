@@ -47,3 +47,11 @@ fig.layout.updatemenus[0].buttons[0].args[1]["frame"]["duration"] = 1000
 fig.update_layout(showlegend=False, title_x=0.5)
 
 st.plotly_chart(fig)
+
+
+
+
+test1 = px.line(film, x='startYear', y = 'runtimeMinutes', title = 'Evolution de la durée des films depuis 1960', labels=dict(startYear="Année", runtimeMinutes="Durée en minutes"), 
+        width=600, height=400, color_discrete_sequence = ['red'])
+
+st.plotly_chart(test1)
