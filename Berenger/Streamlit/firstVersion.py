@@ -11,7 +11,7 @@ st.title("Projet : recommandation de films")  # add a title
 clicked = st.button("Coucou")
 st.write("Ce projet effectué au sein de l'école Wild Code School a pour but de nous faire créer un moteur de recommandation de films. Un cinéma en perte de vitesse situé dans la Creuse vous contacte. Il a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux.")
 
-st.write("Pour commencer, nous devons explorer la base de données afin de répondre à plusieurs questions.")
+st.write("Pour commencer, nous devons explorer la base de données afin de répondre aux questions suivantes :")
 st.write("- Quels sont les pays qui produisent le plus de films ?")
 st.write("- Quels sont les acteurs les plus présents ? À quelle période ?")
 st.write("- La durée moyenne des films s’allonge ou se raccourcit avec les années ?")
