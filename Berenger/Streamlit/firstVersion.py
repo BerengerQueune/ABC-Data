@@ -4,6 +4,7 @@ import numpy as np
 import altair as alt
 import pydeck as pdk
 
+pip install plotly_express==0.4.0
 
 import datetime as dt
 import plotly.express as px
