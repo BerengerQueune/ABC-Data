@@ -11,9 +11,9 @@ import plotly.graph_objects as go
 
 st.set_page_config( layout='wide')
 
-st.title("Projet : recommandation de films")  # add a title
+st.title("Projet : recommandations de films")  # add a title
 clicked = st.button("Coucou")
-st.write("Ce projet effectué au sein de l'école Wild Code School a pour but de nous faire créer un moteur de recommandation de films.")
+st.write("Ce projet effectué au sein de l'école Wild Code School a pour but de nous faire créer un moteur de recommandations de films.")
 
 st.write("Un cinéma en perte de vitesse situé dans la Creuse vous contacte. Il a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux.")
 
@@ -47,7 +47,7 @@ fig = px.bar(presence_acteur, x="primaryName", y ='index', color = 'index',
     labels = {'primaryName': 'Nombre de films', 'index': 'Acteurs'},
     width=800, height=600)
 
-fig.update_layout(showlegend=False, title_x=0.5, yaxis={'visible': True})
+fig.update_layout(showlegend=False, title_x=0.5, yaxis={'visible': True}, template='plotly_dark')
 
 st.plotly_chart(fig)
 
@@ -61,14 +61,14 @@ fig = px.bar(acteur_par_periode, x = 'count', y="rank", text ='primaryName', col
     width=800, height=500)
  
 fig.update_traces(textfont_size=12, textposition='outside')
-fig.update_layout()
+fig.update_layout(template='plotly_dark')
 fig.layout.updatemenus[0].buttons[0].args[1]["frame"]["duration"] = 1000
 
 fig.update_layout(showlegend=False, title_x=0.5)
 
 st.plotly_chart(fig)
 
-test5 = px.bar(top10, x='Pays', y='Nb de films', color="Nb de films", color_continuous_scale=px.colors.sequential.Viridis, title = 'Pays produisants le plus de film depuis 1960', width=700, height=500)
+test5 = px.bar(top10, x='Pays', y='Nb de films', color="Nb de films", color_continuous_scale=px.colors.sequential.Viridis, title = 'Pays produisants le plus de film depuis 1960', width=700, height=500, template='plotly_dark')
 
 st.plotly_chart(test5)
 
@@ -109,19 +109,19 @@ st.plotly_chart(fig)
 
 
 fig = px.bar(data_frame = concat_liste_50, x= "primaryName", y="nb", color = 'type', color_discrete_sequence=["darkred", "green"],labels=dict(primaryName="Nom de l'acteur", nb="Nombre de films"))
-fig.update_layout(title_text="Top 20 des acteurs ayant tournés autant au cinéma qu'à la TV", width=1000, height=600)
+fig.update_layout(title_text="Top 20 des acteurs ayant tournés autant au cinéma qu'à la TV", width=1000, height=600, template='plotly_dark')
 
 st.plotly_chart(fig)
 
 
 
 fig = px.bar(data_frame = concat_listeTopFilm, x= "primaryName", y="nb", color = 'type', color_discrete_sequence=["blue", "lime"], labels=dict(primaryName="Nom de l'acteur", nb="Nombre de films", color = 'type'))
-fig.update_layout(title_text="Top 20 des acteurs ayant tournés le plus du film au cinéma", title_x=0.5, width=1000, height=600)
+fig.update_layout(title_text="Top 20 des acteurs ayant tournés le plus du film au cinéma", title_x=0.5, width=1000, height=600, template='plotly_dark')
 
 st.plotly_chart(fig)
 
 
 fig = px.bar(data_frame = concat_listeTopTV, x= "primaryName", y="nb", color = 'type', color_discrete_sequence=["orange", "olive"], labels=dict(primaryName="Nom de l'acteur", nb="Nombre de films"))
-fig.update_layout(title_text="Top 20 des acteurs ayant tournés le plus du film à la télévision", title_x=0.5, width=1000, height=600)
+fig.update_layout(title_text="Top 20 des acteurs ayant tournés le plus du film à la télévision", title_x=0.5, width=1000, height=600, template='plotly_dark')
 
 st.plotly_chart(fig)
