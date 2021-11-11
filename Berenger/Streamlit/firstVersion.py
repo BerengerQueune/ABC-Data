@@ -6,6 +6,7 @@ import pydeck as pdk
 import datetime as dt
 import plotly.express as px
 import ipywidgets as widgets
+from plotly.subplots import make_subplots
 
 st.title("Projet : recommandation de films")  # add a title
 clicked = st.button("Coucou")
