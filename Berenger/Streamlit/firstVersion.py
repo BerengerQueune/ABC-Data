@@ -64,8 +64,9 @@ fig.update_layout(showlegend=False, title_x=0.5)
 
 st.plotly_chart(fig)
 
+test5 = px.bar(top10, x='Pays', y='Nb de films', color="Nb de films", color_continuous_scale=px.colors.sequential.Viridis, title = 'Pays produisants le plus de film depuis 1960', width=700, height=500)
 
-
+st.plotly_chart(test5)
 
 test1 = px.line(film, x='startYear', y = 'runtimeMinutes', title = 'Evolution de la durée des films depuis 1960', labels=dict(startYear="Année", runtimeMinutes="Durée en minutes"), 
         width=600, height=400, color_discrete_sequence = ['red'])
