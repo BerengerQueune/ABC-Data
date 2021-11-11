@@ -1,3 +1,2 @@
 plotly
 chart_studio
-plotly.subplots
