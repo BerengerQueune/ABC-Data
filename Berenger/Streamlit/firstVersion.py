@@ -74,6 +74,43 @@ test1 = px.line(film, x='startYear', y = 'runtimeMinutes', title = 'Evolution de
 st.plotly_chart(test1)
 
 
+fig = make_subplots(rows=2, cols=2)
+
+fig.add_trace(go.Line(x = film["startYear"], y=film["runtimeMinutes"]),
+              row=1, col=1)
+
+fig.add_trace(go.Line(x = film["startYear"], y=film["runtimeMinutes"]),
+              row=1, col=2)
+
+fig.add_trace(go.Line(x = film["startYear"], y=film["runtimeMinutes"]),
+              row=2, col=1)
+
+fig.add_trace(go.Line(x = film["startYear"], y=film["runtimeMinutes"]),
+              row=2, col=2)
+
+fig.update_layout(autosize=False, template='plotly_dark', width = 1500, height = 700, showlegend=False)
+
+fig.update_xaxes(title_text="", row=1, col=1)
+fig.update_yaxes(title_text="Minutes", row=1, col=1)
+
+
+fig.update_xaxes(title_text="", row=1, col=2)
+fig.update_yaxes(title_text="Minutes", row=1, col=2, range=[80, 100])
+
+
+fig.update_xaxes(title_text="", row=1, col=1)
+fig.update_yaxes(title_text="Minutes", row=2, col=1, range=[50, 100])
+
+
+fig.update_xaxes(title_text="", row=1, col=2)
+fig.update_yaxes(title_text="Minutes", row=2, col=2, range=[0, 100])
+
+fig.update_layout(height=1000, width=1400, title_text="Evolution de la durée des films depuis 1960", title_x=0.5)
+
+st.plotly_chart(fig)
+
+
+
 test2 = px.line(film, x='startYear', y = 'runtimeMinutes', title = 'Evolution de la durée des films depuis 1960', labels=dict(startYear="Année", runtimeMinutes="Durée en minutes"), 
         width=600, height=400, range_y=(80,100), color_discrete_sequence = ['green'])
 
