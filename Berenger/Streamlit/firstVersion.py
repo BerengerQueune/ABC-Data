@@ -90,21 +90,21 @@ fig.add_trace(go.Line(x = film["startYear"], y=film["runtimeMinutes"]),
 fig.update_layout(autosize=False, template='plotly_dark', width = 1500, height = 700, showlegend=False)
 
 fig.update_xaxes(title_text="", row=1, col=1)
-fig.update_yaxes(title_text="Minutes", row=1, col=1)
+fig.update_yaxes(title_text="", row=1, col=1)
 
 
 fig.update_xaxes(title_text="", row=1, col=2)
-fig.update_yaxes(title_text="Minutes", row=1, col=2, range=[80, 100])
+fig.update_yaxes(title_text="", row=1, col=2, range=[80, 100])
 
 
 fig.update_xaxes(title_text="", row=1, col=1)
-fig.update_yaxes(title_text="Minutes", row=2, col=1, range=[50, 100])
+fig.update_yaxes(title_text="", row=2, col=1, range=[50, 100])
 
 
 fig.update_xaxes(title_text="", row=1, col=2)
-fig.update_yaxes(title_text="Minutes", row=2, col=2, range=[0, 100])
+fig.update_yaxes(title_text="", row=2, col=2, range=[0, 100])
 
-fig.update_layout(height=1000, width=1400, title_text="Evolution de la durée des films depuis 1960", title_x=0.5)
+fig.update_layout(height=1000, width=1400, title_text="Evolution de la durée des films en minutes depuis 1960", title_x=0.5)
 
 
 
