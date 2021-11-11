@@ -55,3 +55,37 @@ test1 = px.line(film, x='startYear', y = 'runtimeMinutes', title = 'Evolution de
         width=600, height=400, color_discrete_sequence = ['red'])
 
 st.plotly_chart(test1)
+
+
+test2 = px.line(film, x='startYear', y = 'runtimeMinutes', title = 'Evolution de la durée des films depuis 1960', labels=dict(startYear="Année", runtimeMinutes="Durée en minutes"), 
+        width=600, height=400, range_y=(80,100), color_discrete_sequence = ['green'])
+
+st.plotly_chart(test2)
+
+test3 = px.line(film, x='startYear', y = 'runtimeMinutes', title = 'Evolution de la durée des films depuis 1960', labels=dict(startYear="Année", runtimeMinutes="Durée en minutes"), 
+        width=600, height=400, range_y=(50,100), color_discrete_sequence = ['blue'])
+
+st.plotly_chart(test3)
+
+test4 = px.line(film, x='startYear', y = 'runtimeMinutes', title = 'Evolution de la durée des films depuis 1960', labels=dict(startYear="Année", runtimeMinutes="Durée en minutes"), 
+        width=600, height=400, range_y=(0,100), color_discrete_sequence = ['orange'])
+
+st.plotly_chart(test4)
+
+fig = px.bar(data_frame = concat_liste_50, x= "primaryName", y="nb", color = 'type', color_discrete_sequence=["darkred", "green"],labels=dict(primaryName="Nom de l'acteur", nb="Nombre de films"))
+fig.update_layout(title_text="Top 20 des acteurs ayant tournés autant au cinéma qu'à la TV", width=1000, height=600)
+
+st.plotly_chart(fig)
+
+
+
+fig = px.bar(data_frame = concat_listeTopFilm, x= "primaryName", y="nb", color = 'type', color_discrete_sequence=["blue", "lime"], labels=dict(primaryName="Nom de l'acteur", nb="Nombre de films", color = 'type'))
+fig.update_layout(title_text="Top 20 des acteurs ayant tournés le plus du film au cinéma", title_x=0.5, width=1000, height=600)
+
+st.plotly_chart(fig)
+
+
+fig = px.bar(data_frame = concat_listeTopTV, x= "primaryName", y="nb", color = 'type', color_discrete_sequence=["orange", "olive"], labels=dict(primaryName="Nom de l'acteur", nb="Nombre de films"))
+fig.update_layout(title_text="Top 20 des acteurs ayant tournés le plus du film à la télévision", title_x=0.5, width=1000, height=600)
+
+st.plotly_chart(fig)
