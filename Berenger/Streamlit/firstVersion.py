@@ -6,11 +6,7 @@ import pydeck as pdk
 
 
 import datetime as dt
-from scipy import stats
 import plotly.express as px
-import cufflinks as cf
-import plotly.graph_objects as go
-import seaborn as sns
 import ipywidgets as widgets
 
 df = pd.read_csv("https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/B%C3%A9renger/Database_projet/table_finale.csv?token=AU6BUZTSDWGQT72TG2OURMTBSZVT4")  # read a CSV file inside the 'data" folder next to 'app.py'
