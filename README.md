@@ -41,6 +41,7 @@ Tous les quatre formons l'équipe ABC's Data.
 ## NOTRE CLIENT (fictif)
 
 Notre cliente est Framboise de Papimcourt, petite fille du Comte de Montmirail. Elle a 25 ans et dirige un cinéma en perte de vitesse qui s'appelle "LE KINO".
+
 ![cliente](./Images/Framboise.png)
 
 Elle fait appelle à nous car elle est désespérée. Son cinéma ne fait pas de bénéfice, ses créanciers sont à sa porte et ses problèmes financiers sont tels qu'elle a dû demandé un nouveau prêt dans une banque alors que c'est contre ses principes.
