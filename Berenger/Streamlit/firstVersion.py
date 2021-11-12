@@ -12,7 +12,20 @@ import plotly.graph_objects as go
 st.set_page_config( layout='wide')
 
 st.title("Projet : recommandations de films")  # add a title
+
+
 clicked = st.button("Coucou")
+if st.button('add'):
+    result = add(1, 2)
+    st.write('result: %s' % result)
+
+def add(a,b):
+
+    c = a+b
+
+    return c
+
+
 st.write("Ce projet effectué au sein de l'école Wild Code School a pour but de nous faire créer un moteur de recommandations de films.")
 
 st.write("Un cinéma en perte de vitesse situé dans la Creuse vous contacte. Il a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux.")
