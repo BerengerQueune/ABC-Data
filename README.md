@@ -34,6 +34,7 @@ Notre équipe est composée de 4 élèves issus de la promo Data Green de la __W
 - [Stéphane ESSOUMAN](https://github.com/Liostephe)
 
 Tous les quatre formons l'équipe ABC's Data.
+
 ![logo_team](./Images/210x210-9_cropped_1377120495_p182hcd8rofaq1t491u06kih16o13.png)
 
 
