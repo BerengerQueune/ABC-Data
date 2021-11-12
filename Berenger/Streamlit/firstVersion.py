@@ -13,18 +13,12 @@ st.set_page_config( layout='wide')
 
 st.title("Projet : recommandations de films")  # add a title
 
+result = st.button("Click Here")
 
-clicked = st.button("Coucou")
-if st.button('add'):
-    result = add(1, 2)
-    st.write('result: %s' % result)
+st.write(result)
 
-def add(a,b):
-
-    c = a+b
-
-    return c
-
+if result:
+    st.write(":smile:")
 
 st.write("Ce projet effectué au sein de l'école Wild Code School a pour but de nous faire créer un moteur de recommandations de films.")
 
