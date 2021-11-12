@@ -69,7 +69,7 @@ Nous devons :
 - Présenter les TOP 5 des acteurs/actrices par années et genre
 - Retourner une liste de films recommandés en fonction d'IDs ou de noms de films choisis par un utilisateur
 
-- Il faudra entrapiner des outils de Machine Learning : 
+- Il faudra entraîner des outils de Machine Learning : 
 	* Recommandation de films proches d’un film cible grâce à un modèle de __KNN__
 	* proposition d’une rétrospective avec un modèle de __Régression Logistique__
 
