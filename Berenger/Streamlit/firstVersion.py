@@ -81,6 +81,8 @@ def main():
 
 main()
 
+user_choice = ['Kate & Leopold']
+
 col1, col2 = st.columns(2)
 
 with col1:
