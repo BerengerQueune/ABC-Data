@@ -83,7 +83,7 @@ main()
 
 
 
-user_choice = ['Kate & Leopold']
+user_choice = input("Enter the name of your favorite movie in the list: ")
 
 user_choice2 = df[df['primaryTitle'].isin(user_choice)]
 
