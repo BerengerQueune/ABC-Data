@@ -45,7 +45,7 @@ def main():
             # Filter
             # img_link = df[df["primaryTitle"] == movie_choice]["img_link"].values[0]
             # title_link = df[df["primaryTitle"] == movie_choice]["primaryTitle"].values
-            genre_link = df[df["primaryTitle"] == movie_choice]["Comedy"].values
+            genre = df[df["primaryTitle"] == movie_choice]["Comedy"].values
 
         #Layout
         # st.write(img_link)
@@ -54,7 +54,7 @@ def main():
 
         with c1:
             with st.expander("primaryTitle"):
-                st.success(genre_link)
+                st.write(genre)
     
 
     
