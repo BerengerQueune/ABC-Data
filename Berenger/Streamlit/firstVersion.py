@@ -97,7 +97,7 @@ distanceKNN = NearestNeighbors(n_neighbors=1).fit(X)
 
 mewtwo = distanceKNN.kneighbors(user_choice3)
 
-mewtwo = mewtwo[1].reshape(1,6)[0]
+mewtwo = mewtwo[1].reshape(1,1)[0]
 liste_finale = df_recommandation.iloc[mewtwo]
 
 for i in range(len(user_choice)):
