@@ -54,7 +54,7 @@ def main():
 
     with c1:
         with st.expander("primaryTitle"):
-            st.succcess(df["genre_link"])
+            st.success(df["genre_link"])
     
 
     
