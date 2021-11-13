@@ -12,7 +12,7 @@ import plotly.graph_objects as go
 st.set_page_config( layout='wide')
 
 
-def main()
+def main():
 
     menu = ["Home", "Search", "About"]
 
