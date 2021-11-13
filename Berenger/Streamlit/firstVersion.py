@@ -49,7 +49,7 @@ def main():
         #Layout
         # st.write(img_link)
         # st.image(img_link)
-    c1,c2,c3 = st.beta_columns(3)
+    c1,c2,c3 = st.columns(3)
 
     with c1:
         with st.expander("Title"):
