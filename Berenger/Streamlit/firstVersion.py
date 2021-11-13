@@ -39,8 +39,21 @@ def main():
         movies_title_list = df["primaryTitle"].tolist()
 
         movie_choice = st.selectbox("Movie Title", movies_title_list)
-    
-    
+        with st.expander('Movies DF'):
+            st.dataframe(df.head(10))
+
+            # Filter
+            # img_link = df[df["primaryTitle"] == movie_choice]["img_link"].values[0]
+            # title_link = df[df["primaryTitle"] == movie_choice]["title"].values
+
+        #Layout
+        # st.write(img_link)
+        # st.image(img_link)
+    c1,c2,c3 = st.beta_columns(3)
+
+    with c1:
+        with st.expander("Title"):
+            st.succcess(df["primaryTitle"])
     
     
     
