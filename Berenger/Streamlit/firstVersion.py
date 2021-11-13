@@ -9,7 +9,7 @@ import ipywidgets as widgets
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
-st.set_page_config( layout='wide')
+#st.set_page_config( layout='wide')
 
 
 def main():
@@ -24,6 +24,7 @@ def main():
         with st.beta_expander("Title"):
             mytext = st.text_area("Type Here")
             st.write(mytext)
+            st.success("Hello")
 
     elif choice == "Search":
         st.subheader("Search By Year")
