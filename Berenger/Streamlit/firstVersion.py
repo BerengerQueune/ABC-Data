@@ -53,7 +53,7 @@ def main():
     c1 = st.columns(1)
 
     with c1:
-        with st.expander("Title"):
+        with st.expander("primaryTitle"):
             st.succcess(df["genre_link"])
     
 
