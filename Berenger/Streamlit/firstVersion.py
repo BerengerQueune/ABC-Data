@@ -28,6 +28,7 @@ concat_listeTopTV = pd.read_csv(link5)
 
 def main():
 
+    st.title("TEST")
     menu = ["Home", "Search", "About"]
 
     choice = st.sidebar.selectbox("Menu", menu)
@@ -49,3 +50,102 @@ def main():
 
 
 
+
+st.title("Projet : recommandations de films")  # add a title
+
+st.write("Ce projet effectué au sein de l'école Wild Code School a pour but de nous faire créer un moteur de recommandations de films.")
+
+st.write("Un cinéma en perte de vitesse situé dans la Creuse vous contacte. Il a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux.")
+
+st.write("Pour commencer, nous devons explorer la base de données afin de répondre aux questions suivantes :")
+st.write("- Quels sont les pays qui produisent le plus de films ?")
+st.write("- Quels sont les acteurs les plus présents ? À quelle période ?")
+st.write("- La durée moyenne des films s’allonge ou se raccourcit avec les années ?")
+st.write("- Les acteurs de série sont-ils les mêmes qu’au cinéma ?")
+st.write("- Les acteurs ont en moyenne quel âge ?")
+st.write("- Quels sont les films les mieux notés ? Partagent-ils des caractéristiques communes ?")
+
+
+fig = px.bar(presence_acteur, x="primaryName", y ='index', color = 'index',
+    title = 'Quels sont les acteurs les plus présents ?',
+    labels = {'primaryName': 'Nombre de films', 'index': 'Acteurs'},
+    width=800, height=600)
+
+fig.update_layout(showlegend=False, title_x=0.5, yaxis={'visible': True}, template='plotly_dark')
+
+st.plotly_chart(fig)
+
+fig = px.bar(acteur_par_periode, x = 'count', y="rank", text ='primaryName', color = 'primaryName',
+    title = 'Quels sont les acteurs les plus présents par périodes ?',
+    labels = {'startYear': 'Période', 'primaryName': 'Acteurs'},
+    orientation='h',
+    animation_frame="startYear",
+    range_x=[0,150],
+    range_y=[0,6],
+    width=800, height=500)
+ 
+fig.update_traces(textfont_size=12, textposition='outside')
+fig.update_layout(template='plotly_dark')
+fig.layout.updatemenus[0].buttons[0].args[1]["frame"]["duration"] = 1000
+
+fig.update_layout(showlegend=False, title_x=0.5)
+
+st.plotly_chart(fig)
+
+test5 = px.bar(top10, x='Pays', y='Nb de films', color="Nb de films", color_continuous_scale=px.colors.sequential.Viridis, title = 'Pays produisants le plus de film depuis 1960', width=700, height=500, template='plotly_dark')
+
+st.plotly_chart(test5)
+
+
+
+######################
+fig = make_subplots(rows=2, cols=2)
+
+fig.add_trace(go.Line(x = film["startYear"], y=film["runtimeMinutes"]),
+              row=1, col=1)
+
+fig.add_trace(go.Line(x = film["startYear"], y=film["runtimeMinutes"]),
+              row=1, col=2)
+
+fig.add_trace(go.Line(x = film["startYear"], y=film["runtimeMinutes"]),
+              row=2, col=1)
+
+fig.add_trace(go.Line(x = film["startYear"], y=film["runtimeMinutes"]),
+              row=2, col=2)
+
+fig.update_xaxes(title_text="", row=1, col=1)
+fig.update_yaxes(title_text="", row=1, col=1)
+
+fig.update_xaxes(title_text="", row=1, col=2)
+fig.update_yaxes(title_text="", row=1, col=2, range=[80, 100])
+
+fig.update_xaxes(title_text="", row=1, col=1)
+fig.update_yaxes(title_text="", row=2, col=1, range=[50, 100])
+
+fig.update_xaxes(title_text="", row=1, col=2)
+fig.update_yaxes(title_text="", row=2, col=2, range=[0, 100])
+
+fig.update_layout(height=1000, width=1400, title_text="Evolution de la durée des films en minutes depuis 1960", title_x=0.5, showlegend=False, template='plotly_dark', autosize=False)
+
+st.plotly_chart(fig)
+######################
+
+
+
+fig = px.bar(data_frame = concat_liste_50, x= "primaryName", y="nb", color = 'type', color_discrete_sequence=["darkred", "green"],labels=dict(primaryName="Nom de l'acteur", nb="Nombre de films"))
+fig.update_layout(title_text="Top 20 des acteurs ayant tournés autant au cinéma qu'à la TV", width=1000, height=600, template='plotly_dark')
+
+st.plotly_chart(fig)
+
+
+
+fig = px.bar(data_frame = concat_listeTopFilm, x= "primaryName", y="nb", color = 'type', color_discrete_sequence=["blue", "lime"], labels=dict(primaryName="Nom de l'acteur", nb="Nombre de films", color = 'type'))
+fig.update_layout(title_text="Top 20 des acteurs ayant tournés le plus du film au cinéma", title_x=0.5, width=1000, height=600, template='plotly_dark')
+
+st.plotly_chart(fig)
+
+
+fig = px.bar(data_frame = concat_listeTopTV, x= "primaryName", y="nb", color = 'type', color_discrete_sequence=["orange", "olive"], labels=dict(primaryName="Nom de l'acteur", nb="Nombre de films"))
+fig.update_layout(title_text="Top 20 des acteurs ayant tournés le plus du film à la télévision", title_x=0.5, width=1000, height=600, template='plotly_dark')
+
+st.plotly_chart(fig)
