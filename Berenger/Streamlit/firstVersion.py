@@ -16,7 +16,6 @@ df = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main
 
 #st.set_page_config( layout='wide')
 
-user_choice = 'lol'
 
 def main():
 
@@ -57,9 +56,8 @@ def main():
         #         st.write(genre)
 
         with col1:
-            with st.expander("primaryTitle"):
-                user_choice = genre         
-                return user_choice
+            with st.expander("primaryTitle"):              
+                st.write(genre)
 
         with col2:
 	        lname = st.text_input("Enter your Last name")
@@ -85,7 +83,7 @@ main()
 
 
 
-
+user_choice = ['Kate & Leopold']
 
 user_choice2 = df[df['primaryTitle'].isin(user_choice)]
 
