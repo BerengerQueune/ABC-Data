@@ -36,7 +36,7 @@ def main():
     if choice == 'Home':
         st.subheader("Home")
 
-        with st.beta_expander("Title"):
+        with st.expander("Title"):
             mytext = st.text_area("Type Here")
             st.write(mytext)
             st.success("Hello")
