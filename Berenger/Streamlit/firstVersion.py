@@ -44,7 +44,7 @@ def main():
             # img_link = df[df["primaryTitle"] == movie_choice]["img_link"].values[0]
             # title_link = df[df["primaryTitle"] == movie_choice]["primaryTitle"].values
             # genre = df[df["primaryTitle"] == movie_choice]["Comedy"].values
-            genre = df[df["primaryTitle"] == movie_choice]["primaryTitle"]
+            genre = df[df["primaryTitle"] == movie_choice]["primaryTitle"].values
 
         #Layout
         # st.write(img_link)
