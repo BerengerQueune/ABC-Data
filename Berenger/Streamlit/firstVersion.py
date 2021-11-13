@@ -58,7 +58,7 @@ def main():
 
         with col1:
             with st.expander("primaryTitle"):
-                st.write(genre)
+                st.write(df["primaryTitle"])
 
         with col2:
 	        lname = st.text_input("Enter your Last name")
