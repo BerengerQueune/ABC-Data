@@ -79,7 +79,7 @@ def main():
 
 main()
 
-user_choice = ['Kate & Leopold', 'The Hustler', 'One Hundred and One Dalmatians', 'Promising Young Woman', 'The King of Staten Island', 'I Care a Lot']
+user_choice = ['Kate & Leopold']
 
 user_choice2 = df[df['primaryTitle'].isin(user_choice)]
 
