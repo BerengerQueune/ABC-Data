@@ -11,14 +11,30 @@ import plotly.graph_objects as go
 
 st.set_page_config( layout='wide')
 
+
+def main()
+
+    menu = ["Home", "Search", "About"]
+
+    choice = st.sidebar.selectbox("Menu", menu)
+
+    if choice == 'Home':
+        st.subheader("Home")
+
+        with st.beta_expander("Title"):
+            mytext = st.text_area("Type Here")
+
+    elif choice == "Search":
+        st.subheader("Search By Year")
+
+
+    else:
+        st.subheader("About")
+
+
+
+
 st.title("Projet : recommandations de films")  # add a title
-
-result = st.button("Click Here")
-
-st.write(result)
-
-if result:
-    st.write(":smile:")
 
 st.write("Ce projet effectué au sein de l'école Wild Code School a pour but de nous faire créer un moteur de recommandations de films.")
 
