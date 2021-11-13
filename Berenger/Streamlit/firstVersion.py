@@ -50,23 +50,23 @@ def main():
         #Layout
         # st.write(img_link)
         # st.image(img_link)
-    c1 = st.columns(1)
+        c1 = st.columns(1)
 
-    with c1:
-        with st.expander("primaryTitle"):
-            st.success(df["genre_link"])
+        with c1:
+            with st.expander("primaryTitle"):
+                st.success(df["genre_link"])
     
 
     
 
 
 
-    # elif choice == "Search":
-    #     st.subheader("Search By Year")
+    elif choice == "Search":
+        st.subheader("Search By Year")
 
 
-    # else:
-    #     st.subheader("About")
+    else:
+        st.subheader("About")
 
 main()
 
