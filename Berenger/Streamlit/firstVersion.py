@@ -76,7 +76,15 @@ def main():
         st.subheader("About")
 
 
-user_choice = genre
+
+
+
+
+main()
+
+
+
+user_choice = ['Kate & Leopold']
 
 user_choice2 = df[df['primaryTitle'].isin(user_choice)]
 
@@ -104,10 +112,3 @@ for i in range(len(user_choice)):
 
 
 liste_finale
-
-
-
-main()
-
-
-
