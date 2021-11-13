@@ -23,7 +23,7 @@ def main():
 
     choice = st.sidebar.selectbox("Menu", menu)
 
-    df = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_base.csv?token=AU6BUZR7RH7QL3XQCYCQ2P3BS53T4')
+    df = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_base.csv?token=AU6BUZWHN456IAMFBUWFFSDBTELCU')
 
 
 
