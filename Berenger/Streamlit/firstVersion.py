@@ -76,7 +76,7 @@ def main():
         st.subheader("About")
 
 
-user_choice = ['Kate & Leopold']
+user_choice = genre
 
 user_choice2 = df[df['primaryTitle'].isin(user_choice)]
 
