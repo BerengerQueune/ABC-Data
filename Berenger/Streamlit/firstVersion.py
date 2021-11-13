@@ -76,7 +76,7 @@ df_recommandation = pd.read_csv('https://raw.githubusercontent.com/BerengerQueun
 country = ["USA", "India", "Canada", "UK", "Australia"]
 st.selectbox("Country", country)
 
-col1, col2  = st.beta_columns(2)
+col1, col2  = st.columns(2)
 
 with col1:
 	fname = st.text_input("Enter your first name")
@@ -87,7 +87,7 @@ with col2:
 
 st.text_area("Enter your Address")
 
-city, state, zc = st.beta_columns([4,3,2])
+city, state, zc = st.columns([4,3,2])
 
 with city:
 	c = st.text_input("City")
@@ -99,7 +99,7 @@ with zc:
 	z = st.text_input("ZipCode")
 
 
-mail, pn = st.beta_columns([3,1])
+mail, pn = st.columns([3,1])
 
 with mail:
 	email = st.text_input("Enter your Email")
