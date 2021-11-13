@@ -36,6 +36,9 @@ def main():
         #     st.success("Hello")
 
         st.dataframe(df)
+        movies_title_list = df["primaryTitle"].tolist()
+
+        movie_choice = st.selectbox("Movie Title", movies_title_list)
     
     
     
