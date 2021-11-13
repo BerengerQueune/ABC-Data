@@ -55,14 +55,19 @@ def main():
         with st.expander("Title"):
             st.succcess(df["primaryTitle"])
     
+    with c2:
+        with st.expander("Title"):
+            st.succcess(df["primaryTitle"])
     
-    
-    elif choice == "Search":
-        st.subheader("Search By Year")
 
 
-    else:
-        st.subheader("About")
+
+    # elif choice == "Search":
+    #     st.subheader("Search By Year")
+
+
+    # else:
+    #     st.subheader("About")
 
 main()
 
