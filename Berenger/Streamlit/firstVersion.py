@@ -48,7 +48,7 @@ def main():
     else:
         st.subheader("About")
 
-
+main()
 
 
 st.title("Projet : recommandations de films")  # add a title
