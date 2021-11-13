@@ -15,7 +15,7 @@ df_recommandation = pd.read_csv('https://raw.githubusercontent.com/BerengerQueun
 df = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_base.csv?token=AU6BUZWHN456IAMFBUWFFSDBTELCU')
 
 #st.set_page_config( layout='wide')
-
+genre = "lol"
 
 def main():
 
@@ -75,11 +75,11 @@ def main():
         st.subheader("About")
 
 
-
+    return genre
 
 main()
 
-user_choice = ['Kate & Leopold']
+user_choice = genre
 
 user_choice2 = df[df['primaryTitle'].isin(user_choice)]
 
