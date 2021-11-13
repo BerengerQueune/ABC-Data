@@ -74,10 +74,9 @@ def main():
     else:
         st.subheader("About")
 
-
-
-
 main()
+
+
 
 user_choice = ['Kate & Leopold']
 
@@ -106,5 +105,4 @@ for i in range(len(user_choice)):
   print (f"En remplacement du film {liste_base} je propose {newlist}.")
 
 
-liste_finale  
-
+liste_finale
