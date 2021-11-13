@@ -50,7 +50,11 @@ def main():
         #Layout
         # st.write(img_link)
         # st.image(img_link)
-        col1, col2  = st.columns(2)
+        col1, col2 = st.columns(2)
+
+        # with c1:
+        #     with st.expander("primaryTitle"):
+        #         st.write(genre)
 
         with col1:
 	        fname = st.text_input("Enter your first name")
