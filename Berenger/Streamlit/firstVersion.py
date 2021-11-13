@@ -8,6 +8,7 @@ import plotly.express as px
 import ipywidgets as widgets
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
+from sklearn.neighbors import NearestNeighbors
 
 
 df_recommandation = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_recommendation.csv?token=AU6BUZUA5UESEPKRRJQIESLBS53UU')
@@ -75,6 +76,36 @@ def main():
 
     else:
         st.subheader("About")
+
+
+user_choice = ['Kate & Leopold', 'The Hustler', 'One Hundred and One Dalmatians', 'Promising Young Woman', 'The King of Staten Island', 'I Care a Lot']
+
+user_choice2 = df[df['primaryTitle'].isin(user_choice)]
+
+user_choice3 = user_choice2[['Action',
+       'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
+       'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
+       'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
+
+X = df_recommandation[['Action',
+       'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
+       'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
+       'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
+
+distanceKNN = NearestNeighbors(n_neighbors=1).fit(X)
+
+mewtwo = distanceKNN.kneighbors(user_choice3)
+
+mewtwo = mewtwo[1].reshape(1,6)[0]
+liste_finale = df_recommandation.iloc[mewtwo]
+
+for i in range(len(user_choice)):
+  liste_base = user_choice[i]
+  newlist = liste_finale["primaryTitle"].iloc[i]
+  print (f"En remplacement du film {liste_base} je propose {newlist}.")
+
+
+liste_finale
 
 main()
 
