@@ -57,7 +57,8 @@ def main():
         #         st.write(genre)
 
         with col1:
-	        fname = st.text_input("Enter your first name")
+            with st.expander("primaryTitle"):
+                st.write(genre)
 
         with col2:
 	        lname = st.text_input("Enter your Last name")
