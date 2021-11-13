@@ -55,6 +55,9 @@ def main():
         # with c1:
         #     with st.expander("primaryTitle"):
         #         st.write(genre)
+
+        with c1:
+            st.write("lol")
     
 
     
