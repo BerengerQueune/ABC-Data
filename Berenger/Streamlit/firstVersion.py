@@ -44,7 +44,7 @@ def main():
             # img_link = df[df["primaryTitle"] == movie_choice]["img_link"].values[0]
             # title_link = df[df["primaryTitle"] == movie_choice]["primaryTitle"].values
             # genre = df[df["primaryTitle"] == movie_choice]["Comedy"].values
-            genre = df[df["primaryTitle"] == movie_choice]["primaryTitle"].tolist()
+            #genre = df[df["primaryTitle"] == movie_choice]["primaryTitle"].tolist()
 
         #Layout
         # st.write(img_link)
@@ -57,6 +57,7 @@ def main():
 
         with col1:
             with st.expander("primaryTitle"):
+                genre = df[df["primaryTitle"] == movie_choice]["primaryTitle"].tolist()
                 st.write(genre)
 
         with col2:
@@ -73,9 +74,6 @@ def main():
 
     else:
         st.subheader("About")
-
-main()
-
 
 
 user_choice = ['Kate & Leopold']
@@ -106,3 +104,10 @@ for i in range(len(user_choice)):
 
 
 liste_finale
+
+
+
+main()
+
+
+
