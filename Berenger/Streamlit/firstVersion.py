@@ -81,9 +81,15 @@ def main():
 
 main()
 
+col1, col2 = st.columns(2)
 
+with col1:
+    user_choice = st.text_input("Enter the name of your favorite movie in the list")
 
-user_choice = input("Enter the name of your favorite movie in the list: ")
+with col2:
+    user_choice = st.text_input("Enter the name of your favorite movie in the list")
+	        
+
 
 user_choice2 = df[df['primaryTitle'].isin(user_choice)]
 
