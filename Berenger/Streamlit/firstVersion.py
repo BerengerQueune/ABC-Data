@@ -37,14 +37,14 @@ def main():
         movies_title_list = df["primaryTitle"].tolist()
 
         movie_choice = st.selectbox("Movie Title", movies_title_list)
-        # with st.expander('Movies DF'):
-        #     st.dataframe(df.head(10))
+        with st.expander('Movies DF'):
+            st.dataframe(df.head(10))
 
             # Filter
             # img_link = df[df["primaryTitle"] == movie_choice]["img_link"].values[0]
             # title_link = df[df["primaryTitle"] == movie_choice]["primaryTitle"].values
             # genre = df[df["primaryTitle"] == movie_choice]["Comedy"].values
-        genre = df[df["primaryTitle"] == movie_choice]["primaryTitle"].tolist()
+            genre = df[df["primaryTitle"] == movie_choice]["primaryTitle"].tolist()
 
         #Layout
         # st.write(img_link)
@@ -56,7 +56,8 @@ def main():
         #         st.write(genre)
 
         with col1:
-            with st.expander("primaryTitle"):              
+            with st.expander("primaryTitle"):
+                
                 st.write(genre)
 
         with col2:
@@ -81,17 +82,9 @@ def main():
 
 main()
 
+
+
 user_choice = ['Kate & Leopold']
-
-col1, col2 = st.columns(2)
-
-with col1:
-    user_choice = st.text_input("Enter the name of your favorite movie in the list")
-
-with col2:
-    user_choice = st.text_input("Enter the name of your favorite movie in the list")
-	        
-
 
 user_choice2 = df[df['primaryTitle'].isin(user_choice)]
 
