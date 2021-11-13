@@ -52,9 +52,9 @@ def main():
         # st.image(img_link)
         c1 = st.columns(1)
 
-        with c1:
-            with st.expander("primaryTitle"):
-                st.write(genre)
+        # with c1:
+        #     with st.expander("primaryTitle"):
+        #         st.write(genre)
     
 
     
