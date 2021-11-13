@@ -44,20 +44,19 @@ def main():
 
             # Filter
             # img_link = df[df["primaryTitle"] == movie_choice]["img_link"].values[0]
-            title_link = df[df["primaryTitle"] == movie_choice]["primaryTitle"].values
+            # title_link = df[df["primaryTitle"] == movie_choice]["primaryTitle"].values
+            genre_link = df[df["primaryTitle"] == movie_choice]["Comedy"].values
 
         #Layout
         # st.write(img_link)
         # st.image(img_link)
-    c1,c2,c3 = st.columns(3)
+    c1 = st.columns(3)
 
     with c1:
         with st.expander("Title"):
             st.succcess(df["title_link"])
     
-    with c2:
-        with st.expander("Title"):
-            st.succcess(df["title_link"])
+
     
 
 
