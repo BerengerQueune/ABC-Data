@@ -19,14 +19,14 @@ st.set_page_config( layout='wide')
 
 def main():
 
-    st.title("TEST")
+    st.title("Movie recommandation project")
     menu = ["Movie recommandation", "Meaningful KPI"]
 
     choice = st.sidebar.selectbox("Menu", menu) 
 
 
     if choice == 'Movie recommandation':
-        st.subheader("Home")
+        st.subheader("Movie recommandation")
 
         # with st.expander("Title"):
         #     mytext = st.text_area("Type Here")
