@@ -49,45 +49,44 @@ def main():
         #Layout
         # st.write(img_link)
         # st.image(img_link)
-        col1, col2 = st.columns(2)
+
 
         # with c1:
         #     with st.expander("primaryTitle"):
         #         st.write(genre)
 
-        with col1:
-            with st.expander("Film recommandé"):
-                user_choice = genre
 
-                user_choice2 = df[df['primaryTitle'].isin(user_choice)]
+        with st.expander("Film recommandé"):
+            user_choice = genre
 
-                user_choice3 = user_choice2[['Action',
-                    'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
-                    'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
-                    'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
+            user_choice2 = df[df['primaryTitle'].isin(user_choice)]
 
-                X = df_recommandation[['Action',
-                    'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
-                    'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
-                    'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
+            user_choice3 = user_choice2[['Action',
+                'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
+                'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
+                'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
 
-                distanceKNN = NearestNeighbors(n_neighbors=1).fit(X)
+            X = df_recommandation[['Action',
+                'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
+                'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
+                'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
 
-                mewtwo = distanceKNN.kneighbors(user_choice3)
+            distanceKNN = NearestNeighbors(n_neighbors=1).fit(X)
 
-                mewtwo = mewtwo[1].reshape(1,1)[0]
-                liste_finale = df_recommandation.iloc[mewtwo]
+            mewtwo = distanceKNN.kneighbors(user_choice3)
 
-                for i in range(len(user_choice)):
-                    liste_base = user_choice[i]
-                    newlist = liste_finale["primaryTitle"].iloc[i]
-                    print (f"En remplacement du film {liste_base} je propose {newlist}.")
+            mewtwo = mewtwo[1].reshape(1,1)[0]
+            liste_finale = df_recommandation.iloc[mewtwo]
 
-                st.write(liste_finale)
+            for i in range(len(user_choice)):
+                liste_base = user_choice[i]
+                newlist = liste_finale["primaryTitle"].iloc[i]
+                print (f"En remplacement du film {liste_base} je propose {newlist}.")
+
+            st.write(liste_finale)
                 
 
-        with col2:
-	        lname = st.text_input("Enter your Last name")
+
     
 
     
