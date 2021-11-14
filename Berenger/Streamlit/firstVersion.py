@@ -49,7 +49,7 @@ def main():
         #Layout
         # st.write(img_link)
         # st.image(img_link)
-        col1 = st.columns(1)
+        col1, col2 = st.columns(2)
 
         # with c1:
         #     with st.expander("primaryTitle"):
@@ -86,7 +86,8 @@ def main():
                 st.write(liste_finale)
                 
 
-
+        with col2:
+	        lname = st.text_input("Enter your Last name")
     
 
     
