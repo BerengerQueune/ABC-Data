@@ -56,7 +56,7 @@ def main():
         #         st.write(genre)
 
         with col1:
-            with st.container("Film recommandé"):
+            with st.expander("Film recommandé"):
                 user_choice = genre
 
                 user_choice2 = df[df['primaryTitle'].isin(user_choice)]
