@@ -20,12 +20,12 @@ st.set_page_config( layout='wide')
 def main():
 
     st.title("TEST")
-    menu = ["Home", "Meaningful KPI", "About"]
+    menu = ["Movie recommandation", "Meaningful KPI"]
 
     choice = st.sidebar.selectbox("Menu", menu) 
 
 
-    if choice == 'Home':
+    if choice == 'Movie recommandation':
         st.subheader("Home")
 
         # with st.expander("Title"):
@@ -205,9 +205,6 @@ def main():
 
         st.plotly_chart(fig)
 
-
-    else:
-        st.subheader("About")
 
 
 
