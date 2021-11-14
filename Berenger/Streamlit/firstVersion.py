@@ -87,7 +87,7 @@ def main():
                 
 
         with col2:
-	        lname = st.text_input("Enter your Last name")
+
     
 
     
