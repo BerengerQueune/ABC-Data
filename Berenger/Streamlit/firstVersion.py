@@ -82,7 +82,7 @@ def main():
             newlist = liste_finale["primaryTitle"].iloc[i]
             print (f"En remplacement du film {liste_base} je propose {newlist}.")
 
-        st.write(liste_finale["primaryTitle"])
+        st.write(liste_finale["primaryTitle", "startYear"])
                 
 
 
