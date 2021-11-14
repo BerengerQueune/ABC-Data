@@ -59,6 +59,34 @@ def main():
             with st.expander("primaryTitle"):
                 
                 st.write(genre)
+                user_choice = ['Kate & Leopold']
+
+                user_choice2 = df[df['primaryTitle'].isin(user_choice)]
+
+                user_choice3 = user_choice2[['Action',
+                    'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
+                    'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
+                    'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
+
+                X = df_recommandation[['Action',
+                    'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
+                    'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
+                    'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
+
+                distanceKNN = NearestNeighbors(n_neighbors=1).fit(X)
+
+                mewtwo = distanceKNN.kneighbors(user_choice3)
+
+                mewtwo = mewtwo[1].reshape(1,1)[0]
+                liste_finale = df_recommandation.iloc[mewtwo]
+
+                for i in range(len(user_choice)):
+                    liste_base = user_choice[i]
+                    newlist = liste_finale["primaryTitle"].iloc[i]
+                    print (f"En remplacement du film {liste_base} je propose {newlist}.")
+
+                st.write(liste_finale)
+                
 
         with col2:
 	        lname = st.text_input("Enter your Last name")
@@ -84,31 +112,3 @@ main()
 
 
 
-user_choice = ['Kate & Leopold']
-
-user_choice2 = df[df['primaryTitle'].isin(user_choice)]
-
-user_choice3 = user_choice2[['Action',
-       'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
-       'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
-       'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
-
-X = df_recommandation[['Action',
-       'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
-       'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
-       'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
-
-distanceKNN = NearestNeighbors(n_neighbors=1).fit(X)
-
-mewtwo = distanceKNN.kneighbors(user_choice3)
-
-mewtwo = mewtwo[1].reshape(1,1)[0]
-liste_finale = df_recommandation.iloc[mewtwo]
-
-for i in range(len(user_choice)):
-  liste_base = user_choice[i]
-  newlist = liste_finale["primaryTitle"].iloc[i]
-  print (f"En remplacement du film {liste_base} je propose {newlist}.")
-
-
-liste_finale
