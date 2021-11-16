@@ -111,6 +111,11 @@ def main():
         mewtwo = pd.DataFrame(mewtwo)
         mewtwo = mewtwo.T
         st.write (mewtwo)
+
+        mewtwo = mewtwo[1].reshape(1,1)[0]
+        liste_finale = df_recommandation.iloc[mewtwo]
+
+        st.write(liste_finale.iloc[0]["primaryTitle"])
         #liste_finale = df_recommandation.iloc[mewtwo]
 
         #st.write(liste_finale.iloc[0]["primaryTitle"])
