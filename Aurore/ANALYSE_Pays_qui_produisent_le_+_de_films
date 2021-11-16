@@ -1,4 +1,4 @@
-# Retourne que les 'Movie' et 'tvmovie':
+# Retourne que les 'movie' et 'tvMovie':
 Movies_DF = basics_DF[basics_DF['titleType'].str.contains('Movie|movie')]
 
 # Dropna akas_DF['region']:
@@ -10,13 +10,19 @@ Akas_country_dropna_DF = Akas_country_dropna_DF[Akas_country_dropna_DF['region']
 # Liaison des DF Movies_DF et Akas_country_dropna_DF : 
 Films_by_Country= pd.merge(Movies_DF,Akas_country_dropna_DF, how = 'inner', left_on=['tconst'], right_on=['titleId'])
 
+# Ajout d'une colonne "Période" pour définir les décénnies : 
+Films_by_Country = Films_by_Country[Films_by_Country['startYear'] != '\\N']
+Films_by_Country = Films_by_Country.astype({"startYear": int})
+Films_by_Country['Période'] = (Films_by_Country['startYear'] //10) *10
+
 # Values_count :
 Films_by_Country_values = Films_by_Country['region'].value_counts()
 
-print(Films_by_Country_values)
+print('Palmarès des pays selon le nombre de films distribués')
+Films_by_Country_values.head(10)
 
 # Barplot Films_by_Country :
 Films_by_Country['region'].value_counts().head(15).plot.bar()
 
 # countplot : 
-sns.countplot(x= 'region', data = Films_by_Country, order = Films_by_Country.region.value_counts().iloc[:15].index)
+sns.countplot(data = Films_by_Country, x= 'region', hue = 'titleType', order = Films_by_Country.region.value_counts().iloc[:15].index)
