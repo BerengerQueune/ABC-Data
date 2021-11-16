@@ -131,7 +131,7 @@ def main():
         st.write (mewtwo)
 
         mewtwo = mewtwo.sum()
-        st.write (mewtwo)
+        st.write (mewtwo.T)
         #liste_finale = df_recommandation.iloc[mewtwo]
 
         #st.write(liste_finale.iloc[0]["primaryTitle"])
