@@ -41,6 +41,8 @@ def main():
         
         for i in options:
                 st.write("- ", i)
+
+        
         
 
         movie_choice = st.selectbox("Movie Title", movies_title_list)
@@ -92,6 +94,9 @@ def main():
         genretreez = df[df["primaryTitle"] == movie_choice]["primaryTitle"].tolist()
         st.write(genretreez)
 
+        options = pd.DataFrame(options)
+        st.write(options)
+
     
     elif choice == "test":
         options = st.multiselect(
@@ -99,7 +104,7 @@ def main():
         ['Green', 'Yellow', 'Red', 'Blue'],
         ['Yellow', 'Red'])
 
-        st.write('You selected:', options)
+        
     
 
 
