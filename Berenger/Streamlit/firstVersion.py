@@ -90,10 +90,6 @@ def main():
                 
         st.title("-------------------------------------")
 
-
-        selected_indices = st.multiselect('Select rows:', df.index)
-        st.write(selected_indices)
-
         COUNTRIES = df['primaryTitle'].unique()
         COUNTRIES_SELECTED = st.multiselect('Select countries', COUNTRIES)
 
@@ -107,8 +103,6 @@ def main():
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
             'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
             'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
-
-        st.write(X)
 
         distanceKNN = NearestNeighbors(n_neighbors=1).fit(X)
         st.write("len de data est ", len(data))
