@@ -114,6 +114,7 @@ def main():
         mewtwo = mewtwo.T
         st.write (mewtwo)
 
+        mewtwo = distanceKNN.kneighbors(mewtwo)
         mewtwo = mewtwo[1].reshape(1,1)[0]
         liste_finale = df_recommandation.iloc[mewtwo]
 
