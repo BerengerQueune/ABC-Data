@@ -89,7 +89,7 @@ def main():
         st.title("-------------------------------------")
 
         st.write(options)
-        genretreez = df[df["primaryTitle"] == movie_choice]["primaryTitle"].tolist()
+        genretreez = df[df["primaryTitle"] == options]["primaryTitle"].tolist()
         st.write(genretreez)
 
     
