@@ -38,7 +38,10 @@ def main():
         options = st.multiselect("Movie Title", movies_title_list)
 
         st.write('Vous avez sélectionné les films suivants :')
-        st.write(len(options))
+        
+        for i in options:
+                st.write(i)
+        
 
         movie_choice = st.selectbox("Movie Title", movies_title_list)
         # with st.expander('Movies DF'):
