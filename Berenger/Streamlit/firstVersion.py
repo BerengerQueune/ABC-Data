@@ -90,7 +90,8 @@ def main():
 
         st.write(options)
         for i in options:
-                st.write(df[df["primaryTitle"]].isin(i))
+                if i in df["primaryTitle"]:
+                    print (i)
 
     
     elif choice == "test":
