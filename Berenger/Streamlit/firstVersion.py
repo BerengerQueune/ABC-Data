@@ -40,7 +40,7 @@ def main():
         st.write('Vous avez sélectionné les films suivants :')
         
         for i in options:
-                st.write(i)
+                st.write("- ", i)
         
 
         movie_choice = st.selectbox("Movie Title", movies_title_list)
