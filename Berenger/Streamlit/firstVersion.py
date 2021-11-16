@@ -28,20 +28,16 @@ def main():
         st.subheader("Movie recommandation")
 
 
-        movies_title_list = df["primaryTitle"].tolist()
-        options = st.multiselect("Liste de films :", movies_title_list)
+
+
 
         st.write('Vous avez sélectionné les films suivants :')
         
-        for i in options:
-                st.write("- ", i)
 
         
         
 
-        movie_choice = st.selectbox("Movie Title", movies_title_list)
 
-        genre = df[df["primaryTitle"] == movie_choice]["primaryTitle"].tolist()
 
 
 
@@ -55,7 +51,7 @@ def main():
 
 
                 
-        st.title("-------------------------------------")
+
 
         COUNTRIES = df['primaryTitle'].unique()
         COUNTRIES_SELECTED = st.multiselect('Select countries', COUNTRIES)
