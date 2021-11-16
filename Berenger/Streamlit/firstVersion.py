@@ -37,7 +37,7 @@ def main():
 
 
         COUNTRIES = df['primaryTitle'].unique()
-        COUNTRIES_SELECTED = st.multiselect('Choisissez vos films préférés :', COUNTRIES)
+        COUNTRIES_SELECTED = st.multiselect('Choisissez vos films préférés :', COUNTRIES, label="lol")
 
         # Mask to filter dataframe
         mask_countries = df['primaryTitle'].isin(COUNTRIES_SELECTED)
