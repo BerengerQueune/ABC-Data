@@ -42,6 +42,10 @@ def main():
         for i in options:
                 st.write("- ", i)
         
+        st.write(options['Action',
+            'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
+            'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
+            'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western'])
 
         movie_choice = st.selectbox("Movie Title", movies_title_list)
         # with st.expander('Movies DF'):
