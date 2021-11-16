@@ -100,8 +100,9 @@ def main():
         st.write(df.head(10))
 
         for i in options:
+            st.write(i)
             if i in df["primaryTitle"]:
-                st.write(i)
+                st.write("success", i)
 
     
     elif choice == "test":
