@@ -36,7 +36,7 @@ def main():
         #st.dataframe(df)
         movies_title_list = df["primaryTitle"].tolist()
 
-        movie_choice = st.selectbox("Movie Title", movies_title_list)
+        movie_choice = st.multiselect("Movie Title", movies_title_list)
         # with st.expander('Movies DF'):
         #     st.dataframe(df.head(10))
 
