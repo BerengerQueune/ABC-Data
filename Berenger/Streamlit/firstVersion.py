@@ -35,10 +35,7 @@ def main():
 
         #st.dataframe(df)
         movies_title_list = df["primaryTitle"].tolist()
-        options = st.multiselect(
-        'What are your favorite colors',
-        ['Green', 'Yellow', 'Red', 'Blue'],
-        ['Yellow', 'Red'])
+        options = st.multiselect("Movie Title", movies_title_list)
 
         st.write('You selected:', options)
 
