@@ -88,7 +88,7 @@ def main():
                 
         st.title("-------------------------------------")
 
-        st.write(options)
+        st.write(df[df["primaryTitle"]].isin(options))
 
     
     elif choice == "test":
