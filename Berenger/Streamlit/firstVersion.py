@@ -99,6 +99,10 @@ def main():
 
         st.write(df.head(10))
 
+        for i in options:
+            if i in df["primaryTitle"]:
+                print (i)
+
     
     elif choice == "test":
         options = st.multiselect(
