@@ -44,12 +44,12 @@ def main():
 
         genre2 = df[df["primaryTitle"] == options]["primaryTitle"].tolist()
         
-        user_choice2 = df[df['primaryTitle'].isin(genre2)]
-
-        st.write(user_choice2['Action',
+        user_choice2 = df[df['Action',
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
             'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
-            'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western'])
+            'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western'].isin(genre2)]
+
+        st.write(user_choice2)
 
         movie_choice = st.selectbox("Movie Title", movies_title_list)
         # with st.expander('Movies DF'):
