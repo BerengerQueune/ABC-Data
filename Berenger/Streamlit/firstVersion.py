@@ -97,7 +97,6 @@ def main():
         mask_countries = df['primaryTitle'].isin(COUNTRIES_SELECTED)
 
         data = df[mask_countries]
-        st.write(data)
 
         X = data[['Action',
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
