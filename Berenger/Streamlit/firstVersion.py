@@ -129,9 +129,8 @@ def main():
 
         #st.write(liste_finale.iloc[0]["primaryTitle"])
         for i in range(len(mewtwo)):
-            liste_base = pokemon_attrapez_pas_les_miens[i]
             newlist = liste_finale["Name"].iloc[i]
-            st.write ((f"En remplacement du pokemon {liste_base} je propose {newlist}."))
+            st.write ((f"Je propose {newlist}."))
     
     elif choice == "test":
         options = st.multiselect(
