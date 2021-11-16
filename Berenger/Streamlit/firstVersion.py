@@ -59,7 +59,7 @@ def main():
 
         mewtwo = distanceKNN.kneighbors(mewtwo)
 
-
+        movies = 0
 
         mewtwo = mewtwo[1].reshape(1,5)[0]
 
@@ -67,7 +67,7 @@ def main():
         st.write(liste_finale)
         st.write("len de liste finale est ", len(liste_finale))
 
-        if len(liste_finale) == 0:
+        if movies == 0:
             pass
         else:
 
