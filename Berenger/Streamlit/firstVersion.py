@@ -20,7 +20,7 @@ st.set_page_config( layout='wide')
 def main():
 
     #st.title("Movie recommandation project")
-    menu = ["Movie recommandation", "Meaningful KPI"]
+    menu = ["Movie recommandation", "Meaningful KPI", "test"]
 
     choice = st.sidebar.selectbox("Menu", menu) 
 
@@ -36,7 +36,7 @@ def main():
         #st.dataframe(df)
         movies_title_list = df["primaryTitle"].tolist()
 
-        movie_choice = st.multiselect("Movie Title", movies_title_list)
+        movie_choice = st.selectbox("Movie Title", movies_title_list)
         # with st.expander('Movies DF'):
         #     st.dataframe(df.head(10))
 
@@ -87,7 +87,13 @@ def main():
 
 
     
+    elif choice == "test":
+        options = st.multiselect(
+        'What are your favorite colors',
+        ['Green', 'Yellow', 'Red', 'Blue'],
+        ['Yellow', 'Red'])
 
+        st.write('You selected:', options)
     
 
 
