@@ -90,6 +90,7 @@ def main():
 
         st.write(options)
         genretreez = df[df["primaryTitle"] == movie_choice]["primaryTitle"].tolist()
+        st.write(genretreez)
 
     
     elif choice == "test":
