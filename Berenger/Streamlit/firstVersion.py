@@ -127,10 +127,7 @@ def main():
 
         distanceKNN = NearestNeighbors(n_neighbors=1).fit(X)
 
-        mewtwo = mewtwo[1].reshape(1,1)[0]
-        liste_finale = df_recommandation.iloc[mewtwo]
 
-        st.write(liste_finale.iloc[0]["primaryTitle"])
     
     elif choice == "test":
         options = st.multiselect(
