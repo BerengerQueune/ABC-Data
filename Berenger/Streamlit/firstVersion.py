@@ -84,7 +84,7 @@ def main():
         mewtwo = mewtwo[1].reshape(1,1)[0]
         liste_finale = df_recommandation.iloc[mewtwo]
 
-        st.write(liste_finale.iloc[0]["primaryTitle"])
+        st.write(liste_finale.iloc[:,5]["primaryTitle"])
                 
         st.title("-------------------------------------")
 
