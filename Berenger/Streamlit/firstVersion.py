@@ -34,7 +34,7 @@ def main():
         #     st.success("Hello")
 
         #st.dataframe(df)
-        movies_title_list = df.iloc[0]["primaryTitle"].tolist()
+        movies_title_list = df["primaryTitle"].tolist()
         options = st.multiselect("Movie Title", movies_title_list)
 
         st.write('You selected:', options)
