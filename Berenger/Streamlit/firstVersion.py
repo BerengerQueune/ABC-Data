@@ -114,10 +114,19 @@ def main():
         mewtwo = pd.DataFrame(mewtwo)
         mewtwo = mewtwo.T
 
+
         mewtwo = distanceKNN.kneighbors(mewtwo)
+
+
+
+        mewtwo = mewtwo[1].reshape(1,5)[0]
 
         liste_finale = df_recommandation.iloc[mewtwo]
 
+
+        #liste_finale = df_recommandation.iloc[mewtwo]
+
+        #st.write(liste_finale.iloc[0]["primaryTitle"])
         for i in range(len(liste_finale)):
             st.write(liste_finale.iloc[i]["primaryTitle"])
     
