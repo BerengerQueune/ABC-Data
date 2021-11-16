@@ -129,6 +129,9 @@ def main():
         st.write("len de data est ", len(data))
         mewtwo = X/len(data)
         st.write (mewtwo)
+
+        mewtwo = mewtwo.groupby(lambda x:x, axis=1).sum()
+        st.write (mewtwo)
         #liste_finale = df_recommandation.iloc[mewtwo]
 
         #st.write(liste_finale.iloc[0]["primaryTitle"])
