@@ -106,7 +106,6 @@ def main():
         distanceKNN = NearestNeighbors(n_neighbors=1).fit(X)
         st.write("len de data est ", len(data))
         mewtwo = X/len(data)
-        st.write (mewtwo)
 
         mewtwo = mewtwo.sum()
         mewtwo = pd.DataFrame(mewtwo)
