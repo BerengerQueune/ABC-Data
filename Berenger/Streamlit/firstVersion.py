@@ -130,7 +130,7 @@ def main():
         mewtwo = X/len(data)
         st.write (mewtwo)
 
-        mewtwo.loc[:,'Total'] = mewtwo.sum(axis=1)
+        mewtwo = mewtwo.loc[:,'Total'] = mewtwo.sum(axis=1)
         st.write(mewtwo)
         #liste_finale = df_recommandation.iloc[mewtwo]
 
