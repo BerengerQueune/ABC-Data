@@ -86,7 +86,7 @@ def main():
 
         st.write(liste_finale.iloc[0]["primaryTitle"])
                 
-        st.title("TEEEEEEEEEEEEEEEEEEEEEEEEEST")
+        st.title("-------------------------------------")
 
     
     elif choice == "test":
