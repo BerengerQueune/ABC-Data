@@ -74,6 +74,8 @@ def main():
             'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
             'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
 
+        st.write("user choice3", user_choice3)
+
         X = df_recommandation[['Action',
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
             'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
