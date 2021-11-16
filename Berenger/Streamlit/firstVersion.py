@@ -97,6 +97,8 @@ def main():
         options = pd.DataFrame(options)
         st.write(options)
 
+        st.write(df.head(10))
+
     
     elif choice == "test":
         options = st.multiselect(
