@@ -127,6 +127,7 @@ def main():
 
         distanceKNN = NearestNeighbors(n_neighbors=1).fit(X)
 
+        mewtwo = mewtwo[1].reshape(1,1)[0]
 
     
     elif choice == "test":
