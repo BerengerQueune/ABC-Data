@@ -108,6 +108,15 @@ def main():
 
         selected_indices = st.multiselect('Select rows:', df.index)
         st.write(selected_indices)
+
+        COUNTRIES = df['primaryTitle'].unique()
+        COUNTRIES_SELECTED = st.multiselect('Select countries', COUNTRIES)
+
+        # Mask to filter dataframe
+        mask_countries = df['primaryTitle'].isin(COUNTRIES_SELECTED)
+
+        data = df[mask_countries]
+        st.write(data)
     
     elif choice == "test":
         options = st.multiselect(
