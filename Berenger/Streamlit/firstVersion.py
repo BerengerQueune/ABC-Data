@@ -128,6 +128,7 @@ def main():
         distanceKNN = NearestNeighbors(n_neighbors=1).fit(X)
         st.write("len de data est ", len(data))
         mewtwo = X/len(data)
+        st.write (mewtwo)
         #liste_finale = df_recommandation.iloc[mewtwo]
 
         #st.write(liste_finale.iloc[0]["primaryTitle"])
