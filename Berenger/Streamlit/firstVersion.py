@@ -41,6 +41,8 @@ def main():
         
         for i in options:
                 st.write("- ", i)
+
+        genre2 = df[df["primaryTitle"] == options]["primaryTitle"].tolist()
         
         st.write(options['Action',
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
