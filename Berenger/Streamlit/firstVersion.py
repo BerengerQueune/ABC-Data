@@ -130,7 +130,7 @@ def main():
         mewtwo = X/len(data)
         st.write (mewtwo)
 
-        mewtwo = mewtwo.append(mewtwo.sum().rename('Total')).assign(Total=lambda d: d.sum(1))
+        mewtwo = mewtwo.groupby()
         st.write(mewtwo)
         #liste_finale = df_recommandation.iloc[mewtwo]
 
