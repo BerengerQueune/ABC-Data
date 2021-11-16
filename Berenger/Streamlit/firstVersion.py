@@ -112,9 +112,10 @@ def main():
         mewtwo = mewtwo.sum()
         mewtwo = pd.DataFrame(mewtwo)
         mewtwo = mewtwo.T
-        st.write (mewtwo)
+        st.write ("test", mewtwo)
 
         mewtwo = distanceKNN.kneighbors(mewtwo)
+
         st.write("mewtwo before reshape", mewtwo)
 
         mewtwo = mewtwo[1].reshape(1,1)[0]
