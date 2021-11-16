@@ -20,7 +20,7 @@ st.set_page_config( layout='wide')
 def main():
 
     #st.title("Movie recommandation project")
-    menu = ["Movie recommandation", "Meaningful KPI"]
+    menu = ["Movie recommandation", "Meaningful KPI", "test"]
 
     choice = st.sidebar.selectbox("Menu", menu) 
 
@@ -35,6 +35,13 @@ def main():
 
         #st.dataframe(df)
         movies_title_list = df["primaryTitle"].tolist()
+        options = st.multiselect("Movie Title", movies_title_list)
+
+        st.write('Vous avez sélectionné les films suivants :')
+        
+        for i in options:
+                st.write("- ", i)
+        
 
         movie_choice = st.selectbox("Movie Title", movies_title_list)
         # with st.expander('Movies DF'):
@@ -77,17 +84,18 @@ def main():
         mewtwo = mewtwo[1].reshape(1,1)[0]
         liste_finale = df_recommandation.iloc[mewtwo]
 
-        for i in range(len(user_choice)):
-            liste_base = user_choice[i]
-            newlist = liste_finale["primaryTitle"].iloc[i]
-            print (f"En remplacement du film {liste_base} je propose {newlist}.")
-
-        st.write(liste_finale[["primaryTitle", "startYear"]])
+        st.write(liste_finale.iloc[0]["primaryTitle"])
                 
-
+        st.title("-------------------------------------")
 
     
+    elif choice == "test":
+        options = st.multiselect(
+        'What are your favorite colors',
+        ['Green', 'Yellow', 'Red', 'Blue'],
+        ['Yellow', 'Red'])
 
+        st.write('You selected:', options)
     
 
 
