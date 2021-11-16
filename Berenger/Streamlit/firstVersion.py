@@ -84,11 +84,6 @@ def main():
         mewtwo = mewtwo[1].reshape(1,1)[0]
         liste_finale = df_recommandation.iloc[mewtwo]
 
-        for i in range(len(user_choice)):
-            liste_base = user_choice[i]
-            newlist = liste_finale["primaryTitle"].iloc[i]
-            print (f"En remplacement du film {liste_base} je propose {newlist}.")
-
         st.write(liste_finale.iloc[0]["primaryTitle"])
                 
 
