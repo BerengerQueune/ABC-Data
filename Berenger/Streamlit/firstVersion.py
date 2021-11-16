@@ -128,9 +128,8 @@ def main():
         #liste_finale = df_recommandation.iloc[mewtwo]
 
         #st.write(liste_finale.iloc[0]["primaryTitle"])
-        for i in range(len(mewtwo)):
-            newlist = liste_finale["Name"].iloc[i]
-            st.write ((f"Je propose {newlist}."))
+        for i in range(len(liste_finale)):
+            st.write(liste_finale.iloc[i]["primaryTitle"])
     
     elif choice == "test":
         options = st.multiselect(
