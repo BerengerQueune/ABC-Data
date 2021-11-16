@@ -102,11 +102,6 @@ def main():
 
         data = df[mask_countries]
 
-        X = data[['Action',
-            'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
-            'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
-            'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
-
         distanceKNN = NearestNeighbors(n_neighbors=1).fit(X)
         st.write("len de data est ", len(data))
         mewtwo = X/len(data)
