@@ -62,16 +62,7 @@ def main():
             'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
             'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
 
-        distanceKNN = NearestNeighbors(n_neighbors=1).fit(X)
 
-        mewtwo = distanceKNN.kneighbors(user_choice3)
-        st.write("mewtwo before reshape", mewtwo)
-
-        mewtwo = mewtwo[1].reshape(1,1)[0]
-        st.write("mewtwo after reshape", mewtwo)
-        liste_finale = df_recommandation.iloc[mewtwo]
-
-        st.write(liste_finale.iloc[0]["primaryTitle"])
                 
         st.title("-------------------------------------")
 
