@@ -37,7 +37,7 @@ def main():
 
 
         COUNTRIES = df['primaryTitle'].unique()
-        COUNTRIES_SELECTED = st.multiselect('Select countries', COUNTRIES)
+        COUNTRIES_SELECTED = st.multiselect('Choisissez vos films préférés :', COUNTRIES)
 
         # Mask to filter dataframe
         mask_countries = df['primaryTitle'].isin(COUNTRIES_SELECTED)
@@ -65,7 +65,7 @@ def main():
 
         liste_finale = df_recommandation.iloc[mewtwo]
 
-        st.write('Vous avez sélectionné les films suivants :')
+        st.write('Nous vous proposons les films suivants :')
 
         for i in range(len(liste_finale)):
             st.write("- ", liste_finale.iloc[i]["primaryTitle"])
