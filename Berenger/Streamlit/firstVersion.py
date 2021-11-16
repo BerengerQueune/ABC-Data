@@ -59,22 +59,16 @@ def main():
 
         mewtwo = distanceKNN.kneighbors(mewtwo)
 
-        movies = 0
+
 
         mewtwo = mewtwo[1].reshape(1,5)[0]
 
         liste_finale = df_recommandation.iloc[mewtwo]
-        st.write(liste_finale)
-        st.write("len de liste finale est ", len(liste_finale))
 
-        if movies == 0:
-            pass
-        else:
+        st.write('Nous vous proposons les films suivants :')
 
-            st.write('Nous vous proposons les films suivants :')
-
-            for i in range(len(liste_finale)):
-                st.write("- ", liste_finale.iloc[i]["primaryTitle"])
+        for i in range(len(liste_finale)):
+            st.write("- ", liste_finale.iloc[i]["primaryTitle"])
     
     elif choice == "test":
         options = st.multiselect(
