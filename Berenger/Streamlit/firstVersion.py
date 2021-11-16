@@ -101,7 +101,7 @@ def main():
 
         for i in options[0]:
             st.write(i)
-            if i in df["primaryTitle"]:
+            if i in "primaryTitle":
                 st.write("success", i)
 
     
