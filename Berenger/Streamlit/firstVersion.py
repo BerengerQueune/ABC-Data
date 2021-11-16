@@ -104,7 +104,7 @@ def main():
             if i in df["primaryTitle"]:
                 st.write("success", i)
 
-        st.write(options.info())
+        st.write(options.columns
 
     
     elif choice == "test":
