@@ -34,7 +34,7 @@ def main():
         #     st.success("Hello")
 
         #st.dataframe(df)
-        movies_title_list = df["primaryTitle", "startYear"].tolist()
+        movies_title_list = df[["primaryTitle", "startYear"]].tolist()
         options = st.multiselect("Movie Title", movies_title_list)
 
         st.write('Vous avez sélectionné les films suivants :')
