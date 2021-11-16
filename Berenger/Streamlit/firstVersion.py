@@ -45,7 +45,7 @@ def main():
         
         
 
-        movie_choice = st.selectbox("Movie Title", movies_title_list)
+        movie_choice = st.selectbox("Liste de films", movies_title_list)
         # with st.expander('Movies DF'):
         #     st.dataframe(df.head(10))
 
