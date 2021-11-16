@@ -101,7 +101,7 @@ def main():
 
         for i in options:
             if i in df["primaryTitle"]:
-                print (i)
+                st.write(i)
 
     
     elif choice == "test":
