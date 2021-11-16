@@ -106,7 +106,7 @@ def main():
 
         st.write(options.columns)
 
-        selected_indices = st.multiselect('Select rows:', df["primaryTitle"])
+        selected_indices = st.multiselect('Select rows:', df.index)
         st.write(selected_indices)
     
     elif choice == "test":
