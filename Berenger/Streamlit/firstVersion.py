@@ -104,6 +104,8 @@ def main():
             if i in df["primaryTitle"]:
                 st.write("success", i)
 
+        st.write(options.info())
+
     
     elif choice == "test":
         options = st.multiselect(
