@@ -131,7 +131,8 @@ def main():
         st.write (mewtwo)
 
         mewtwo = mewtwo.sum()
-        mewtwo = mewtwo.transpose()
+        mewtwo = pd.DataFrame(mewtwo)
+        mewtwo = mewtwo.T
         st.write (mewtwo)
         #liste_finale = df_recommandation.iloc[mewtwo]
 
