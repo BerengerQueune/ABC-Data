@@ -88,6 +88,8 @@ def main():
                 
         st.title("-------------------------------------")
 
+        genre2 = df[df["primaryTitle"] == options]["primaryTitle"].tolist()
+
     
     elif choice == "test":
         options = st.multiselect(
