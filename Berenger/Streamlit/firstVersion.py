@@ -27,23 +27,6 @@ def main():
     if choice == 'Movie recommandation':
         st.subheader("Movie recommandation")
 
-
-
-
-
-        st.write('Vous avez sélectionné les films suivants :')
-        
-
-        
-        
-
-
-
-
-
-
-
-
         X = df_recommandation[['Action',
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
             'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
@@ -82,8 +65,10 @@ def main():
 
         liste_finale = df_recommandation.iloc[mewtwo]
 
+        st.write('Vous avez sélectionné les films suivants :')
+
         for i in range(len(liste_finale)):
-            st.write(liste_finale.iloc[i]["primaryTitle"])
+            st.write("- ", liste_finale.iloc[i]["primaryTitle"])
     
     elif choice == "test":
         options = st.multiselect(
