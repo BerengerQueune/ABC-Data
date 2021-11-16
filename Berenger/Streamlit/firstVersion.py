@@ -64,6 +64,8 @@ def main():
         mewtwo = mewtwo[1].reshape(1,5)[0]
 
         liste_finale = df_recommandation.iloc[mewtwo]
+        str.write(liste_finale)
+        str.write("len de liste finale est ", len(liste_finale))
 
         if len(liste_finale) == 0:
             pass
