@@ -19,7 +19,6 @@ st.set_page_config( layout='wide')
 
 def main():
 
-    #st.title("Movie recommandation project")
     menu = ["Movie recommandation", "Meaningful KPI", "test"]
 
     choice = st.sidebar.selectbox("Menu", menu) 
@@ -28,12 +27,7 @@ def main():
     if choice == 'Movie recommandation':
         st.subheader("Movie recommandation")
 
-        # with st.expander("Title"):
-        #     mytext = st.text_area("Type Here")
-        #     st.write(mytext)
-        #     st.success("Hello")
 
-        #st.dataframe(df)
         movies_title_list = df["primaryTitle"].tolist()
         options = st.multiselect("Liste de films :", movies_title_list)
 
@@ -46,23 +40,10 @@ def main():
         
 
         movie_choice = st.selectbox("Movie Title", movies_title_list)
-        # with st.expander('Movies DF'):
-        #     st.dataframe(df.head(10))
 
-            # Filter
-            # img_link = df[df["primaryTitle"] == movie_choice]["img_link"].values[0]
-            # title_link = df[df["primaryTitle"] == movie_choice]["primaryTitle"].values
-            # genre = df[df["primaryTitle"] == movie_choice]["Comedy"].values
         genre = df[df["primaryTitle"] == movie_choice]["primaryTitle"].tolist()
 
-        #Layout
-        # st.write(img_link)
-        # st.image(img_link)
 
-
-        # with c1:
-        #     with st.expander("primaryTitle"):
-        #         st.write(genre)
 
 
         user_choice = genre
@@ -123,10 +104,6 @@ def main():
 
         liste_finale = df_recommandation.iloc[mewtwo]
 
-
-        #liste_finale = df_recommandation.iloc[mewtwo]
-
-        #st.write(liste_finale.iloc[0]["primaryTitle"])
         for i in range(len(liste_finale)):
             st.write(liste_finale.iloc[i]["primaryTitle"])
     
