@@ -99,7 +99,7 @@ def main():
 
         st.write(df.head(10))
 
-        for i in options:
+        for i in options[0]:
             st.write(i)
             if i in df["primaryTitle"]:
                 st.write("success", i)
