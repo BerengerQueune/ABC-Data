@@ -115,7 +115,10 @@ def main():
         st.write (mewtwo)
 
         mewtwo = distanceKNN.kneighbors(mewtwo)
+        st.write("mewtwo before reshape", mewtwo)
+
         mewtwo = mewtwo[1].reshape(1,1)[0]
+        st.write("mewtwo after reshape", mewtwo)
         liste_finale = df_recommandation.iloc[mewtwo]
 
         st.write(liste_finale.iloc[0]["primaryTitle"])
