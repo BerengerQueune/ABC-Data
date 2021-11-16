@@ -88,7 +88,7 @@ def main():
                 
         st.title("-------------------------------------")
 
-
+        st.write(options)
 
     
     elif choice == "test":
