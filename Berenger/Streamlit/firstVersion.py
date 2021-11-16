@@ -108,26 +108,16 @@ def main():
             'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
 
         distanceKNN = NearestNeighbors(n_neighbors=5).fit(X)
-        st.write("len de data est ", len(data))
         mewtwo = user_choice6/len(data)
 
         mewtwo = mewtwo.sum()
         mewtwo = pd.DataFrame(mewtwo)
         mewtwo = mewtwo.T
-        st.write ("test", mewtwo)
 
         mewtwo = distanceKNN.kneighbors(mewtwo)
 
-        st.write("mewtwo before reshape", mewtwo)
-
-        mewtwo = mewtwo[1].reshape(1,5)[0]
-        st.write("mewtwo after reshape", mewtwo)
         liste_finale = df_recommandation.iloc[mewtwo]
 
-        st.write(liste_finale.iloc[0]["primaryTitle"])
-        #liste_finale = df_recommandation.iloc[mewtwo]
-
-        #st.write(liste_finale.iloc[0]["primaryTitle"])
         for i in range(len(liste_finale)):
             st.write(liste_finale.iloc[i]["primaryTitle"])
     
