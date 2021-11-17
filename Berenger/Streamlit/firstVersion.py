@@ -43,6 +43,13 @@ def main():
 
             st.subheader("Système de recommandation")
             st.markdown(hide_menu, unsafe_allow_html=True)
+            COUNTRIES = df['primaryTitle'].unique()
+            COUNTRIES_SELECTED = st.multiselect('Choisissez vos films préférés :', COUNTRIES)
+
+            # Mask to filter dataframe
+            mask_countries = df['primaryTitle'].isin(COUNTRIES_SELECTED)
+
+            data = df[mask_countries]
         with c3:
             st.write("")
 
