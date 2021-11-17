@@ -17,20 +17,9 @@ hide_menu= """
 
 </style>
 """
-def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown("<h1 style='text-align: center; color: red;'>Some title</h1>".format(f.read()), unsafe_allow_html=True)
 
-def remote_css(url):
-    st.markdown('<style src="{}"></style>'.format(url), unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: red;'>Some title</h1>", unsafe_allow_html=True)
 
-def icon_css(icone_name):
-    remote_css('https://fonts.googleapis.com/icon?family=Material+Icons')
-
-def icon(icon_name):
-    st.markdown('<i class="material-icons">{}</i>'.format(icon_name), unsafe_allow_html=True)
-
-local_css()
 
 df_recommandation = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_recommandation.csv?token=AU6BUZU75XQAMO3ALFRQGCTBTZFHU')
 df = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/table_finale_alphabetique.csv?token=AU6BUZSDMXLDQHPFUG2YRNLBTZWY4')
