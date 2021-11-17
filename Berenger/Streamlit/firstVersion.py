@@ -112,7 +112,7 @@ def main():
                     series = ia.get_movie(code)
                     try:
                         # # getting cover url of the series
-                        url  = series['cover url']
+                        url  = series.data['cover url']
                         url = url[:url.rindex('@') + 1] + url[url.rindex('.'):]
                         # # print the cover
                         st.image(url_clean(url), width =300, caption=movie_name)
