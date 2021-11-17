@@ -68,13 +68,14 @@ def main():
         movies = 0
 
         st.write(liste_finale)
-        if movies == 0:
-            pass
-        else:
-            st.write('Nous vous proposons les films suivants :')
 
-            for i in range(len(liste_finale)):
-                st.write("- ", liste_finale.iloc[i]["primaryTitle"])
+        if True in mask_countries:
+            print ("True")
+
+        st.write('Nous vous proposons les films suivants :')
+
+        for i in range(len(liste_finale)):
+            st.write("- ", liste_finale.iloc[i]["primaryTitle"])
     
     elif choice == "test":
         options = st.multiselect(
