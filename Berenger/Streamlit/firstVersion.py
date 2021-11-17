@@ -30,7 +30,7 @@ st.set_page_config(page_title="ABCS", page_icon=":heart:", layout='wide')
 
 
 def main():
-    st.markdown(hide_menu, unsafe_allow_html=True)
+    #st.markdown(hide_menu, unsafe_allow_html=True)
     
     
 
@@ -39,7 +39,7 @@ def main():
     choice = st.sidebar.selectbox("", menu) 
 
     if choice == 'Système de recommandation':
-        st.markdown("<h1 style='text-align: center; color: white;'>Recommandation de films</h1>", unsafe_allow_html=True)
+        st.markdown("<h1 style='text-align: center;'>Recommandation de films</h1>", unsafe_allow_html=True)
 
 
         X = df_recommandation[['Action',
