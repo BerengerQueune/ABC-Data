@@ -19,6 +19,7 @@ st.set_page_config( layout='wide')
 
 def main():
 
+    #st.title("Movie recommandation project")
     menu = ["Movie recommandation", "Meaningful KPI", "test"]
 
     choice = st.sidebar.selectbox("Menu", menu) 
@@ -27,48 +28,115 @@ def main():
     if choice == 'Movie recommandation':
         st.subheader("Movie recommandation")
 
+        # with st.expander("Title"):
+        #     mytext = st.text_area("Type Here")
+        #     st.write(mytext)
+        #     st.success("Hello")
+
+        #st.dataframe(df)
+        movies_title_list = df["primaryTitle"].tolist()
+        options = st.multiselect("Liste de films :", movies_title_list)
+
+        st.write('Vous avez sélectionné les films suivants :')
+        
+        for i in options:
+                st.write("- ", i)
+
+        
+        
+
+        movie_choice = st.selectbox("Movie Title", movies_title_list)
+        # with st.expander('Movies DF'):
+        #     st.dataframe(df.head(10))
+
+            # Filter
+            # img_link = df[df["primaryTitle"] == movie_choice]["img_link"].values[0]
+            # title_link = df[df["primaryTitle"] == movie_choice]["primaryTitle"].values
+            # genre = df[df["primaryTitle"] == movie_choice]["Comedy"].values
+        genre = df[df["primaryTitle"] == movie_choice]["primaryTitle"].tolist()
+
+        #Layout
+        # st.write(img_link)
+        # st.image(img_link)
+
+
+        # with c1:
+        #     with st.expander("primaryTitle"):
+        #         st.write(genre)
+
+
+        user_choice = genre
+
+        user_choice2 = df[df['primaryTitle'].isin(user_choice)]
+
+        user_choice3 = user_choice2[['Action',
+            'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
+            'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
+            'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
+
         X = df_recommandation[['Action',
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
             'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
             'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
 
+        distanceKNN = NearestNeighbors(n_neighbors=1).fit(X)
 
+        mewtwo = distanceKNN.kneighbors(user_choice3)
+
+        mewtwo = mewtwo[1].reshape(1,1)[0]
+        liste_finale = df_recommandation.iloc[mewtwo]
+
+        st.write(liste_finale.iloc[0]["primaryTitle"])
                 
+        st.title("-------------------------------------")
 
+        st.write(options)
+        genretreez = df[df["primaryTitle"] == movie_choice]["primaryTitle"].tolist()
+        st.write(genretreez)
+
+        options = pd.DataFrame(options)
+        st.write(options)
+
+        st.write(df.head(10))
+
+        for i in options[0]:
+            st.write(i)
+            if i in df["primaryTitle"]:
+                st.write("success", i)
+
+        st.write(options.columns)
+
+        selected_indices = st.multiselect('Select rows:', df.index)
+        st.write(selected_indices)
 
         COUNTRIES = df['primaryTitle'].unique()
-        COUNTRIES_SELECTED = st.multiselect('Choisissez vos films préférés :', COUNTRIES)
+        COUNTRIES_SELECTED = st.multiselect('Select countries', COUNTRIES)
 
         # Mask to filter dataframe
         mask_countries = df['primaryTitle'].isin(COUNTRIES_SELECTED)
 
         data = df[mask_countries]
+        st.write(data)
 
-        user_choice6 = data[['Action',
+        X = data[['Action',
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
             'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
             'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
 
-        distanceKNN = NearestNeighbors(n_neighbors=5).fit(X)
-        mewtwo = user_choice6/len(data)
+        st.write(X)
+
+        distanceKNN = NearestNeighbors(n_neighbors=1).fit(X)
+        st.write("len de data est ", len(data))
+        mewtwo = X/len(data)
+        st.write (mewtwo)
 
         mewtwo = mewtwo.sum()
         mewtwo = pd.DataFrame(mewtwo)
         mewtwo = mewtwo.T
+        st.write (mewtwo)
+        #liste_finale = df_recommandation.iloc[mewtwo]
 
-
-        mewtwo = distanceKNN.kneighbors(mewtwo)
-
-
-
-        mewtwo = mewtwo[1].reshape(1,5)[0]
-
-        liste_finale = df_recommandation.iloc[mewtwo]
-
-        st.write('Nous vous proposons les films suivants :')
-
-        for i in range(len(liste_finale)):
-            st.write("- ", liste_finale.iloc[i]["primaryTitle"])
+        #st.write(liste_finale.iloc[0]["primaryTitle"])
     
     elif choice == "test":
         options = st.multiselect(
