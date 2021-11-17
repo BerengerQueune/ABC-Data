@@ -117,7 +117,6 @@ def main():
                         # # print the cover
                         st.image(url_clean(url), use_column_width="always", caption=movie_name)
                     except KeyError:
-                        st.write("Il n'y a pas encore d'affiche pour ce film.")
                         st.image("https://media.istockphoto.com/vectors/missing-rubber-stamp-vector-vector-id1213374148?k=20&m=1213374148&s=612x612&w=0&h=A3_Ku27Jf_XRfsWCZYvwJWQGNR2hbHDh9ViLLaAdJ5w=", 
                         use_column_width="always", caption=movie_name)
                 numero_colonne +=1
