@@ -84,6 +84,7 @@ def main():
             st.write('Nous vous proposons les films suivants :')
 
             for i in range(len(liste_finale)):
+                
                 st.write("- ", liste_finale.iloc[i]["primaryTitle"])
                 
                 # id
@@ -93,12 +94,14 @@ def main():
                 st.write(code)
                 # # getting information
                 series = ia.get_movie(code)
-                
-                # # getting cover url of the series
-                cover = series.data['cover url']
-                
-                # # print the cover
-                st.image(cover)
+                try:
+                    # # getting cover url of the series
+                    cover = series.data['cover url']
+                    
+                    # # print the cover
+                    st.image(cover)
+                except:
+                    st.write("An exception occurred")
 
         # def picture(index):
         #     page = urllib.request.urlopen('https://www.imdb.com/title/' +
