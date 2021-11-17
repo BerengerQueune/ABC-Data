@@ -69,7 +69,7 @@ def main():
 
         st.write(liste_finale)
 
-        if True in mask_countries:
+        if "true" in mask_countries:
             print ("True")
 
         st.write('Nous vous proposons les films suivants :')
