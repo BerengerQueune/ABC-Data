@@ -5,7 +5,7 @@ from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 from sklearn.neighbors import NearestNeighbors
 from gazpacho import get, Soup
-import urllib
+import os
 import imdb
 
 
@@ -16,6 +16,9 @@ st.set_page_config( layout='wide')
 
 
 def main():
+
+
+
 
     menu = ["Système de recommandation", "Meaningful KPI"]
 
@@ -30,6 +33,15 @@ def main():
             'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
             'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
 
+        st.write("---------------------------------------------------------")
+
+        def url_clean(url):
+            base, ext = os.path.splitext(url)
+            i = url.count('@')
+            s2 = url.split('@')[0]
+            url = s2 + '@' * i + ext
+            return url
+        st.write("---------------------------------------------------------")
 
         # url = 'https://scrape.world/books'
         # html = get(url)
@@ -100,10 +112,10 @@ def main():
                     series = ia.get_movie(code)
                     try:
                         # # getting cover url of the series
-                        cover = series.data['cover url']
+                        url = series['cover']
                         
                         # # print the cover
-                        st.image(cover, width =150, caption=movie_name)
+                        st.image(url_clean(url), width =150, caption=movie_name)
                     except KeyError:
                         st.write("Il n'y a pas encore d'affiche pour ce film.")
                 numero_colonne +=1
