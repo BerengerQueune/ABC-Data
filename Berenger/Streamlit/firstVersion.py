@@ -9,6 +9,7 @@ import ipywidgets as widgets
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 from sklearn.neighbors import NearestNeighbors
+from gazpacho import Soup
 
 
 df_recommandation = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_recommendation.csv?token=AU6BUZUA5UESEPKRRJQIESLBS53UU')
@@ -211,3 +212,19 @@ main()
 
 
 
+# from gazpacho import Soup
+# def picture(index):
+#     page = urllib.request.urlopen('https://www.imdb.com/title/' +
+#                                   index.iloc[0, 0] +
+#                                   '/?ref_=adv_li_i%27')
+#     htmlCode = page.read().decode('UTF-8')
+#     soup = Soup(htmlCode)
+#     tds = soup.find("div", {"class": "poster"})
+#     img = tds[0].find("img")
+#     return img.attrs['src']
+# st.subheader(f'_Parce que vous appreciez {movie_selected}_')
+#             cols = st.beta_columns(4)
+#             for i, col in enumerate(cols):
+#                 index_mov = ml_db[ml_db.index == reco.iloc[0, i+1]][['tconst', 'Titre']]
+#                 col.subheader(index_mov.iloc[0, 1])
+#                 col.image(picture(index_mov))
