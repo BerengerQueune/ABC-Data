@@ -40,13 +40,7 @@ def main():
 
     if choice == 'Système de recommandation':
         st.markdown("<h1 style='text-align: center; color: white;'>Recommandation de films</h1>", unsafe_allow_html=True)
-        c1, c2, c3 = st.columns(3)
-        with c1:
-            st.write("")
-        with c2:
-            st.markdown(hide_menu, unsafe_allow_html=True)
-        with c3:
-            st.write("")
+
 
         X = df_recommandation[['Action',
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
