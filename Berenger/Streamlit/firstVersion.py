@@ -33,11 +33,7 @@ def main():
     
 
 
-    menu = ["Système de recommandation", "Meaningful KPI"]
-
-    choice = st.sidebar.selectbox("", menu) 
-
-    if choice == 'Système de recommandation':
+    if st.button('Say hello'):
         c1, c2, c3 = st.columns(3)
         with c1:
             st.write("")
@@ -53,10 +49,8 @@ def main():
 
         st.write("---------------------------------------------------------")
 
-        if st.button('Say hello'):
-            st.write('Why hello there')
-        else:
-            st.write('Goodbye')
+        
+
 
 
 
@@ -153,7 +147,7 @@ def main():
 
 
 
-    elif choice == "Meaningful KPI":
+    if st.button('Pas hello'):
         acteur_par_periode = pd.read_csv("https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/acteur_par_periode.csv?token=AU6BUZWYJ6GYLJLQVDQCLZTBSZ2NK")
         link = 'https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/top10.csv?token=AU6BUZSEQED65VJVLNSX4FLBS2IYO'
         top10 = pd.read_csv(link)

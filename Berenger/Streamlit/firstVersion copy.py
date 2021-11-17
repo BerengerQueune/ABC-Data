@@ -7,26 +7,44 @@ from sklearn.neighbors import NearestNeighbors
 from gazpacho import get, Soup
 import os
 import imdb
+import imdb.helpers
+
+hide_menu= """
+<style>
+    #MainMenu {visibility:hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+
+</style>
+"""
+
+
 
 
 df_recommandation = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_recommandation.csv?token=AU6BUZU75XQAMO3ALFRQGCTBTZFHU')
-df = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_base.csv?token=AU6BUZWHN456IAMFBUWFFSDBTELCU')
+df = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/table_finale_alphabetique.csv?token=AU6BUZSDMXLDQHPFUG2YRNLBTZWY4')
 
-st.set_page_config( layout='wide')
+st.set_page_config(page_title="ABCS", page_icon=":heart:", layout='wide')
 
+st.markdown("<h1 style='text-align: center; font-family:cursive; color: white;'>Projet recommandation de films de l'équipe ABCS</h1>", unsafe_allow_html=True)
 
 def main():
 
-
+    
 
 
     menu = ["Système de recommandation", "Meaningful KPI"]
 
-    choice = st.sidebar.selectbox("Menu", menu) 
-
+    choice = st.sidebar.selectbox("", menu) 
 
     if choice == 'Système de recommandation':
-        st.subheader("Système de recommandation")
+        c1, c2, c3 = st.columns(3)
+        with c1:
+            st.write("")
+        with c2:
+            st.markdown(hide_menu, unsafe_allow_html=True)
+        with c3:
+            st.write("")
 
         X = df_recommandation[['Action',
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
@@ -35,25 +53,19 @@ def main():
 
         st.write("---------------------------------------------------------")
 
+        if st.button('Say hello'):
+            st.write('Why hello there')
+        else:
+            st.write('Goodbye')
+
+
+
         def url_clean(url):
             base, ext = os.path.splitext(url)
             i = url.count('@')
             s2 = url.split('@')[0]
             url = s2 + '@' * i + ext
             return url
-        st.write("---------------------------------------------------------")
-
-        # url = 'https://scrape.world/books'
-        # html = get(url)
-        # soup = Soup(html)
-        # books = soup.find('div', {'class': 'book-'}, partial=True)
-
-        # def parse(book):
-        #     name = book.find('h4').text
-        #     price = float(book.find('p').text[1:].split(' ')[0])
-        #     return name, price
-
-        # [parse(book) for book in books]
 
 
         COUNTRIES = df['primaryTitle'].unique()
@@ -89,15 +101,15 @@ def main():
 
         numero_colonne = 0
 
+        st.write("---------------------------------------------------------")
 
         # creating instance of IMDb
         ia = imdb.IMDb()
 
         if len(user_choice6) == 0:
-            pass
+            st.write("Vous n'avez pas encore choisi de film.")
         else:
 
-            st.write('Nous vous proposons les films suivants :')
 
             cols = st.columns(5)
             for i in range(len(liste_finale)):
@@ -111,13 +123,11 @@ def main():
                     # # getting information
                     series = ia.get_movie(code)
                     try:
-                        # # getting cover url of the series
-                        cover = series.data['cover url']
-                        
                         # # print the cover
-                        st.image(cover, width =300, caption=movie_name)
-                    except KeyError:
-                        st.write("Il n'y a pas encore d'affiche pour ce film.")
+                        st.image(imdb.helpers.fullSizeCoverURL(series), use_column_width='auto', caption=movie_name)
+                    except:
+                        st.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYEBKhlYYZa4Saksn04meXChE44J1PU9BCZA&usqp=CAU", 
+                        use_column_width="always", caption=movie_name)
                 numero_colonne +=1
 
         # def picture(index):
