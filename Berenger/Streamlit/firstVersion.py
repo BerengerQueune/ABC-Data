@@ -103,7 +103,7 @@ def main():
                         cover = series.data['cover url']
                         
                         # # print the cover
-                        st.image(cover)
+                        st.image(cover, use_column_width="always")
                     except KeyError:
                         st.write("Il n'y a pas encore d'affiche pour ce film.")
                 numero_colonne +=1
