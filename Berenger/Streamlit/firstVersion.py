@@ -30,7 +30,7 @@ st.set_page_config(page_title="ABCS", page_icon=":heart:", layout='wide')
 
 
 def main():
-
+    st.markdown(hide_menu, unsafe_allow_html=True)
     
     
 
