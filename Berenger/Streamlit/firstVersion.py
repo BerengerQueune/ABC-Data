@@ -9,7 +9,7 @@ import ipywidgets as widgets
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 from sklearn.neighbors import NearestNeighbors
-from gazpacho import Soup
+from gazpacho import get, Soup
 
 
 df_recommandation = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_recommendation.csv?token=AU6BUZUA5UESEPKRRJQIESLBS53UU')
@@ -34,7 +34,17 @@ def main():
             'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
 
 
-                
+        url = 'https://scrape.world/books'
+        html = get(url)
+        soup = Soup(html)
+        books = soup.find('div', {'class': 'book-'}, partial=True)
+
+        def parse(book):
+            name = book.find('h4').text
+            price = float(book.find('p').text[1:].split(' ')[0])
+            return name, price
+
+        [parse(book) for book in books]
 
 
         COUNTRIES = df['primaryTitle'].unique()
