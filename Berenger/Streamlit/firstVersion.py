@@ -41,7 +41,7 @@ def main():
 
         # Mask to filter dataframe
         mask_countries = df['primaryTitle'].isin(COUNTRIES_SELECTED)
-        st.write ("mask counries", mask_countries)
+
         data = df[mask_countries]
 
         user_choice6 = data[['Action',
@@ -49,7 +49,6 @@ def main():
             'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
             'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
 
-        st.write("user_choice6", user_choice6)
 
         distanceKNN = NearestNeighbors(n_neighbors=5).fit(X)
         mewtwo = user_choice6/len(data)
@@ -67,7 +66,7 @@ def main():
 
         liste_finale = df_recommandation.iloc[mewtwo]
 
-        st.write ("len de user choice", len(user_choice6))
+
 
         if len(user_choice6) == 0:
             pass
