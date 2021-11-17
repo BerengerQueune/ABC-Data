@@ -41,7 +41,7 @@ def main():
 
         # Mask to filter dataframe
         mask_countries = df['primaryTitle'].isin(COUNTRIES_SELECTED)
-
+        st.write ("mask counries", mask_countries)
         data = df[mask_countries]
 
         user_choice6 = data[['Action',
