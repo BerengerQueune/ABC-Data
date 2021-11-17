@@ -22,7 +22,7 @@ hide_menu= """
 df_recommandation = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_recommandation.csv?token=AU6BUZU75XQAMO3ALFRQGCTBTZFHU')
 df = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/table_finale_alphabetique.csv?token=AU6BUZSDMXLDQHPFUG2YRNLBTZWY4')
 
-st.set_page_config(page_title="TrekViz", page_icon="🖖", layout='wide')
+st.set_page_config(page_title="TrekViz", page_icon=":heart:", layout='wide')
 
 def main():
 
