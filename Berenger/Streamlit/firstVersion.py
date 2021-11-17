@@ -113,10 +113,7 @@ def main():
                 
                 
                 with cols[numero_colonne]:
-                    movie_year = liste_finale.iloc[i]["startYear"]
-                    movie_name = liste_finale.iloc[i]["primaryTitle"] + " "
-
-                    test_full = movie_year + movie_name
+                    movie_name = liste_finale.iloc[i]["primaryTitle"]
                     # id
                     code = liste_finale.iloc[i]["tconst"]
                     code = code.replace("tt", "")
@@ -124,7 +121,7 @@ def main():
                     series = ia.get_movie(code)
                     try:
                         # # print the cover
-                        st.image(imdb.helpers.fullSizeCoverURL(series), use_column_width='auto', caption=test_full)
+                        st.image(imdb.helpers.fullSizeCoverURL(series), use_column_width='auto', caption=movie_name)
                     except:
                         st.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYEBKhlYYZa4Saksn04meXChE44J1PU9BCZA&usqp=CAU", 
                         use_column_width="always", caption=movie_name)
