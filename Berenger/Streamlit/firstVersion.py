@@ -104,7 +104,7 @@ def main():
         ia = imdb.IMDb()
         
         # id
-        code = "6077448"
+        code = "1392190"
         
         # getting information
         series = ia.get_movie(code)
