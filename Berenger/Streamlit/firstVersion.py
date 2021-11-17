@@ -25,6 +25,12 @@ def main():
     if choice == 'Système de recommandation':
         st.subheader("Système de recommandation")
 
+
+        st.write("----------------------------------")
+
+
+        st.write("----------------------------------")
+
         X = df_recommandation[['Action',
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
             'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
