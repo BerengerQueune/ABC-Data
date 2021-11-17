@@ -102,7 +102,7 @@ def main():
         ia = imdb.IMDb()
 
         if len(user_choice6) == 0:
-            st.write("Vous n'avez pas encore choisi de film.")
+            pass
         else:
 
             st.markdown("<h5 style='text-align: center; color: white;'>Nous vous recommandons les films suivants :</h5>", unsafe_allow_html=True)
