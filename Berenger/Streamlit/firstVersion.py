@@ -72,11 +72,7 @@ def main():
             return url
 
 
-        COUNTRIES = df['primaryTitle'].unique()
-        COUNTRIES_SELECTED = st.multiselect('Choisissez vos films préférés :', COUNTRIES)
 
-        # Mask to filter dataframe
-        mask_countries = df['primaryTitle'].isin(COUNTRIES_SELECTED)
 
         data = df[mask_countries]
 
