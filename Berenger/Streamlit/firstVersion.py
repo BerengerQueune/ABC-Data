@@ -97,7 +97,7 @@ def main():
                 
                 
                 with cols[numero_colonne]:
-                    movie_name = liste_finale.iloc[i]["primaryTitle"]
+                    movie_name = liste_finale.iloc[i]["primaryTitle", "startYear"]
                     # id
                     code = liste_finale.iloc[i]["tconst"]
                     code = code.replace("tt", "")
