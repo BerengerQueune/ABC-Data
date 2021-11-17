@@ -34,17 +34,17 @@ def main():
             'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
 
 
-        url = 'https://scrape.world/books'
-        html = get(url)
-        soup = Soup(html)
-        books = soup.find('div', {'class': 'book-'}, partial=True)
+        # url = 'https://scrape.world/books'
+        # html = get(url)
+        # soup = Soup(html)
+        # books = soup.find('div', {'class': 'book-'}, partial=True)
 
-        def parse(book):
-            name = book.find('h4').text
-            price = float(book.find('p').text[1:].split(' ')[0])
-            return name, price
+        # def parse(book):
+        #     name = book.find('h4').text
+        #     price = float(book.find('p').text[1:].split(' ')[0])
+        #     return name, price
 
-        [parse(book) for book in books]
+        # [parse(book) for book in books]
 
 
         COUNTRIES = df['primaryTitle'].unique()
