@@ -92,7 +92,8 @@ def main():
                 
                 
                 with cols[numero_colonne]:
-                    st.write("- ", liste_finale.iloc[i]["primaryTitle"])
+                    movie_name = liste_finale.iloc[i]["primaryTitle"]
+                    st.write("- ", movie_name)
                     # id
                     code = liste_finale.iloc[i]["tconst"]
                     code = code.replace("tt", "")
@@ -103,7 +104,7 @@ def main():
                         cover = series.data['cover url']
                         
                         # # print the cover
-                        st.image(cover, use_column_width="always")
+                        st.image(cover, use_column_width="always", caption=movie_name)
                     except KeyError:
                         st.write("Il n'y a pas encore d'affiche pour ce film.")
                 numero_colonne +=1
