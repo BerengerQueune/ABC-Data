@@ -19,7 +19,7 @@ hide_menu= """
 """
 def local_css(file_name):
     with open(file_name) as f:
-        st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
+        st.markdown("<h1 style='text-align: center; color: red;'>Some title</h1>".format(f.read()), unsafe_allow_html=True)
 
 def remote_css(url):
     st.markdown('<style src="{}"></style>'.format(url), unsafe_allow_html=True)
