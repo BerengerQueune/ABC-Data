@@ -17,14 +17,7 @@ st.set_page_config( layout='wide')
 
 def main():
 
-    hide_full_screen = '''
-    <style>
-    .element-container:nth-child(3) .overlayBtn {visibility: hidden;}
-    .element-container:nth-child(12) .overlayBtn {visibility: hidden;}
-    </style>
-    '''
 
-st.markdown(hide_full_screen, unsafe_allow_html=True) 
 
 
     menu = ["Système de recommandation", "Meaningful KPI"]
