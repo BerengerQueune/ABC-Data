@@ -100,7 +100,7 @@ def main():
                     
                     # # print the cover
                     st.image(cover)
-                except:
+                except KeyError:
                     st.write("An exception occurred")
 
         # def picture(index):
