@@ -96,6 +96,27 @@ def main():
         #     return img.attrs['src']
         
         # picture("tt1392190")
+
+        
+        # importing the module
+        
+        # creating instance of IMDb
+        ia = imdb.IMDb()
+        
+        # id
+        code = "6077448"
+        
+        # getting information
+        series = ia.get_movie(code)
+        
+        # getting cover url of the series
+        cover = series.data['cover url']
+        
+        # printing the object i.e name
+        st.write(series)
+        
+        # print the cover
+        st.write(cover)
     
     elif choice == "test":
         options = st.multiselect(
