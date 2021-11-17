@@ -89,7 +89,6 @@ def main():
             pass
         else:
 
-            st.write('Nous vous proposons les films suivants :')
 
             cols = st.columns(5)
             for i in range(len(liste_finale)):
