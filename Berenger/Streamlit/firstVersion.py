@@ -26,7 +26,7 @@ def main():
 
 
     if choice == 'Système de recommandation':
-        c1 = st.columns(1)
+        c1, c2 = st.columns(2)
         with c1:
             st.subheader("Système de recommandation")
 
