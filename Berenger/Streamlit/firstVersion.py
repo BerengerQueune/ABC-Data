@@ -71,6 +71,8 @@ def main():
 
         st.write(liste_finale)
 
+        st.write ("len de user choice", len(user_choice6))
+
         if len(user_choice6) == 0:
             print ("Success")
 
