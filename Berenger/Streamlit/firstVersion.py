@@ -89,6 +89,8 @@ def main():
                 # id
                 code = liste_finale.iloc[i]["tconst"]
                 st.write(code)
+                code = code.replace("tt", "")
+                st.write(code)
                 # # getting information
                 # series = ia.get_movie(code)
                 
