@@ -9,6 +9,15 @@ import os
 import imdb
 import imdb.helpers
 
+hide_menu= """
+<style>
+#MainMenu {
+    visibility:hidden;
+}
+
+</style>
+"""
+
 
 df_recommandation = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_recommandation.csv?token=AU6BUZU75XQAMO3ALFRQGCTBTZFHU')
 df = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/table_finale_alphabetique.csv?token=AU6BUZSDMXLDQHPFUG2YRNLBTZWY4')
@@ -33,6 +42,7 @@ def main():
         with c2:
 
             st.subheader("Système de recommandation")
+            st.markdown(hide_menu, unsafe_allow_html=True)
         with c3:
             st.write("")
 
