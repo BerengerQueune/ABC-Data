@@ -53,6 +53,7 @@ def main():
 
         st.write("---------------------------------------------------------")
 
+        st.write(st.button('Say hello'))
         if st.button('Say hello'):
             st.write('Why hello there')
         else:
