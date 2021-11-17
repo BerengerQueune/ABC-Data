@@ -25,7 +25,7 @@ df_recommandation = pd.read_csv('https://raw.githubusercontent.com/BerengerQueun
 df = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/table_finale_alphabetique.csv?token=AU6BUZSDMXLDQHPFUG2YRNLBTZWY4')
 
 st.set_page_config(page_title="ABCS", page_icon=":heart:")
-#st.set_page_config(layout='wide')
+st.set_page_config(layout='wide')
 
 st.markdown("<h1 style='text-align: center; color: white;'>Recommandation de films</h1>", unsafe_allow_html=True)
 
