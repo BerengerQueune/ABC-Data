@@ -109,7 +109,7 @@ def main():
                         # # print the cover
                         st.image(cover, use_column_width='always', caption=movie_name)
                     except KeyError:
-                        st.image("https://media.istockphoto.com/vectors/missing-rubber-stamp-vector-vector-id1213374148?k=20&m=1213374148&s=612x612&w=0&h=A3_Ku27Jf_XRfsWCZYvwJWQGNR2hbHDh9ViLLaAdJ5w=", 
+                        st.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYEBKhlYYZa4Saksn04meXChE44J1PU9BCZA&usqp=CAU", 
                         use_column_width="always", caption=movie_name)
                 numero_colonne +=1
 
