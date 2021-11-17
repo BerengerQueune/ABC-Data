@@ -113,7 +113,7 @@ def main():
                 
                 
                 with cols[numero_colonne]:
-                    movie_name = liste_finale.iloc[i]["primaryTitle"], "lol"
+                    movie_name = liste_finale.iloc[i]["primaryTitle"] + "lol"
                     # id
                     code = liste_finale.iloc[i]["tconst"]
                     code = code.replace("tt", "")
