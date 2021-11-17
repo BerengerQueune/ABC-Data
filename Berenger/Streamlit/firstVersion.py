@@ -87,6 +87,13 @@ def main():
 
         liste_finale = df_recommandation.iloc[mewtwo]
 
+        cols = st.columns(5)
+
+        cols[0].write(f'{i}')
+        cols[1].write(f'{i * i}')
+        cols[2].write(f'{i * i * i}')
+        cols[3].write('x' * i)
+
         # creating instance of IMDb
         ia = imdb.IMDb()
 
