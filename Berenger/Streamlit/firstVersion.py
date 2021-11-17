@@ -52,7 +52,6 @@ def main():
             'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
 
         st.write("---------------------------------------------------------")
-
         
 
 
@@ -122,9 +121,7 @@ def main():
                     series = ia.get_movie(code)
                     try:
                         # # print the cover
-                        st.image(imdb.helpers.fullSizeCoverURL(series), use_column_width='auto', caption=movie_name, caption="lol")
-
-                        st.markdown("[![Foo](http://www.google.com.au/images/nav_logo7.png)](http://google.com.au/)")
+                        st.image(imdb.helpers.fullSizeCoverURL(series), use_column_width='auto', caption=movie_name)
                     except:
                         st.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYEBKhlYYZa4Saksn04meXChE44J1PU9BCZA&usqp=CAU", 
                         use_column_width="always", caption=movie_name)
