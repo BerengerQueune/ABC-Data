@@ -42,7 +42,7 @@ def main():
         with c2:
 
             st.subheader("Système de recommandation")
-            st.markdown(hide_menu)
+            st.markdown(hide_menu, unsafe_allow_html=True)
         with c3:
             st.write("")
 
