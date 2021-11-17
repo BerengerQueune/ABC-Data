@@ -65,11 +65,12 @@ def main():
 
         liste_finale = df_recommandation.iloc[mewtwo]
 
+        movies = 0
+
         st.write(liste_finale)
-        if len(liste_finale) == 0:
+        if movies == 0:
             pass
         else:
-
             st.write('Nous vous proposons les films suivants :')
 
             for i in range(len(liste_finale)):
