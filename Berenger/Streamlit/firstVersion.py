@@ -98,7 +98,6 @@ def main():
 
         #st.write("---------------------------------------------------------")
         st.write(" ")
-        st.write(" ")
 
         # creating instance of IMDb
         ia = imdb.IMDb()
