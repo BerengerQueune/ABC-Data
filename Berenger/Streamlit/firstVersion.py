@@ -74,7 +74,8 @@ def main():
 
         liste_finale = df_recommandation.iloc[mewtwo]
 
-
+        # creating instance of IMDb
+        ia = imdb.IMDb()
 
         if len(user_choice6) == 0:
             pass
@@ -84,7 +85,18 @@ def main():
 
             for i in range(len(liste_finale)):
                 st.write("- ", liste_finale.iloc[i]["primaryTitle"])
-                st.write("- ", liste_finale.iloc[i]["tconst"])
+                
+                # id
+                code = liste_finale.iloc[i]["tconst"]
+                st.write(code)
+                # getting information
+                series = ia.get_movie(code)
+                
+                # getting cover url of the series
+                cover = series.data['cover url']
+                
+                # print the cover
+                st.image(cover)
 
         # def picture(index):
         #     page = urllib.request.urlopen('https://www.imdb.com/title/' +
@@ -98,8 +110,8 @@ def main():
         
         # picture("tt1392190")
   
-        # creating instance of IMDb
-        ia = imdb.IMDb()
+        
+        
         
         # id
         code = "1392190"
@@ -109,9 +121,6 @@ def main():
         
         # getting cover url of the series
         cover = series.data['cover url']
-        
-        # printing the object i.e name
-        st.write(series)
         
         # print the cover
         st.image(cover)
