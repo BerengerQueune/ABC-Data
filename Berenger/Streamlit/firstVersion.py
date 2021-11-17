@@ -17,7 +17,7 @@ st.set_page_config( layout='wide')
 
 def main():
 
-    menu = ["Système de recommandation", "Meaningful KPI", "test"]
+    menu = ["Système de recommandation", "Meaningful KPI"]
 
     choice = st.sidebar.selectbox("Menu", menu) 
 
@@ -125,11 +125,6 @@ def main():
         
 
     
-    elif choice == "test":
-        options = st.multiselect(
-        'What are your favorite colors',
-        ['Green', 'Yellow', 'Red', 'Blue'],
-        ['Yellow', 'Red'])
 
         
     
