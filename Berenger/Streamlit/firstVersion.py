@@ -103,9 +103,10 @@ def main():
 
             st.write('Nous vous proposons les films suivants :')
 
+            cols = st.columns(5)
             for i in range(len(liste_finale)):
                 
-                cols = st.columns(5)
+                
                 with cols[numero_colonne]:
                     st.write("- ", liste_finale.iloc[i]["primaryTitle"])
                     # id
