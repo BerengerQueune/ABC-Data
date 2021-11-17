@@ -83,10 +83,10 @@ def main():
 
             st.write('Nous vous proposons les films suivants :')
 
-            for i in range(len(liste_finale)):
+            for i, t in range(len(liste_finale)):
                 
                 st.write("- ", liste_finale.iloc[i]["primaryTitle"])
-                
+                st.write(t)
                 # id
                 code = liste_finale.iloc[i]["tconst"]
                 code = code.replace("tt", "")
