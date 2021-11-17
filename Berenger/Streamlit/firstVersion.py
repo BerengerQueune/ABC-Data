@@ -27,7 +27,7 @@ df = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main
 st.set_page_config(page_title="ABCS", page_icon=":heart:", layout='wide')
 #st.set_page_config()
 
-st.markdown("<h1 style='text-align: center; color: white;'>Recommandation de films</h1>", unsafe_allow_html=True)
+
 
 def main():
 
@@ -39,6 +39,7 @@ def main():
     choice = st.sidebar.selectbox("", menu) 
 
     if choice == 'Système de recommandation':
+        st.markdown("<h1 style='text-align: center; color: white;'>Recommandation de films</h1>", unsafe_allow_html=True)
         c1, c2, c3 = st.columns(3)
         with c1:
             st.write("")
