@@ -96,10 +96,7 @@ def main():
         #     return img.attrs['src']
         
         # picture("tt1392190")
-
-        
-        # importing the module
-        
+  
         # creating instance of IMDb
         ia = imdb.IMDb()
         
@@ -116,7 +113,7 @@ def main():
         st.write(series)
         
         # print the cover
-        st.write(cover)
+        st.image(cover)
     
     elif choice == "test":
         options = st.multiselect(
