@@ -31,7 +31,7 @@ st.markdown("<h1 style='text-align: center; color: white;'>Projet recommandation
 def main():
 
     
-
+st.markdown("[![Foo](http://www.google.com.au/images/nav_logo7.png)](http://google.com.au/)")
 
     menu = ["Système de recommandation", "Meaningful KPI"]
 
