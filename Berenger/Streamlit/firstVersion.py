@@ -26,7 +26,7 @@ df = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main
 
 st.set_page_config(page_title="ABCS", page_icon=":heart:", layout='wide')
 
-st.markdown("<h1 style='text-align: center; color: white;'>Projet recommandation de films de l'équipe ABCS</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: white;'>Choisissez vos films préférés</h1>", unsafe_allow_html=True)
 
 def main():
 
