@@ -89,14 +89,14 @@ def main():
                 # id
                 code = liste_finale.iloc[i]["tconst"]
                 st.write(code)
-                # getting information
-                series = ia.get_movie(code)
+                # # getting information
+                # series = ia.get_movie(code)
                 
-                # getting cover url of the series
-                cover = series.data['cover url']
+                # # getting cover url of the series
+                # cover = series.data['cover url']
                 
-                # print the cover
-                st.image(cover)
+                # # print the cover
+                # st.image(cover)
 
         # def picture(index):
         #     page = urllib.request.urlopen('https://www.imdb.com/title/' +
