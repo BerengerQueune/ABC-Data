@@ -53,12 +53,7 @@ def main():
 
         st.write("---------------------------------------------------------")
 
-        st.write(
-            if st.button('Say hello'):
-                st.write("lol")
-        
-        
-        )
+
 
 
 
