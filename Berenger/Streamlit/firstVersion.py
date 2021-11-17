@@ -115,17 +115,7 @@ def main():
         
         
         
-        # id
-        code = "1392190"
-        
-        # getting information
-        series = ia.get_movie(code)
-        
-        # getting cover url of the series
-        cover = series.data['cover url']
-        
-        # print the cover
-        st.image(cover)
+
     
     elif choice == "test":
         options = st.multiselect(
