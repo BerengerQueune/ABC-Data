@@ -49,6 +49,8 @@ def main():
             'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
             'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
 
+        st.write("user_choice6", user_choice6)
+
         distanceKNN = NearestNeighbors(n_neighbors=5).fit(X)
         mewtwo = user_choice6/len(data)
 
@@ -70,7 +72,7 @@ def main():
         st.write(liste_finale)
 
         if "true" in mask_countries:
-            print ("True")
+            print ("Success")
 
         st.write('Nous vous proposons les films suivants :')
 
