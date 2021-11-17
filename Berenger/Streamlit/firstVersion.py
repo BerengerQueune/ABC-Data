@@ -106,21 +106,21 @@ def main():
             for i in range(len(liste_finale)):
                 
                 cols = st.columns(5)
-                cols[numero_colonne].write("lol")
-                st.write("- ", liste_finale.iloc[i]["primaryTitle"])
-                # id
-                code = liste_finale.iloc[i]["tconst"]
-                code = code.replace("tt", "")
-                # # getting information
-                series = ia.get_movie(code)
-                try:
-                    # # getting cover url of the series
-                    cover = series.data['cover url']
-                    
-                    # # print the cover
-                    st.image(cover)
-                except KeyError:
-                    st.write("Il n'y a pas encore d'affiche pour ce film.")
+                with cols[0]:
+                    st.write("- ", liste_finale.iloc[i]["primaryTitle"])
+                    # id
+                    code = liste_finale.iloc[i]["tconst"]
+                    code = code.replace("tt", "")
+                    # # getting information
+                    series = ia.get_movie(code)
+                    try:
+                        # # getting cover url of the series
+                        cover = series.data['cover url']
+                        
+                        # # print the cover
+                        st.image(cover)
+                    except KeyError:
+                        st.write("Il n'y a pas encore d'affiche pour ce film.")
                 numero_colonne +=1
 
         # def picture(index):
