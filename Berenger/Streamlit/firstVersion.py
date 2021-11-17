@@ -1,16 +1,12 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
-import altair as alt
-import pydeck as pdk
-import datetime as dt
 import plotly.express as px
-import ipywidgets as widgets
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 from sklearn.neighbors import NearestNeighbors
 from gazpacho import get, Soup
 import urllib
+import imdb
 
 
 df_recommandation = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_recommendation.csv?token=AU6BUZUA5UESEPKRRJQIESLBS53UU')
@@ -89,17 +85,17 @@ def main():
             for i in range(len(liste_finale)):
                 st.write("- ", liste_finale.iloc[i]["primaryTitle"])
 
-        def picture(index):
-            page = urllib.request.urlopen('https://www.imdb.com/title/' +
-                                        index.iloc[0, 0] +
-                                        '/?ref_=adv_li_i%27')
-            htmlCode = page.read().decode('UTF-8')
-            soup = Soup(htmlCode)
-            tds = soup.find("div", {"class": "poster"})
-            img = tds[0].find("img")
-            return img.attrs['src']
+        # def picture(index):
+        #     page = urllib.request.urlopen('https://www.imdb.com/title/' +
+        #                                 index.iloc[0, 0] +
+        #                                 '/?ref_=adv_li_i%27')
+        #     htmlCode = page.read().decode('UTF-8')
+        #     soup = Soup(htmlCode)
+        #     tds = soup.find("div", {"class": "poster"})
+        #     img = tds[0].find("img")
+        #     return img.attrs['src']
         
-        picture("tt1392190")
+        # picture("tt1392190")
     
     elif choice == "test":
         options = st.multiselect(
