@@ -88,7 +88,7 @@ def main():
         liste_finale = df_recommandation.iloc[mewtwo]
 
         cols = st.columns(5)
-
+        numero_colonne = 0
         cols[0].write("lol")
         cols[1].write("LOL2")
         cols[2].write("LOL3")
@@ -105,6 +105,8 @@ def main():
 
             for i in range(len(liste_finale)):
                 
+                cols = st.columns(5)
+                cols[numero_colonne].write("lol")
                 st.write("- ", liste_finale.iloc[i]["primaryTitle"])
                 # id
                 code = liste_finale.iloc[i]["tconst"]
@@ -119,6 +121,7 @@ def main():
                     st.image(cover)
                 except KeyError:
                     st.write("Il n'y a pas encore d'affiche pour ce film.")
+                numero_colonne +=1
 
         # def picture(index):
         #     page = urllib.request.urlopen('https://www.imdb.com/title/' +
