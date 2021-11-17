@@ -103,7 +103,7 @@ def main():
             pass
         else:
 
-            st.markdown("<h5 style='text-align: center; color: white;'>Ces films devraient plaire à vos clients :</h5>", unsafe_allow_html=True)
+            st.markdown("<h5 style='text-align: center;'>Ces films devraient plaire à vos clients :</h5>", unsafe_allow_html=True)
             st.write(" ")
             st.write(" ")
             cols = st.columns(5)
