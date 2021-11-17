@@ -7,6 +7,7 @@ from sklearn.neighbors import NearestNeighbors
 from gazpacho import get, Soup
 import os
 import imdb
+import imdb.helpers
 
 
 df_recommandation = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_recommandation.csv?token=AU6BUZU75XQAMO3ALFRQGCTBTZFHU')
@@ -107,7 +108,7 @@ def main():
                         cover = series.data['cover url']
                         
                         # # print the cover
-                        st.image(cover, use_column_width='always', caption=movie_name)
+                        st.image(imdb.helpers.fullSizeCoverURL(series), use_column_width='always', caption=movie_name)
                     except KeyError:
                         st.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYEBKhlYYZa4Saksn04meXChE44J1PU9BCZA&usqp=CAU", 
                         use_column_width="always", caption=movie_name)
