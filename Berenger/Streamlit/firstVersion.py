@@ -99,7 +99,7 @@ def main():
                     # # print the cover
                     st.image(cover)
                 except KeyError:
-                    st.write("An exception occurred")
+                    st.write("Il n'y a pas encore d'affiche pour ce film.")
 
         # def picture(index):
         #     page = urllib.request.urlopen('https://www.imdb.com/title/' +
