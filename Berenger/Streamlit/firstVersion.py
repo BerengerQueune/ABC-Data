@@ -30,7 +30,7 @@ st.markdown("<h1 style='text-align: center; font-family:cursive; color: white;'>
 
 def main():
 
-    st.button()
+    
 
 
     menu = ["Système de recommandation", "Meaningful KPI"]
@@ -53,7 +53,7 @@ def main():
 
         st.write("---------------------------------------------------------")
 
-
+        st.button()
 
 
 
