@@ -104,9 +104,6 @@ def main():
                     # # getting information
                     series = ia.get_movie(code)
                     try:
-                        # # getting cover url of the series
-                        cover = series.data['cover url']
-                        
                         # # print the cover
                         st.image(imdb.helpers.fullSizeCoverURL(series), width=250, caption=movie_name)
                     except KeyError:
