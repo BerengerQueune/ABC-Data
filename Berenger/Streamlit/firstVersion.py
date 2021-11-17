@@ -121,7 +121,7 @@ def main():
                     series = ia.get_movie(code)
                     try:
                         # # print the cover
-                        st.image(imdb.helpers.fullSizeCoverURL(series), width=250, caption=movie_name)
+                        st.image(imdb.helpers.fullSizeCoverURL(series), use_column_width='auto', caption=movie_name)
                     except:
                         st.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYEBKhlYYZa4Saksn04meXChE44J1PU9BCZA&usqp=CAU", 
                         use_column_width="always", caption=movie_name)
