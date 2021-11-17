@@ -87,7 +87,7 @@ def main():
         ia = imdb.IMDb()
 
         if len(user_choice6) == 0:
-            pass
+            st.write("Vous n'avez pas encore choisi de film.")
         else:
 
 
