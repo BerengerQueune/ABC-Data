@@ -92,13 +92,13 @@ def main():
                 code = code.replace("tt", "")
                 st.write(code)
                 # # getting information
-                # series = ia.get_movie(code)
+                series = ia.get_movie(code)
                 
                 # # getting cover url of the series
-                # cover = series.data['cover url']
+                cover = series.data['cover url']
                 
                 # # print the cover
-                # st.image(cover)
+                st.image(cover)
 
         # def picture(index):
         #     page = urllib.request.urlopen('https://www.imdb.com/title/' +
