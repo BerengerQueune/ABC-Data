@@ -89,7 +89,7 @@ def main():
 
         mewtwo = distanceKNN.kneighbors(mewtwo)
 
-
+        st.markdown("<h1 style='text-align: center; color: white;'>Projet recommandation de films de l'équipe ABCS</h1>", unsafe_allow_html=True)
 
         mewtwo = mewtwo[1].reshape(1,5)[0]
 
