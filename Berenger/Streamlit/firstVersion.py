@@ -49,6 +49,7 @@ def main():
             'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
             'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
 
+
         distanceKNN = NearestNeighbors(n_neighbors=5).fit(X)
         mewtwo = user_choice6/len(data)
 
@@ -65,10 +66,16 @@ def main():
 
         liste_finale = df_recommandation.iloc[mewtwo]
 
-        st.write('Nous vous proposons les films suivants :')
 
-        for i in range(len(liste_finale)):
-            st.write("- ", liste_finale.iloc[i]["primaryTitle"])
+
+        if len(user_choice6) == 0:
+            pass
+        else:
+
+            st.write('Nous vous proposons les films suivants :')
+
+            for i in range(len(liste_finale)):
+                st.write("- ", liste_finale.iloc[i]["primaryTitle"])
     
     elif choice == "test":
         options = st.multiselect(
