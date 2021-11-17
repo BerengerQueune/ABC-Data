@@ -71,7 +71,7 @@ def main():
 
         st.write(liste_finale)
 
-        if "true" in mask_countries:
+        if len(user_choice6) == 0:
             print ("Success")
 
         st.write('Nous vous proposons les films suivants :')
