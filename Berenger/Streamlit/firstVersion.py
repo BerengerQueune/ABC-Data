@@ -29,7 +29,7 @@ def main():
         st.write("----------------------------------")
 
         for i in range(1, 10):
-            cols = st.columns(4)
+            cols = st.columns(5)
             cols[0].write(f'{i}')
             cols[1].write(f'{i * i}')
             cols[2].write(f'{i * i * i}')
