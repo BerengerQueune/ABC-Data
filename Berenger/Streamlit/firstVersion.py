@@ -89,8 +89,6 @@ def main():
 
         mewtwo = distanceKNN.kneighbors(mewtwo)
 
-        st.markdown("<h1 style='text-align: center; color: white;'>Projet recommandation de films de l'équipe ABCS</h1>", unsafe_allow_html=True)
-
         mewtwo = mewtwo[1].reshape(1,5)[0]
 
         liste_finale = df_recommandation.iloc[mewtwo]
@@ -107,7 +105,7 @@ def main():
             st.write("Vous n'avez pas encore choisi de film.")
         else:
 
-
+            st.markdown("<h5 style='text-align: center; color: white;'>Nous vous recommandons les films suivants :</h5>", unsafe_allow_html=True)
             cols = st.columns(5)
             for i in range(len(liste_finale)):
                 
