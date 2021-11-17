@@ -26,9 +26,8 @@ def main():
 
 
     if choice == 'Système de recommandation':
-        c1, c2 = st.columns(2)
-        with c1:
-            st.subheader("Système de recommandation")
+
+        st.subheader("Système de recommandation")
 
         X = df_recommandation[['Action',
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
