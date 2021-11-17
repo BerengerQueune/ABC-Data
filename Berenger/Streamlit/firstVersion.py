@@ -118,6 +118,7 @@ def main():
                         st.image(url_clean(url), use_column_width="always", caption=movie_name)
                     except KeyError:
                         st.write("Il n'y a pas encore d'affiche pour ce film.")
+                        st.image(url_clean(url), use_column_width="always", caption=movie_name)
                 numero_colonne +=1
 
         # def picture(index):
