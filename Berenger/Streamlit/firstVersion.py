@@ -89,10 +89,10 @@ def main():
 
         cols = st.columns(5)
 
-        cols[0].write(f'{i}')
-        cols[1].write(f'{i * i}')
-        cols[2].write(f'{i * i * i}')
-        cols[3].write('x' * i)
+        cols[0].write("lol")
+        cols[1].write("LOL2")
+        cols[2].write("LOL3")
+        cols[3].write("LOL4")
 
         # creating instance of IMDb
         ia = imdb.IMDb()
