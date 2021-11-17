@@ -113,9 +113,9 @@ def main():
                     try:
                         # # getting cover url of the series
                         cover = series.data['cover url']
-                        
+                        url = series['cover']
                         # # print the cover
-                        st.image(cover, width =300, caption=movie_name)
+                        st.image(url_clean(url), width =300, caption=movie_name)
                     except KeyError:
                         st.write("Il n'y a pas encore d'affiche pour ce film.")
                 numero_colonne +=1

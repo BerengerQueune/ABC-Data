@@ -1,17 +1,15 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
-import altair as alt
-import pydeck as pdk
-import datetime as dt
 import plotly.express as px
-import ipywidgets as widgets
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 from sklearn.neighbors import NearestNeighbors
+from gazpacho import get, Soup
+import os
+import imdb
 
 
-df_recommandation = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_recommendation.csv?token=AU6BUZUA5UESEPKRRJQIESLBS53UU')
+df_recommandation = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_recommandation.csv?token=AU6BUZU75XQAMO3ALFRQGCTBTZFHU')
 df = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_base.csv?token=AU6BUZWHN456IAMFBUWFFSDBTELCU')
 
 st.set_page_config( layout='wide')
@@ -19,75 +17,128 @@ st.set_page_config( layout='wide')
 
 def main():
 
-    #st.title("Movie recommandation project")
-    menu = ["Movie recommandation", "Meaningful KPI"]
+
+
+
+    menu = ["Système de recommandation", "Meaningful KPI"]
 
     choice = st.sidebar.selectbox("Menu", menu) 
 
 
-    if choice == 'Movie recommandation':
-        st.subheader("Movie recommandation")
-
-        # with st.expander("Title"):
-        #     mytext = st.text_area("Type Here")
-        #     st.write(mytext)
-        #     st.success("Hello")
-
-        #st.dataframe(df)
-        movies_title_list = df["primaryTitle"].tolist()
-
-        movie_choice = st.selectbox("Movie Title", movies_title_list)
-        # with st.expander('Movies DF'):
-        #     st.dataframe(df.head(10))
-
-            # Filter
-            # img_link = df[df["primaryTitle"] == movie_choice]["img_link"].values[0]
-            # title_link = df[df["primaryTitle"] == movie_choice]["primaryTitle"].values
-            # genre = df[df["primaryTitle"] == movie_choice]["Comedy"].values
-        genre = df[df["primaryTitle"] == movie_choice]["primaryTitle"].tolist()
-
-        #Layout
-        # st.write(img_link)
-        # st.image(img_link)
-
-
-        # with c1:
-        #     with st.expander("primaryTitle"):
-        #         st.write(genre)
-
-
-        user_choice = genre
-
-        user_choice2 = df[df['primaryTitle'].isin(user_choice)]
-
-        user_choice3 = user_choice2[['Action',
-            'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
-            'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
-            'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
+    if choice == 'Système de recommandation':
+        st.subheader("Système de recommandation")
 
         X = df_recommandation[['Action',
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
             'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
             'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
 
-        distanceKNN = NearestNeighbors(n_neighbors=1).fit(X)
+        st.write("---------------------------------------------------------")
 
-        mewtwo = distanceKNN.kneighbors(user_choice3)
+        def url_clean(url):
+            base, ext = os.path.splitext(url)
+            i = url.count('@')
+            s2 = url.split('@')[0]
+            url = s2 + '@' * i + ext
+            return url
+        st.write("---------------------------------------------------------")
 
-        mewtwo = mewtwo[1].reshape(1,1)[0]
+        # url = 'https://scrape.world/books'
+        # html = get(url)
+        # soup = Soup(html)
+        # books = soup.find('div', {'class': 'book-'}, partial=True)
+
+        # def parse(book):
+        #     name = book.find('h4').text
+        #     price = float(book.find('p').text[1:].split(' ')[0])
+        #     return name, price
+
+        # [parse(book) for book in books]
+
+
+        COUNTRIES = df['primaryTitle'].unique()
+        COUNTRIES_SELECTED = st.multiselect('Choisissez vos films préférés :', COUNTRIES)
+
+        # Mask to filter dataframe
+        mask_countries = df['primaryTitle'].isin(COUNTRIES_SELECTED)
+
+        data = df[mask_countries]
+
+        user_choice6 = data[['Action',
+            'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
+            'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
+            'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
+
+
+        distanceKNN = NearestNeighbors(n_neighbors=5).fit(X)
+        mewtwo = user_choice6/len(data)
+
+        mewtwo = mewtwo.sum()
+        mewtwo = pd.DataFrame(mewtwo)
+        mewtwo = mewtwo.T
+
+
+        mewtwo = distanceKNN.kneighbors(mewtwo)
+
+
+
+        mewtwo = mewtwo[1].reshape(1,5)[0]
+
         liste_finale = df_recommandation.iloc[mewtwo]
 
-        for i in range(len(user_choice)):
-            liste_base = user_choice[i]
-            newlist = liste_finale["primaryTitle"].iloc[i]
-            print (f"En remplacement du film {liste_base} je propose {newlist}.")
 
-        st.write(liste_finale.iloc[0]["primaryTitle"])
+        numero_colonne = 0
+
+
+        # creating instance of IMDb
+        ia = imdb.IMDb()
+
+        if len(user_choice6) == 0:
+            pass
+        else:
+
+            st.write('Nous vous proposons les films suivants :')
+
+            cols = st.columns(5)
+            for i in range(len(liste_finale)):
                 
+                
+                with cols[numero_colonne]:
+                    movie_name = liste_finale.iloc[i]["primaryTitle"]
+                    # id
+                    code = liste_finale.iloc[i]["tconst"]
+                    code = code.replace("tt", "")
+                    # # getting information
+                    series = ia.get_movie(code)
+                    try:
+                        # # getting cover url of the series
+                        cover = series.data['cover url']
+                        
+                        # # print the cover
+                        st.image(cover, width =300, caption=movie_name)
+                    except KeyError:
+                        st.write("Il n'y a pas encore d'affiche pour ce film.")
+                numero_colonne +=1
 
+        # def picture(index):
+        #     page = urllib.request.urlopen('https://www.imdb.com/title/' +
+        #                                 index.iloc[0, 0] +
+        #                                 '/?ref_=adv_li_i%27')
+        #     htmlCode = page.read().decode('UTF-8')
+        #     soup = Soup(htmlCode)
+        #     tds = soup.find("div", {"class": "poster"})
+        #     img = tds[0].find("img")
+        #     return img.attrs['src']
+        
+        # picture("tt1392190")
+  
+        
+        
+        
 
     
 
+        
     
 
 
@@ -215,3 +266,19 @@ main()
 
 
 
+
+# def picture(index):
+#     page = urllib.request.urlopen('https://www.imdb.com/title/' +
+#                                   index.iloc[0, 0] +
+#                                   '/?ref_=adv_li_i%27')
+#     htmlCode = page.read().decode('UTF-8')
+#     soup = Soup(htmlCode)
+#     tds = soup.find("div", {"class": "poster"})
+#     img = tds[0].find("img")
+#     return img.attrs['src']
+# st.subheader(f'_Parce que vous appreciez {movie_selected}_')
+#             cols = st.beta_columns(4)
+#             for i, col in enumerate(cols):
+#                 index_mov = ml_db[ml_db.index == reco.iloc[0, i+1]][['tconst', 'Titre']]
+#                 col.subheader(index_mov.iloc[0, 1])
+#                 col.image(picture(index_mov))
