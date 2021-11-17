@@ -19,13 +19,13 @@ st.set_page_config( layout='wide')
 
 def main():
 
-    menu = ["Movie recommandation", "Meaningful KPI", "test"]
+    menu = ["Système de recommandation", "Meaningful KPI", "test"]
 
     choice = st.sidebar.selectbox("Menu", menu) 
 
 
-    if choice == 'Movie recommandation':
-        st.subheader("Movie recommandation")
+    if choice == 'Système de recommandation':
+        st.subheader("Système de recommandation")
 
         X = df_recommandation[['Action',
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
