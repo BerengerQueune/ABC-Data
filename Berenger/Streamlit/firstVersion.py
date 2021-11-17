@@ -11,7 +11,7 @@ import imdb.helpers
 
 hide_menu= """
 <style>
-    #MainMenu {visibility:hidden;}
+    #MainMenu {visibility:visible;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
 
