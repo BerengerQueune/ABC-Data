@@ -97,6 +97,8 @@ def main():
         numero_colonne = 0
 
         #st.write("---------------------------------------------------------")
+        st.write(" ")
+        st.write(" ")
 
         # creating instance of IMDb
         ia = imdb.IMDb()
