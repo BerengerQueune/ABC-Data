@@ -74,7 +74,7 @@ def main():
         st.write ("len de user choice", len(user_choice6))
 
         if len(user_choice6) == 0:
-            print ("Success")
+            st.write ("Success")
 
         st.write('Nous vous proposons les films suivants :')
 
