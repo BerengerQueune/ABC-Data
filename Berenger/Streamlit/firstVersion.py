@@ -65,6 +65,8 @@ def main():
 
         liste_finale = df_recommandation.iloc[mewtwo]
 
+        st.write(liste_finale)
+
         st.write('Nous vous proposons les films suivants :')
 
         for i in range(len(liste_finale)):
