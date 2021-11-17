@@ -35,25 +35,16 @@ def main():
 
         st.write("---------------------------------------------------------")
 
+
+
+
+
         def url_clean(url):
             base, ext = os.path.splitext(url)
             i = url.count('@')
             s2 = url.split('@')[0]
             url = s2 + '@' * i + ext
             return url
-        st.write("---------------------------------------------------------")
-
-        # url = 'https://scrape.world/books'
-        # html = get(url)
-        # soup = Soup(html)
-        # books = soup.find('div', {'class': 'book-'}, partial=True)
-
-        # def parse(book):
-        #     name = book.find('h4').text
-        #     price = float(book.find('p').text[1:].split(' ')[0])
-        #     return name, price
-
-        # [parse(book) for book in books]
 
 
         COUNTRIES = df['primaryTitle'].unique()
@@ -89,6 +80,7 @@ def main():
 
         numero_colonne = 0
 
+        st.write("---------------------------------------------------------")
 
         # creating instance of IMDb
         ia = imdb.IMDb()
