@@ -33,7 +33,7 @@ def main():
 
     menu = ["Système de recommandation", "Meaningful KPI"]
 
-    choice = st.sidebar.selectbox("Menu", menu) 
+    choice = st.selectbox("Menu", menu) 
 
 
     if choice == 'Système de recommandation':
