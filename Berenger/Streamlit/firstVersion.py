@@ -84,6 +84,7 @@ def main():
 
             for i in range(len(liste_finale)):
                 st.write("- ", liste_finale.iloc[i]["primaryTitle"])
+                st.write("- ", liste_finale.iloc[i]["tconst"])
 
         # def picture(index):
         #     page = urllib.request.urlopen('https://www.imdb.com/title/' +
