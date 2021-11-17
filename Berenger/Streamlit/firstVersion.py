@@ -67,19 +67,16 @@ def main():
 
         liste_finale = df_recommandation.iloc[mewtwo]
 
-        movies = 0
-
-        st.write(liste_finale)
-
         st.write ("len de user choice", len(user_choice6))
 
         if len(user_choice6) == 0:
-            st.write ("Success")
+            pass
+        else:
 
-        st.write('Nous vous proposons les films suivants :')
+            st.write('Nous vous proposons les films suivants :')
 
-        for i in range(len(liste_finale)):
-            st.write("- ", liste_finale.iloc[i]["primaryTitle"])
+            for i in range(len(liste_finale)):
+                st.write("- ", liste_finale.iloc[i]["primaryTitle"])
     
     elif choice == "test":
         options = st.multiselect(
