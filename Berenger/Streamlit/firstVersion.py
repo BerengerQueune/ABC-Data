@@ -113,7 +113,7 @@ def main():
         st.write(series)
         
         # print the cover
-        st.image("https://www.imdb.com/title/tt1392190/mediaviewer/rm3064749568/?ref_=tt_ov_i")
+        st.image(cover)
     
     elif choice == "test":
         options = st.multiselect(
