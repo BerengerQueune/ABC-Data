@@ -99,7 +99,7 @@ def main():
             img = tds[0].find("img")
             return img.attrs['src']
         
-        picture(tt1392190)
+        picture("tt1392190")
     
     elif choice == "test":
         options = st.multiselect(
