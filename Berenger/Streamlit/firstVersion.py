@@ -112,10 +112,10 @@ def main():
                     series = ia.get_movie(code)
                     try:
                         # # getting cover url of the series
-                        url = series['cover']
+                        cover = series.data['cover url']
                         
                         # # print the cover
-                        st.image(url_clean(url), width =300, caption=movie_name)
+                        st.image(cover, width =300, caption=movie_name)
                     except KeyError:
                         st.write("Il n'y a pas encore d'affiche pour ce film.")
                 numero_colonne +=1
