@@ -106,7 +106,7 @@ def main():
             for i in range(len(liste_finale)):
                 
                 cols = st.columns(5)
-                with cols[0]:
+                with cols[numero_colonne]:
                     st.write("- ", liste_finale.iloc[i]["primaryTitle"])
                     # id
                     code = liste_finale.iloc[i]["tconst"]
