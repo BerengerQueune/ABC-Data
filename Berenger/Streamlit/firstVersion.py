@@ -54,7 +54,7 @@ def main():
         st.write("---------------------------------------------------------")
 
         st.write(st.button('Say hello'))
-        if st.button('Say hello'):
+        if st.button('Say aaa'):
             st.write('Why hello there')
         else:
             st.write('Goodbye')
