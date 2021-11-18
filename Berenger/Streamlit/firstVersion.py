@@ -3,6 +3,8 @@ import pandas as pd
 from sklearn.neighbors import NearestNeighbors
 import imdb
 import imdb.helpers
+import plotly.graph_objects as go
+import plotly.express as px
 
 
 # CSS code to hide footer and header automatically installed on streamlit page
@@ -268,6 +270,18 @@ def main():
         Nous laissons à disposition notre analyse de ces bases de données sur Github dans notre espace collaboratif [**fichier colab**](https://COLLAB)
         """
         )
+
+    if choice == "Meaningful KPI":
+        Age_Moyen = pd.read_csv("https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Aurore/KPI/Age_acteurs20211118.csv?token=AUTGRHZBTL47SVQMEY3IAODBT6SE2")
+        fig = go.Figure()
+        fig.add_trace(go.Box(y=Age_Moyen["Age"], name = 'Population', marker_color='lightgreen', boxmean=True # represent mean
+            ))
+        fig.update_yaxes(title= 'Age')
+        fig.update_layout(title_text="Age des acteurs et actrices : Zoom", title_x=0.5, width=1000, height=600, template='plotly_dark')
+
+
+
+        st.plotly_chart(fig)
 
 main()
 
