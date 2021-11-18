@@ -1026,18 +1026,33 @@ def main():
         # CSS code within markdown to center the title
         st.markdown("<h1 style='text-align: center;'>Axes d'Amélioration</h1>", unsafe_allow_html=True)
 
-        # Variable X used for Machine Learning
-        X = df_output_movies[['Action',
-            'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
-            'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
-            'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
-
         # This create a nice grey line between the title and the multiselect menu
         st.write("---------------------------------------------------------")
 
 
         st.markdown("""
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
+                Pour redresser la barre de son cinéma, notre cliente souhaite diffuser uniquement des films récents grand public.
+
+                Elle souhaite également être informée des films à venir qui ont le plus de chances d'avoir du succès. Dans ce cadre et dans un premier temps, les méthodes de Machine Learning nécessaires pour un résultat optimal nous ont semblé difficiles à mettre en place puisque nous ne pouvions plus compter sur des résultats comme la note moyenne ou bien le nombre de vote.
+
+                Pour une première version, nous avons uniquement les genres à notre algorithme et les tests que nous avons effectués nous ont semblé globalement fiables. L'une des raisons de cette fiabilité est que le DataFrame utilisé pour les recommandations se base uniquement sur les films à diffuser dans la région FR sur les années 2021 et 2022 ce qui donne un total d'environ 350 films.
+
+                Pour l'instant, notre algorithme fonctionne ainsi :
+
+                1) Il regroupe tous les votes qu'il reçoit dans un DataFrame. Cela peut permettre à des centaines de spectateurs potentiels de voter pour leurs films préférés.
+                2) Ensuite, l'algorithme fait la somme de chaque genre. Par exemple, 10 films du genre Action donne donc une note de 10 en Action.
+                3) Puis, l'algorithme divise cette somme par le nombre de films sélectionnés afin de créer un nouveau film virtuel qui se retrouve au centre de tous les films choisis.
+                4) Ce système fonctionne très bien avec un seul film. Il fonctionne mal avec deux films très différents mais plus il reçoit de films plus le résultat final se lisse et a des chances de plaire au plus grand nombre.
+
+                En l'état actuel, pour une première version, nous sommes satisfaits des recommandations proposées mais nous considérons qu'il s'agit davantage d'une aide à la décision et que notre cliente doit encore utiliser ses connaissances métiers afin de faire les bons choix. Notre algorithme est suffisamment bon pour l'y aider.
+
+                A l'avenir, en terme d'axe d'amélioration sur l'algorithme, nous souhaiterions que celui-ci prenne en compte de nouveaux critères comme les acteurs puis le réalisateur.
+
+                Il est également possible de tenter de faire une prédiction de note en prenant en compte de nombreux autres facteurs qui ne sont pas disponibles dans la base de données d'IMDB. On sait par exemple que les films Marvel ont tendance à faire un carton au cinéma. La mise en place d'un tel système nécessiterait davantage de temps et de recherches.
+
+                En ce qui concerne l'interface utilisateur, nous avons noté des ralentissements sur Streamlit ainsi que des soucis d'accès occasionnels. Dans notre cas spécifique il semble également que l'affichage des posters soit assez lent. L'algorithme a parfois du mal à se mettre à jour lorsque nous ajoutons plusieurs films rapidement et il faut parfois attendre qu'il charge tous les posters avant de pouvoir lui faire correctement prendre en compte l'ajout d'un autre film. Il faudrait tester d'autres méthodes d'affichages des posters afin de voir si cela a un impact positif. Le code ne semble pas optimisé à l'heure actuel.
+
+                Nous sommes satisfait du résultat global de notre application. Les résultats semblent fiables mais l'application nécessite encore du travail en terme d'interface utilisateur et de fiabilité de l'algorithme. Nous devrons en parler davantage avec Framboise afin de voir ce qu'elle souhaite.
                 """
                 )
         st.write(' ')
