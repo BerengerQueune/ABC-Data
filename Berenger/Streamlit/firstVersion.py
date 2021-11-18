@@ -18,7 +18,7 @@ hide_menu= """
 
 
 
-# Loading dataframe, df_input_movies = movie your choose
+# Loading dataframe, df_input_movies = your favorite movies
 # df_output_movies = movie suggested
 df_output_movies = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_recommandation.csv?token=AU6BUZU75XQAMO3ALFRQGCTBTZFHU')
 df_input_movies = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/table_finale_alphabetique.csv?token=AU6BUZSDMXLDQHPFUG2YRNLBTZWY4')
@@ -36,7 +36,7 @@ def main():
     
     
     # Menu and Sidebar creation
-    menu = ["Système de recommandation", "Meaningful KPI"]
+    menu = ["Système de recommandation", "Meaningful KPI", "présentation projet"]
     choice = st.sidebar.selectbox("", menu) 
 
     # Result from your choice inside the menu
@@ -131,6 +131,142 @@ def main():
                         use_column_width="always", caption=movie_name)
                 # Add one to the numero_colonne variable so next nearest neighbors will be inside the following column
                 numero_colonne +=1
+
+    if choice == 'Système de recommandation':
+        st.title("Présentation du Projet")
+        st.subheader('')
+        st.subheader("Le Projet")
+
+        st.markdown(
+        """
+        Le _PROJET ABC'S_ est issu d’un projet d’école organisé par la __Wild Code School__. Il intervient dans le cadre de notre formation de Data Analyst, 2 mois après son début.
+        L’objectif de ce projet est le suivant :
+        Nous sommes une équipe de Data Analysts freelance.
+        Un cinéma en perte de vitesse situé dans la Creuse nous contacte ca rl a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux.
+        Notre client nous demande de créer un moteur de recommandations de films qui à terme, enverra des notifications via internet.
+        Aucun client du cinéma n'ayant à ce jour renseigné ses préférences, nous sommes donc dans une situation de __cold start__. Cependant, notre client nous a fourni une base de données basée sur la plateforme IMDb.
+        """
+        )
+        st.subheader('')
+        st.subheader("L'équipe")
+
+        st.markdown(
+        """
+        Notre équipe est composée de 4 élèves issus de la promo Data Green de la __Wild Code School__ :
+        - [Aurore LEMAÎTRE](https://github.com/alema86)
+        - [Bérenger QUEUNE](https://github.com/BerengerQueune)
+        - [Christophe LEFEBVRE](https://github.com/clefebvre2021)
+        - [Stéphane ESSOUMAN](https://github.com/Liostephe)
+        Tous les quatre formons l'équipe ABC'S Data.
+        """
+        )
+        col1, col2, col3 = st.columns(3)
+        with col2:
+            st.image("https://d1qg2exw9ypjcp.cloudfront.net/assets/prod/24134/210x210-9_cropped_1377120495_p182hcd8rofaq1t491u06kih16o13.png")
+
+        st.subheader('')
+        st.subheader("Notre client(e)")
+
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.image("https://i.ibb.co/0hnKBMX/Framboise2.png")
+
+        st.markdown(
+        """
+        Notre cliente est Framboise de Papincourt, petite fille du Comte de Montmirail. Elle a 25 ans et dirige un cinéma en perte de vitesse qui s'appelle "LE KINO".
+        Elle fait appel à nous car elle est désespérée. Son cinéma ne fait pas de bénéfice, ses créanciers sont à sa porte et ses problèmes financiers sont tels qu'elle a dû demandé un nouveau prêt dans une banque alors que c'est contre ses principes.
+        Issue d'une famille de nobles, elle ne peut pas faire non plus appel à ses proches qui sont fortunés, car elle a renié sa famille. En effet ses derniers ne partagent pas sa vision des choses; exemple : elle est vegan alors que l'activité principale de sa famille est la chasse...
+        Elle diffusait initialement des films qui la touchaient afin d'essayer de partager sa vision du monde. Ainsi, la films diffusés étaient principalement des documentaires traitant de l'écologie, du féminisme et de la paix universelle.
+        Elle est obligée de faire changer de cap son cinéma et est prête à diffuser des films qui vont à l'encontre de ses convictions si ça lui permet de ne pas mettre la clé sous la porte et éviter d'être la raillerie de sa famille.
+        Faire du bénéfice à terme serait un plus, car ça lui permettrait d'offrir à ses futurs enfants Harmony, Safran et Kiwi un environnement dans lequel ils pourront s'épanouir comme elle en rêve.
+        Ainsi, elle nous donne carte blanche dans le rendu de notre travail.
+        """  
+        )    
+        st.subheader('')
+        st.subheader("Notre mission")
+
+        st.markdown(
+        """
+        Nous devons fournir à notre client les outils d’analyse de la base de données issue de **IMDB**.
+       
+        Il nous est demandé de :
+        """
+        )
+        st.markdown(
+        """ 
+        - Faire une rapide présentation de la base de données (sur notre espace collaboratif sur Github)
+        """
+        )
+        st.markdown(
+        """ 
+        - Fournir à notre client quelques statistiques sur les films :
+        """
+        )
+        st.markdown(
+        """ 
+            *Films : types, durées...
+        """
+        )
+        st.markdown(
+        """ 
+            *Acteurs : nombre de films, type de films...
+        """
+        )
+        st.markdown(
+        """ 
+        - Présenter les TOP 10 des films par années et genre
+        """
+        )
+        st.markdown(
+        """ 
+        - Présenter les TOP 5 des acteurs/actrices par années et genre
+        """
+        )
+        st.markdown(
+        """ 
+        - Retourner une liste de films recommandés en fonction d'IDs ou de noms de films choisis par un utilisateur
+        """
+        )
+        st.markdown(
+        """ 
+        - Il faudra entraîner des outils de Machine Learning : 
+        """
+        )
+        st.markdown(
+        """ 
+	        *Recommandation de films proches d’un film cible grâce à un modèle de **KNN**
+        """
+        )
+        st.markdown(
+        """ 
+	        *Proposition d’une rétrospective avec un modèle de **Régression Logistique**
+        """
+        )
+
+        st.subheader('')
+        st.subheader("Outils")
+
+        st.markdown(
+        """
+        Le projet est entièrement fait sous **Python**.
+        Nous avons utilisés entres autres les librairies suivantes :    
+        - Pandas
+        - Sklearn
+        - Plotly
+        - Streamlit
+        """
+        )
+
+        st.subheader('')
+        st.subheader("Base de données")
+
+        st.markdown(
+        """
+        Comme énoncé ci-avant, notre client nous a fourni une base de données basée sur la plateforme IMDb. 
+        Nous pouvons les retrouver [**ici**](https://datasets.imdbws.com/), l'explicatif des datasets [**là**](https://www.imdb.com/interfaces/).
+        Nous laissons à dispositions notre analyse de ces bases de données sur Github dans notre espace collaboratif[**fichier colab**](https://COLLAB)
+        """
+        )
 
 main()
 
