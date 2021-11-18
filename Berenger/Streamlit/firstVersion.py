@@ -3,6 +3,8 @@ import pandas as pd
 from sklearn.neighbors import NearestNeighbors
 import imdb
 import imdb.helpers
+
+from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import plotly.express as px
 
