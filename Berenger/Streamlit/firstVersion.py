@@ -21,7 +21,7 @@ hide_menu= """
 # Loading dataframe, df_input_movies = your favorite movies
 # df_output_movies = movie suggested
 df_output_movies = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_recommandation.csv?token=AU6BUZU75XQAMO3ALFRQGCTBTZFHU')
-df_input_movies = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Aurore/KPI/DF_FULL_GENRES211117.csv?token=AU6BUZWC6RYNL5IMQ5OOFCLBT6GAY')
+df_input_movies = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_input_aurore.csv?token=AU6BUZRJFEIKAGDTW7Y2YD3BT6HM6')
 
 
 #set the page layout to automatically use full horoizontal size + get and icon and name inside the internet browser
