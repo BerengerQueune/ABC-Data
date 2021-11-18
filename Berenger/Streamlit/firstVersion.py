@@ -31,7 +31,7 @@ df_input_movies = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/
 #set the page layout to automatically use full horoizontal size + get and icon and name inside the internet browser
 st.set_page_config(page_title="ABCS", page_icon=":heart:", layout='wide')
 
-
+###-------------------------------------------------------------------------------------------------------------------
 
 # Def main contains everything on the page
 def main():
