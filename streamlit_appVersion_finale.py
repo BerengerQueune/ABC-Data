@@ -140,7 +140,7 @@ def main():
         df_final_genres = distanceKNN.kneighbors(df_final_genres)
         # A reshape again... not sure if really required
         df_final_genres = df_final_genres[1].reshape(1,5)[0]
-        # Looking for index of movies that matches the most
+        # Looking for best matches using index of movies
         liste_finale = df_output_movies.iloc[df_final_genres]
 
         # Creation of a variable used later to each instance of nearest neighbors (5) within a different columns
@@ -206,7 +206,7 @@ def main():
         L’objectif de ce projet est le suivant :
 
         Nous sommes une équipe de Data Analysts freelance.
-        Un cinéma en perte de vitesse situé dans la Creuse nous contacte ca rl a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux.
+        Un cinéma en perte de vitesse situé dans la Creuse nous contacte car il a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux.
         Notre client nous demande de créer un moteur de recommandations de films qui à terme, enverra des notifications via internet.
 
         Aucun client du cinéma n'ayant à ce jour renseigné ses préférences, nous sommes donc dans une situation de __cold start__. Cependant, notre client nous a fourni une base de données basée sur la plateforme IMDb.
@@ -232,7 +232,7 @@ def main():
             st.image("https://d1qg2exw9ypjcp.cloudfront.net/assets/prod/24134/210x210-9_cropped_1377120495_p182hcd8rofaq1t491u06kih16o13.png")
 
         st.subheader('')
-        st.subheader("Notre client(e)")
+        st.subheader("Notre cliente")
 
         col1, col2, col3 = st.columns(3)
         with col1:
@@ -242,9 +242,9 @@ def main():
         """
         Notre cliente est Framboise de Papincourt, petite fille du Comte de Montmirail. Elle a 25 ans et dirige un cinéma en perte de vitesse qui s'appelle "LE KINO".
 
-        Elle fait appel à nous car elle est désespérée. Son cinéma ne fait pas de bénéfice, ses créanciers sont à sa porte et ses problèmes financiers sont tels qu'elle a dû demandé un nouveau prêt dans une banque alors que c'est contre ses principes.
+        Elle fait appel à nous car elle est désespérée. Son cinéma ne fait pas de bénéfice, ses créanciers sont à sa porte et ses problèmes financiers sont tels qu'elle a dû demander un nouveau prêt dans une banque. Ce qui va à l'encontre de ses principes.
 
-        Issue d'une famille de nobles, elle ne peut pas faire non plus appel à ses proches qui sont fortunés, car elle a renié sa famille. En effet ses derniers ne partagent pas sa vision des choses; exemple : elle est vegan alors que l'activité principale de sa famille est la chasse...
+        Issue d'une famille noble, elle ne peut pas faire appel à ses proches qui sont fortunés, car elle a renié sa famille. En effet, ces derniers ne partagent pas sa vision des choses; exemple : elle est vegan alors que l'activité principale de sa famille est la chasse...
 
         Elle diffusait initialement des films qui la touchaient afin d'essayer de partager sa vision du monde. Ainsi, la films diffusés étaient principalement des documentaires traitant de l'écologie, du féminisme et de la paix universelle.
 
@@ -286,12 +286,12 @@ def main():
         )
         st.markdown(
         """ 
-        - Présenter les TOP 10 des films par années et genre
+        - Présenter les TOP 10 des films par années et genres
         """
         )
         st.markdown(
         """ 
-        - Présenter les TOP 5 des acteurs/actrices par années et genre
+        - Présenter les TOP 5 des acteurs/actrices par années et genres
         """
         )
         st.markdown(
@@ -320,14 +320,14 @@ def main():
 
         st.markdown(
         """
-        Le projet est entièrement fait sous **Python**.
+        Le projet est entièrement fait sous **Python** avec une touche de CSS.
 
-        Nous avons utilisés entres autres les librairies suivantes :    
+        Nous avons utilisé les librairies suivantes :    
         - Pandas
         - Sklearn
         - Plotly
         - Streamlit
-        - CSS
+        - IMDbPY
         """
         )
 
@@ -339,7 +339,7 @@ def main():
         Comme énoncé ci-avant, notre client nous a fourni une base de données basée sur la plateforme IMDb. 
         Nous pouvons les retrouver [**ici**](https://datasets.imdbws.com/), l'explicatif des datasets [**là**](https://www.imdb.com/interfaces/).
 
-        Nous laissons à dispositions notre analyse de ces bases de données sur Github dans notre espace collaboratif [**fichier colab**](https://github.com/BerengerQueune/ABC-Data)
+        Nous laissons à disposition notre analyse de ces bases de données sur Github dans notre espace collaboratif [**fichier colab**](https://github.com/BerengerQueune/ABC-Data)
         """
         )
 
