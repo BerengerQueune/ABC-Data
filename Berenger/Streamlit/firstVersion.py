@@ -9,6 +9,9 @@ import os
 import imdb
 import imdb.helpers
 
+
+# CSS code to hide footer and header automatically installed on streamlit page
+# I keep the main menu so people can switch from dark to light and vice versa
 hide_menu= """
 <style>
     #MainMenu {visibility:visible;}
@@ -20,28 +23,33 @@ hide_menu= """
 
 
 
-
+#loading dataframe, df = movie your choose and df_recommandation = movie suggested
 df_recommandation = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_recommandation.csv?token=AU6BUZU75XQAMO3ALFRQGCTBTZFHU')
 df = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/table_finale_alphabetique.csv?token=AU6BUZSDMXLDQHPFUG2YRNLBTZWY4')
 
+
+#set the page layout to automatically use full horoizontal size + get and icon and name inside the internet browser
 st.set_page_config(page_title="ABCS", page_icon=":heart:", layout='wide')
-#st.set_page_config()
 
 
 
+#def main contains everything on the page
 def main():
+    #this is used to activate the CSS code at the top
     st.markdown(hide_menu, unsafe_allow_html=True)
     
     
-
+    # Menu and Sidebar creation
     menu = ["Système de recommandation", "Meaningful KPI"]
-
     choice = st.sidebar.selectbox("", menu) 
 
+    # Result from your choice inside the menu
     if choice == 'Système de recommandation':
+
+        # CSS code withing markdown to center the title
         st.markdown("<h1 style='text-align: center;'>Recommandation de films</h1>", unsafe_allow_html=True)
 
-
+        # Variable X used for Machine Learning
         X = df_recommandation[['Action',
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
             'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
@@ -53,12 +61,6 @@ def main():
 
 
 
-        def url_clean(url):
-            base, ext = os.path.splitext(url)
-            i = url.count('@')
-            s2 = url.split('@')[0]
-            url = s2 + '@' * i + ext
-            return url
 
 
         COUNTRIES = df['primaryTitle'].unique()
@@ -125,17 +127,6 @@ def main():
                         use_column_width="always", caption=movie_name)
                 numero_colonne +=1
 
-        # def picture(index):
-        #     page = urllib.request.urlopen('https://www.imdb.com/title/' +
-        #                                 index.iloc[0, 0] +
-        #                                 '/?ref_=adv_li_i%27')
-        #     htmlCode = page.read().decode('UTF-8')
-        #     soup = Soup(htmlCode)
-        #     tds = soup.find("div", {"class": "poster"})
-        #     img = tds[0].find("img")
-        #     return img.attrs['src']
-        
-        # picture("tt1392190")
   
         
         
