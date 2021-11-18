@@ -3,3 +3,4 @@ chart_studio
 scikit-learn
 gazpacho
 IMDbPY
+matplotlib
