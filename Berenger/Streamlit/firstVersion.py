@@ -1039,10 +1039,10 @@ def main():
 
                 Pour l'instant, notre algorithme fonctionne ainsi :
 
-                1) Il regroupe tous les votes qu'il reçoit dans un DataFrame. Cela peut permettre à des centaines de spectateurs potentiels de voter pour leurs films préférés.
-                2) Ensuite, l'algorithme fait la somme de chaque genre. Par exemple, 10 films du genre Action donne donc une note de 10 en Action.
-                3) Puis, l'algorithme divise cette somme par le nombre de films sélectionnés afin de créer un nouveau film virtuel qui se retrouve au centre de tous les films choisis.
-                4) Ce système fonctionne très bien avec un seul film. Il fonctionne mal avec deux films très différents mais plus il reçoit de films plus le résultat final se lisse et a des chances de plaire au plus grand nombre.
+                - Il regroupe tous les votes qu'il reçoit dans un DataFrame. Cela peut permettre à des centaines de spectateurs potentiels de voter pour leurs films préférés.
+                - Ensuite, l'algorithme fait la somme de chaque genre. Par exemple, 10 films du genre Action donne donc une note de 10 en Action.
+                - Puis, l'algorithme divise cette somme par le nombre de films sélectionnés afin de créer un nouveau film virtuel qui se retrouve au centre de tous les films choisis.
+                - Ce système fonctionne très bien avec un seul film. Il fonctionne mal avec deux films très différents mais plus il reçoit de films plus le résultat final se lisse et a des chances de plaire au plus grand nombre.
 
                 En l'état actuel, pour une première version, nous sommes satisfaits des recommandations proposées mais nous considérons qu'il s'agit davantage d'une aide à la décision et que notre cliente doit encore utiliser ses connaissances métiers afin de faire les bons choix. Notre algorithme est suffisamment bon pour l'y aider.
 
