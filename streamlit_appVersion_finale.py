@@ -1022,6 +1022,18 @@ def main():
             
             st.plotly_chart(fig)
 
+    if choice == "Axes d'Amélioration":
+        # CSS code within markdown to center the title
+        st.markdown("<h1 style='text-align: center;'>Axes d'Amélioration</h1>", unsafe_allow_html=True)
+
+        # Variable X used for Machine Learning
+        X = df_output_movies[['Action',
+            'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
+            'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
+            'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
+
+        # This create a nice grey line between the title and the multiselect menu
+        st.write("---------------------------------------------------------")
 
 
         st.markdown("""
