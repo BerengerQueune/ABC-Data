@@ -473,7 +473,6 @@ def main():
                     - dans la colonne 'category' nous avons gardé les 'actor' et 'actress'
                     - dans la colonne 'character', nous avons supprimé les ```\R```, les 'Narrator', 'Various' et 'Additional Voices'
                 - dans le df relatif à 'title.basics.tsv', nous avons gardé les colonnes 'tconst', 'nconst', 'category' et 'characters'
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
 
                 Afin de réaliser le graphique, un [dataframe attitré]('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/presence_acteurs.csv?token=AU6BUZU76KCNKK6X5NKIZ6DBTZPVI') reprenant les 20 acteurs les plus présents quelle que soit l'époque a été produit.
 
@@ -495,7 +494,7 @@ def main():
         st.write("")
         st.image("https://i.ibb.co/bHkZJb7/B-mod.png") 
         st.markdown("""
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
+                Conclusion : j'ai trouvé intéressant, dans le cadre de nos études de répondre à cette question car cela a été l'occasion de s'exercer à explorer et nettoyer une base de données. Cependant, je trouve que la réponse en elle-même n'apporte que peu d'élément, voire aucun, qui puisse aider notre cliente à prendre des décisions.
                 """
                 )
 
