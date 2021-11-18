@@ -4,8 +4,6 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 from sklearn.neighbors import NearestNeighbors
-from gazpacho import get, Soup
-import os
 import imdb
 import imdb.helpers
 
@@ -113,7 +111,7 @@ def main():
             st.markdown("<h5 style='text-align: center;'>Ces films devraient plaire à vos clients :</h5>", unsafe_allow_html=True)
             st.write(" ")
             st.write(" ")
-            # Creation of 5 colmuns
+            # Creation of 5 columns
             cols = st.columns(5)
             for i in range(len(liste_finale)):
                 
