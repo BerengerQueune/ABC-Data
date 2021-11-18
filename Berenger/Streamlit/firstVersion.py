@@ -24,7 +24,7 @@ hide_menu= """
 
 
 #loading dataframe, df_input_movies = movie your choose and df_recommandation = movie suggested
-df_recommandation = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_recommandation.csv?token=AU6BUZU75XQAMO3ALFRQGCTBTZFHU')
+df_output_movies = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_recommandation.csv?token=AU6BUZU75XQAMO3ALFRQGCTBTZFHU')
 df_input_movies = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/table_finale_alphabetique.csv?token=AU6BUZSDMXLDQHPFUG2YRNLBTZWY4')
 
 
@@ -50,7 +50,7 @@ def main():
         st.markdown("<h1 style='text-align: center;'>Recommandation de films</h1>", unsafe_allow_html=True)
 
         # Variable X used for Machine Learning
-        X = df_recommandation[['Action',
+        X = df_output_movies[['Action',
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
             'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
             'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
@@ -89,7 +89,7 @@ def main():
 
         mewtwo = mewtwo[1].reshape(1,5)[0]
 
-        liste_finale = df_recommandation.iloc[mewtwo]
+        liste_finale = df_output_movies.iloc[mewtwo]
 
 
         numero_colonne = 0
