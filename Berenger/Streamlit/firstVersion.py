@@ -36,7 +36,7 @@ def main():
     
     
     # Menu and Sidebar creation
-    menu = ["Système de recommandation", "Meaningful KPI", "présentation projet"]
+    menu = ["Système de recommandation", "Meaningful KPI", "Présentation du Projet"]
     choice = st.sidebar.selectbox("", menu) 
 
     # Result from your choice inside the menu
@@ -132,7 +132,7 @@ def main():
                 # Add one to the numero_colonne variable so next nearest neighbors will be inside the following column
                 numero_colonne +=1
 
-    if choice == 'présentation projet':
+    if choice == 'Présentation du Projet':
         st.title("Présentation du Projet")
         st.subheader('')
         st.subheader("Le Projet")
@@ -165,7 +165,7 @@ def main():
             st.image("https://d1qg2exw9ypjcp.cloudfront.net/assets/prod/24134/210x210-9_cropped_1377120495_p182hcd8rofaq1t491u06kih16o13.png")
 
         st.subheader('')
-        st.subheader("Notre client(e)")
+        st.subheader("Notre cliente")
 
         col1, col2, col3 = st.columns(3)
         with col1:
@@ -174,9 +174,9 @@ def main():
         st.markdown(
         """
         Notre cliente est Framboise de Papincourt, petite fille du Comte de Montmirail. Elle a 25 ans et dirige un cinéma en perte de vitesse qui s'appelle "LE KINO".
-        Elle fait appel à nous car elle est désespérée. Son cinéma ne fait pas de bénéfice, ses créanciers sont à sa porte et ses problèmes financiers sont tels qu'elle a dû demandé un nouveau prêt dans une banque alors que c'est contre ses principes.
-        Issue d'une famille de nobles, elle ne peut pas faire non plus appel à ses proches qui sont fortunés, car elle a renié sa famille. En effet ses derniers ne partagent pas sa vision des choses; exemple : elle est vegan alors que l'activité principale de sa famille est la chasse...
-        Elle diffusait initialement des films qui la touchaient afin d'essayer de partager sa vision du monde. Ainsi, la films diffusés étaient principalement des documentaires traitant de l'écologie, du féminisme et de la paix universelle.
+        Elle fait appel à nous car elle est désespérée. Son cinéma ne fait pas de bénéfice, ses créanciers sont à sa porte et ses problèmes financiers sont tels qu'elle a dû demander un nouveau prêt dans une banque alors que c'est contre ses principes.
+        Issue d'une famille noble, elle ne peut pas faire non plus appel à ses proches qui sont fortunés, car elle a renié sa famille. En effet ses derniers ne partagent pas sa vision des choses; exemple : elle est vegan alors que l'activité principale de sa famille est la chasse...
+        Elle diffusait initialement des films qui la touchaient afin d'essayer de partager sa vision du monde. Ainsi, les films diffusés étaient principalement des documentaires traitant de l'écologie, du féminisme et de la paix universelle.
         Elle est obligée de faire changer de cap son cinéma et est prête à diffuser des films qui vont à l'encontre de ses convictions si ça lui permet de ne pas mettre la clé sous la porte et éviter d'être la raillerie de sa famille.
         Faire du bénéfice à terme serait un plus, car ça lui permettrait d'offrir à ses futurs enfants Harmony, Safran et Kiwi un environnement dans lequel ils pourront s'épanouir comme elle en rêve.
         Ainsi, elle nous donne carte blanche dans le rendu de notre travail.
@@ -248,12 +248,13 @@ def main():
 
         st.markdown(
         """
-        Le projet est entièrement fait sous **Python**.
-        Nous avons utilisés entres autres les librairies suivantes :    
+        Le projet est entièrement fait sous **Python** avec une touche de CSS.
+        Nous avons utilisé les librairies suivantes :    
         - Pandas
         - Sklearn
         - Plotly
         - Streamlit
+        - IMDbPY
         """
         )
 
@@ -264,7 +265,7 @@ def main():
         """
         Comme énoncé ci-avant, notre client nous a fourni une base de données basée sur la plateforme IMDb. 
         Nous pouvons les retrouver [**ici**](https://datasets.imdbws.com/), l'explicatif des datasets [**là**](https://www.imdb.com/interfaces/).
-        Nous laissons à dispositions notre analyse de ces bases de données sur Github dans notre espace collaboratif[**fichier colab**](https://COLLAB)
+        Nous laissons à disposition notre analyse de ces bases de données sur Github dans notre espace collaboratif [**fichier colab**](https://COLLAB)
         """
         )
 
