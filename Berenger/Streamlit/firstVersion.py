@@ -132,7 +132,7 @@ def main():
                 # Add one to the numero_colonne variable so next nearest neighbors will be inside the following column
                 numero_colonne +=1
 
-    if choice == 'Système de recommandation':
+    if choice == 'présentation projet':
         st.title("Présentation du Projet")
         st.subheader('')
         st.subheader("Le Projet")
