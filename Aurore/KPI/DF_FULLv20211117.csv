@@ -1,4 +1,4 @@
-index,tconst,titleType,primaryTitle,isAdult,startYear,runtimeMinutes,genres,region,averageRating,numVotes,PÃ©riode,Acteur1,Acteur2,Acteur3,director,moyenne_ponderee
+index,tconst,titleType,primaryTitle,isAdult,startYear,runtimeMinutes,genres,region,averageRating,numVotes,Periode,Acteur1,Acteur2,Acteur3,director,moyenne_ponderee
 2,tt0035423,movie,Kate & Leopold,0,2001,118,"Comedy,Fantasy,Romance",FR,6.4,81591.0,2000,Meg Ryan,Hugh Jackman,Liev Schreiber,James Mangold,6.308498928593043
 63,tt0053472,movie,Breathless,0,1960,90,"Crime,Drama",FR,7.8,77500.0,1960,Jean-Paul Belmondo,Jean Seberg,Daniel Boulanger,Jean-Luc Godard,7.28286213034985
 83,tt0053604,movie,The Apartment,0,1960,125,"Comedy,Drama,Romance",FR,8.3,172635.0,1960,Jack Lemmon,Shirley MacLaine,Fred MacMurray,Billy Wilder,7.940366881453979
