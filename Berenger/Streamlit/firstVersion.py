@@ -63,13 +63,13 @@ def main():
 
 
 
-        COUNTRIES = df['primaryTitle'].unique()
-        COUNTRIES_SELECTED = st.multiselect(' ', COUNTRIES)
+        MOVIES = df['primaryTitle'].unique()
+        MOVIES_SELECTED = st.multiselect(' ', MOVIES)
 
         # Mask to filter dataframe
-        mask_countries = df['primaryTitle'].isin(COUNTRIES_SELECTED)
+        mask_movies = df['primaryTitle'].isin(MOVIES_SELECTED)
 
-        data = df[mask_countries]
+        data = df[mask_movies]
 
         user_choice6 = data[['Action',
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
