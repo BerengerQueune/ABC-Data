@@ -142,7 +142,7 @@ def main():
         Le _PROJET ABC'S_ est issu d’un projet d’école organisé par la __Wild Code School__. Il intervient dans le cadre de notre formation de Data Analyst, 2 mois après son début.
         L’objectif de ce projet est le suivant :
         Nous sommes une équipe de Data Analysts freelance.
-        Un cinéma en perte de vitesse situé dans la Creuse nous contacte ca rl a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux.
+        Un cinéma en perte de vitesse situé dans la Creuse nous contacte car il a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux.
         Notre client nous demande de créer un moteur de recommandations de films qui à terme, enverra des notifications via internet.
         Aucun client du cinéma n'ayant à ce jour renseigné ses préférences, nous sommes donc dans une situation de __cold start__. Cependant, notre client nous a fourni une base de données basée sur la plateforme IMDb.
         """
@@ -157,9 +157,9 @@ def main():
         - [Bérenger QUEUNE](https://github.com/BerengerQueune)
         - [Christophe LEFEBVRE](https://github.com/clefebvre2021)
         - [Stéphane ESSOUMAN](https://github.com/Liostephe)
-        Tous les quatre formons l'équipe ABC'S Data.
         """
         )
+        st.write("Tous les quatre formons l'équipe ABC'S Data.")
         col1, col2, col3 = st.columns(3)
         with col2:
             st.image("https://d1qg2exw9ypjcp.cloudfront.net/assets/prod/24134/210x210-9_cropped_1377120495_p182hcd8rofaq1t491u06kih16o13.png")
