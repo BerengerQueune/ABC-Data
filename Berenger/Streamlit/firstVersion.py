@@ -23,9 +23,9 @@ hide_menu= """
 
 
 
-#loading dataframe, df = movie your choose and df_recommandation = movie suggested
+#loading dataframe, df_input_movies = movie your choose and df_recommandation = movie suggested
 df_recommandation = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/df_recommandation.csv?token=AU6BUZU75XQAMO3ALFRQGCTBTZFHU')
-df = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/table_finale_alphabetique.csv?token=AU6BUZSDMXLDQHPFUG2YRNLBTZWY4')
+df_input_movies = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/table_finale_alphabetique.csv?token=AU6BUZSDMXLDQHPFUG2YRNLBTZWY4')
 
 
 #set the page layout to automatically use full horoizontal size + get and icon and name inside the internet browser
@@ -55,6 +55,7 @@ def main():
             'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
             'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
 
+        # This create a nice grey line between the title and the multiselect menu
         st.write("---------------------------------------------------------")
         
 
@@ -62,14 +63,13 @@ def main():
 
 
 
-
-        MOVIES = df['primaryTitle'].unique()
+        # Variables to insert df
+        MOVIES = df_input_movies['primaryTitle'].unique()
         MOVIES_SELECTED = st.multiselect(' ', MOVIES)
 
         # Mask to filter dataframe
-        mask_movies = df['primaryTitle'].isin(MOVIES_SELECTED)
-
-        data = df[mask_movies]
+        mask_movies = df_input_movies['primaryTitle'].isin(MOVIES_SELECTED)
+        data = df_input_movies[mask_movies]
 
         user_choice6 = data[['Action',
             'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
