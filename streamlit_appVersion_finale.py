@@ -1035,7 +1035,7 @@ def main():
 
                 Elle souhaite également être informée des films à venir qui ont le plus de chances d'avoir du succès. Dans ce cadre et dans un premier temps, les méthodes de Machine Learning nécessaires pour un résultat optimal nous ont semblé difficiles à mettre en place puisque nous ne pouvions plus compter sur des résultats comme la note moyenne ou bien le nombre de vote.
 
-                Pour une première version, nous avons uniquement les genres à notre algorithme et les tests que nous avons effectués nous ont semblé globalement fiables. L'une des raisons de cette fiabilité est que le DataFrame utilisé pour les recommandations se base uniquement sur les films à diffuser dans la région FR sur les années 2021 et 2022 ce qui donne un total d'environ 350 films.
+                Pour une première version, nous avons uniquement utilisé les genres des films pour notre algorithme et les tests que nous avons effectués nous ont semblé globalement fiables. L'une des raisons de cette fiabilité est que le DataFrame utilisé pour les recommandations se base uniquement sur les films à diffuser dans la région FR sur les années 2021 et 2022 ce qui donne un total d'environ 350 films.
 
                 Pour l'instant, notre algorithme fonctionne ainsi :
 
@@ -1073,17 +1073,15 @@ def main():
 
 
 
-        st.write("")
+        # st.write("")
 
-        st.markdown("""
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
-                """
-                )
-        st.write(' ')
-        st.write(' ')
-        st.write(' ')
-
-
+        # st.markdown("""
+        #         **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
+        #         """
+        #         )
+        # st.write(' ')
+        # st.write(' ')
+        # st.write(' ')
 
 
 
@@ -1093,15 +1091,17 @@ def main():
 
 
 
-        st.markdown(
-                """
-                EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            
-                             EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            
-                EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            
+
+
+        # st.markdown(
+        #         """
+        #         EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            
+        #                      EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            
+        #         EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            
             
 
-                """
-                )
+        #         """
+        #         )
 
 
 
