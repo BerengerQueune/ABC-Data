@@ -560,7 +560,7 @@ def main():
 
                 Afin de réaliser le graphique, un [dataframe attitré](https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/presence_acteurs.csv?token=AU6BUZU76KCNKK6X5NKIZ6DBTZPVI) reprennant toutes les informations requises a été produit.
 
-                [Lien Notebook]('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/Projet%202%20-%20La%20dur%C3%A9e%20moyenne%20des%20films%20s%E2%80%99allonge%20ou%20se%20raccourcit%20avec%20les%20ann%C3%A9es.ipynb?token=AUTGRH3TRSZ7CDJ62ME6XU3BT44DO')
+                [Lien Notebook](https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/Projet%202%20-%20La%20dur%C3%A9e%20moyenne%20des%20films%20s%E2%80%99allonge%20ou%20se%20raccourcit%20avec%20les%20ann%C3%A9es.ipynb?token=AUTGRH3TRSZ7CDJ62ME6XU3BT44DO)
 
                 """
             )
@@ -770,12 +770,16 @@ def main():
             st.markdown(
                 """
                 D'après ce boxplot, la moyenne d'âge, tout sexe confondu, est de 40 ans.
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
+                
+                Le graphique fait nettement apparaître une amplitude très large puisque l'âge des acteurs s’étend de 0 à 110 ans.
+                
+                Cependant, les âges supérieurs à 80 ans sont considérés comme des outliers. Les acteurs au-delà de cet âge sont donc malgré tout peu nombreux.
+                
+                Il est à noter également que l'âge des acteurs se concentre sur une plage limitée puisque 50% d’entre eux sont entre 29 ans et 49 ans avec une moyenne à 40 ans.
                 """
                 )
 
         with col1:
-
 
             fig = go.Figure()
             fig.add_trace(go.Box(y=Age_DF_clean["Age"], name = 'Population', marker_color='lightgreen', boxmean=True # represent mean
@@ -818,11 +822,17 @@ def main():
                 - Acteurs :     41 ans
                 - Actrices :    32 ans
 
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
+                Lorsque l’on sépare les hommes et les femmes dans l’analyse, on s’aperçoit que ces dernières terminent généralement leur carrières plus jeunes que leur homologues masculins. Elles commencent également plus jeunes.
+                
+                L’écart entre les ages médians illustre bien cette différence puisque l'âge médian des actrices est de 32 ans contre 41 ans pour les hommes.
+                
+                Nous constatons qu’il y a beaucoup d’outliers dans les deux cas mais pour les hommes ils sont au-delà de 80 ans alors que pour les femmes cela débute à 68 ans ce qui confirme le point précédent.
+
                 """
                 )
 
         with col1:
+
             fig = go.Figure()
             fig = px.box(Age_DF_clean,y="Age", color="category")
             fig.update_yaxes(title= 'Age')
@@ -832,8 +842,8 @@ def main():
             
             st.plotly_chart(fig)
 
-        #st.write("")    
-        #st.write("")
+        st.write("")    
+        st.write("")
 
 
 
@@ -868,7 +878,10 @@ def main():
                     - Acteurs :     44 ans
                     - Actrices :    37 ans
 
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
+                Les observations sur le graphique par genre sont bien évidemment toujours vraies pour celui-ci. On note que le phénomène est le même que ce soit au cinéma ou à la télé. Cependant à la télé, les actrices et acteurs sont globalement plus âgés.
+                
+                Cela semble plus marqué pour les femmes puisque l'âge médian passe de 31 ans au cinéma à 37 ans à la télé soit 6 ans de plus, alors que chez les hommes l’écart est seulement de 3 ans (44 ans contre 41 ans).
+
                 """
                 )
 
@@ -882,13 +895,6 @@ def main():
 
             st.plotly_chart(fig)
         st.write("")
-
-        st.markdown("""
-                
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
-                """
-                )
-
         st.write('')
         st.write(' ')
         st.write(' ')
@@ -909,11 +915,13 @@ def main():
                 Nous avons principalement utilisé les mêmes filtres que pour la question suivante afin de garder une cohérence dans notre analyse, et toujours aussi pour des raisons techniques (Dataset hébergés sur Github).
 
                 Dans ce dataset, nous avons aussi ajouté une colonne 'moyenne_pondérée', qui pondère les valeurs de la colonne 'averageRating' selon celles de la colonne 'numVotes', selon la formule de pondération de la note fournie par IMDb :
-
-                st.latex(r```
+                """
+                )
+        st.latex(r'''
                     Weighted\; Rating (WR) = (\frac{v}{v + m} . R) + (\frac{m}{v + m} . C)
-                    ```)
-
+                    ''')
+        st.markdown(
+                """
                 Où :
                 - v est le nombre de votes (= numVotes)
                 - m est le nombre minimum de votes requis pour être listé
@@ -921,15 +929,17 @@ def main():
                 - C est le vote moyen sur l'ensemble du dataset
 
                 Nous avons établi une fonction qui est la suivante pour cela :
-
-                code = '''def movie_ponderation(x,m=m,C=C):
+                """
+                )
+        code = '''def movie_ponderation(x,m=m,C=C):
                             v=x['numVotes']
                             R=x['averageRating']
                             # calculation based on IMDB formula
     
                             return (v/(v+m)*R) + (m/(m+v)*C)'''
-                st.code(code, language='python')
-            
+        st.code(code, language='python')
+        st.markdown(
+                """            
 
                 Afin de réaliser le graphique, un [dataframe attitré](https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Aurore/KPI/DF_FULL_GENRES211117.csv?token=AUTGRH2J25FKEQLFK7VPH5TBT7DVE) reprenant toutes les informations dont nous avions besoin pour cette analyse a été produit.
 
@@ -986,6 +996,31 @@ def main():
             
         st.plotly_chart(fig)
 
+        st.markdown("""
+                Nous remarquons qu'avec la quantité de données en notre possession, il est très difficile d'interpréter ce scatterplot pour déterminer quelle association de genres permettrait aux films de maximiser leurs chances d'être bien noté.
+                Zoomons donc sur les films dont la moyenne pondérée est supérieure à 8/10 :
+                """
+                )
+
+        #####################################
+        st.title('Quels sont les films les mieux notés (+ de 8/10) - Caractéristiques communes ?')
+        qualify_movies2 = qualify_movies.copy()
+        qualify_movies2 = qualify_movies2[qualify_movies2['moyenne_ponderee'] >= 8 ]
+        qualify_movies2 = qualify_movies2[qualify_movies2['moyenne_ponderee'] <= 9 ]
+
+        fig = px.scatter_3d(qualify_movies2,x="genre1",y ='genre2', z= 'genre3', color = 'moyenne_ponderee'  )
+        fig.update_layout(title_text="Caractéristiques communes des films les mieux notés", title_x=0.5, width=1000, height=600, template='plotly_dark')
+            
+        st.plotly_chart(fig)
+
+        st.markdown("""
+                La moyenne pondérée la plus élevée étant 8.96, nous avons aussi pris en borne haute 9/10 afin de mettre plus en avant les valeurs à interprêter dans ce scatterplot.
+                Nous pouvons remarquer que l'association de genres qui détient cette note est "Action/Crime/Drama".
+                """
+                )
+
+
+        ####################################
         col1, col2 = st.columns([1, 1])
         with col1:
             st.title('Note moyenne par genre de films')
@@ -1015,6 +1050,114 @@ def main():
             fig.update_xaxes(tickangle=-45)
             
             st.plotly_chart(fig)
+
+        st.markdown("""
+                Il paraît opportun d’analyser simultanément les deux graphiques.
+
+                En effet, nous constatons que Western est à la fois le genre ou la note moyenne est la plus élevée mais également celui où le nombre moyen de votes est le plus important. Cela permet d’affirmer qu’il s’agit vraisemblablement du genre préféré sur la période étudiée. Le genre “Famille”, bien qu’un peu moins bien noté, est également dans ce cas. 
+                
+                A l’inverse, le thriller qui arrive en 17ème et dernière position sur la note moyenne est en 16ème position sur le nombre moyen de votes Les amateurs de Thriller sont-ils moins enclins à voter ? Est ce qu’ils votent essentiellement quand le film ne leur plait pas ou est ce que les thrillers sont simplement moins bons que les westerns ? Nous n’avons pas ici suffisamment d’éléments pour le déterminer.
+                
+                Le troisième cas est celui des documentaires. Leur note moyenne est très bonne puisqu’ils sont en deuxième position. Par contre, ils sont en dernière position en ce qui concerne le nombre de votes. En ce qui concerne ce genre, on peut estimer que celà provient du nombre de personnes qui vont voir ces films. Celui doit en effet être moins important que pour les autres. Nous n’avons cependant pas d’élément ici pour nous le confirmer.
+
+                """
+                )
+        st.write(' ')
+        st.write(' ')
+        st.write(' ')
+
+        #######################################
+        ########  KPI -Christophe  ############
+        #######################################
+        st.title('Pour aller plus loin... Quelques KPI !')
+        st.write(' ')
+        st.image("https://i.ibb.co/NV1RFNH/C-mod.png")
+        st.markdown("""
+        [Lien Notebook](https://github.com/BerengerQueune/ABC-Data/blob/main/Christophe/Scripts%20VF/KPI%20r%C3%A9alisateurs%20-%202021_11_17.ipynb)
+        """
+                )
+        st.write(' ')
+        st.markdown("""
+        [DataFrame](https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_final_director.csv?token=AVCI5TY6PATH3QY4C25CC5TBT5IIA)
+                """
+                )        
+
+        df_final = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_final_director.csv?token=AVCI5TY6PATH3QY4C25CC5TBT5IIA')
+
+        #Réalisation du graphique
+        fig = px.bar(df_final, x = 'count', y="rang", text ='director', color = 'director',
+        title = 'Les réalisateurs qui ont fait le plus de film par décennie',
+        labels = {'count':'Nombre de films','periode': 'Décennie', 'director': 'Réalisateur'},
+        orientation='h',
+        animation_frame="periode",
+        range_x=[0,9],
+        #range_y=[0,4],
+        width=700, height=450)
+ 
+        fig.update_traces(textfont_size=12, textposition='outside')
+        fig.layout.updatemenus[0].buttons[0].args[1]["frame"]["duration"] = 1000
+
+        fig.update_layout(showlegend=False, title_x=0.5, width=1000, height=600, template='plotly_dark')
+            
+        st.plotly_chart(fig)
+
+        ###############################
+        #Création d'un dataframe avec les 3 réalisateurs ayant réalisé le plus de film depuis 1960
+        df_director_nbFilm = pd.DataFrame(df_final.value_counts('director'))
+        df_director_nbFilm.reset_index(inplace = True)
+        df_director_nbFilm.columns = ['director', 'nbFilm']
+
+        #Calcul du rang
+        df_director_nbFilm['Rang'] = df_director_nbFilm.index + 1
+        df_director_nbFilm = df_director_nbFilm.head(3)
+
+        st.write(' ')
+        st.write(' ')
+        ###############################
+        st.markdown("""
+        [DataFrame](https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_director_nbFilm.csv?token=AVCI5T7CVK5U4UHCL66ABS3BT5INA)
+                """
+                )
+        st.write(' ')
+        df_director_nbFilm = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_director_nbFilm.csv?token=AVCI5T7CVK5U4UHCL66ABS3BT5INA')
+
+        #Réalisation du graphique
+        fig = px.bar(df_director_nbFilm, x = 'nbFilm', y="Rang", text ='director', color = 'director',
+            title = 'Les réalisateurs qui ont fait le plus de film depuis 1960', 
+            labels = {'nbFilm': 'Nombre de films', 'director': 'Réalisateur'},orientation='h', range_x=[0,30], range_y=[0,4],width=700, height=450)
+
+        fig.update_layout(showlegend=False, title_x=0.5, width=1000, height=600, template='plotly_dark')
+            
+        st.plotly_chart(fig)
+        st.write(' ')
+        st.write(' ')       
+        
+        st.markdown("""
+        [Lien Notebook](https://github.com/BerengerQueune/ABC-Data/blob/main/Christophe/Scripts%20VF/Score%20acteurs%20-%202021_11_18.ipynb)
+        """
+                )
+        st.write(' ')
+        st.markdown("""
+        [DataFrame](https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_rating.csv?token=AVCI5T6KBWAVG7CL46KTL3DBT6GOU)
+                """
+                )
+        st.write(' ')
+        df_rating = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_rating.csv?token=AVCI5T6KBWAVG7CL46KTL3DBT6GOU')
+
+        fig = px.bar(df_rating.head(30), x = 'Acteur', y = 'averageRating', color='averageRating', 
+             title = 'Les acteurs ayant les meilleurs notes', 
+             labels={'Acteur':'Acteurs', 'averageRating':'Note moyenne'}, range_y=[8,9.5], width=900, height=600)
+
+        fig.update_layout(showlegend=False, title_x=0.5, width=1000, height=600, template='plotly_dark')
+            
+        st.plotly_chart(fig)
+
+        st.write(' ')
+        st.write(' ')
+        st.write(' ')
+
+
+
 
 
 
