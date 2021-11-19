@@ -152,7 +152,7 @@ def main():
 
         Issue d'une famille noble, elle ne peut pas faire appel à ses proches qui sont fortunés, car elle a renié sa famille. En effet, ces derniers ne partagent pas sa vision des choses; exemple : elle est vegan alors que l'activité principale de sa famille est la chasse...
 
-        Elle diffusait initialement des films qui la touchaient afin d'essayer de partager sa vision du monde. Ainsi, la films diffusés étaient principalement des documentaires traitant de l'écologie, du féminisme et de la paix universelle.
+        Elle diffusait initialement des films qui la touchaient afin d'essayer de partager sa vision du monde. Ainsi, la films diffusés étaient principalement des documentaires traitant de l'écologie, du féminisme indiens, en VOSTFR, et de la paix universelle.
 
         Elle est obligée de faire changer de cap son cinéma et est prête à diffuser des films qui vont à l'encontre de ses convictions si ça lui permet de ne pas mettre la clé sous la porte et éviter d'être la raillerie de sa famille.
         Faire du bénéfice à terme serait un plus, car ça lui permettrait d'offrir à ses futurs enfants Harmony, Safran et Kiwi un environnement dans lequel ils pourront s'épanouir comme elle en rêve.
@@ -245,7 +245,7 @@ def main():
         Comme énoncé ci-avant, notre client nous a fourni une base de données basée sur la plateforme IMDb. 
         Nous pouvons les retrouver [**ici**](https://datasets.imdbws.com/), l'explicatif des datasets [**là**](https://www.imdb.com/interfaces/).
 
-        Nous laissons à disposition notre analyse de ces bases de données sur Github dans notre espace collaboratif [**fichier colab**](https://github.com/BerengerQueune/ABC-Data)
+        Nous laissons à disposition notre analyse de ces bases de données sur Github dans [**notre espace collaboratif**](https://github.com/BerengerQueune/ABC-Data).
         """
         )
 
@@ -345,7 +345,8 @@ def main():
                         use_column_width="always", caption=movie_name)
                 # Add one to the numero_colonne variable so next nearest neighbors will be inside the following column
                 numero_colonne +=1
-                
+
+    
 ######################################################################################
 ######################################################################################
 ###########################     AURORE     ###########################################
@@ -358,9 +359,7 @@ def main():
 
         
         
-        
-        
-        
+
         link2 = 'https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/film3.csv?token=AUTGRH7SSI52W67SWYW35Z3BT7VCQ'
         film = pd.read_csv(link2)
 
@@ -488,7 +487,7 @@ def main():
         st.write("")
         st.image("https://i.ibb.co/bHkZJb7/B-mod.png") 
         st.markdown("""
-                Conclusion : j'ai trouvé intéressant, dans le cadre de nos études de répondre à cette question car cela a été l'occasion de s'exercer à explorer et nettoyer une base de données. Cependant, je trouve que la réponse en elle-même n'apporte que peu d'élément, voire aucun, qui puisse aider notre cliente à prendre des décisions.
+                Nous avons trouvé intéressant, dans le cadre de nos études, de répondre à cette question car cela a été l'occasion de s'exercer à explorer et nettoyer une base de données. Cependant, nous trouvons que la réponse en elle-même n'apporte que peu d'éléments, voire aucun, qui puissent aider notre cliente à prendre des décisions.
                 """
                 )
 
@@ -505,10 +504,13 @@ def main():
         col1, col2 = st.columns([1, 2])
         with col1:
             st.write(' ')
+            st.write('')
+            st.write(' ')
+            st.write(' ')
             st.markdown(
                 """
-                
-                Pour ce graphique, j'ai pu utiliser une partie du travail effectué à la question précédente. Voilà. Merci.
+            
+                Pour ce graphique, nous avons pu utiliser une partie du travail effectué dans la question précédente.
 
                 Afin de réaliser le graphique, un [dataframe attitré]('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/acteur_par_periode.csv?token=AU6BUZWYJ6GYLJLQVDQCLZTBSZ2NK') reprenant les 5 acteurs les plus présents pour chaque décennies depuis 1910.
 
@@ -518,6 +520,7 @@ def main():
                 )
 
         with col2:
+            
             fig = px.bar(acteur_par_periode, x = 'count', y="rank", text ='primaryName', color = 'primaryName',
             title = 'Quels sont les acteurs les plus présents par périodes ?',
             labels = {'startYear': 'Période', 'primaryName': 'Acteurs'},
@@ -538,7 +541,10 @@ def main():
         st.write("")
         st.image("https://i.ibb.co/bHkZJb7/B-mod.png") 
         st.markdown("""
-                Conclusion : j'ai trouvé intéressant, dans le cadre de nos études de répondre à cette question car cela a été l'occasion de s'exercer à explorer et nettoyer une base de données. Cependant, je trouve que la réponse en elle-même n'apporte que peu d'élément, voire aucun, qui puisse aider notre cliente à prendre des décisions. Je note tout de même que le graphique est le résultat d'un travail de groupe effectué avec Aurore ce qui, en soit, fut l'action la plus intéressante lors de mon travail sur cette question.
+                Dans le cadre de nos études, il est intéressant de répondre à cette question car cela a été l'occasion de s'exercer à l'exploration et au nettoyage d'une base de données. 
+                
+                Cependant, la réponse en elle-même n'apporte elle aussi que peu d'éléments, voire aucun, qui puissent aider notre cliente à prendre des décisions. 
+
                 """
                 )
         st.write(' ')
