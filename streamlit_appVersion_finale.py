@@ -91,9 +91,6 @@ def main():
     menu = ["Présentation du Projet", "Analyses et KPI","Système de recommandation", "Axes d'Amélioration"]
     choice = st.sidebar.selectbox("", menu) 
 
-    
-
-
 
 ######################################################################################
 ######################################################################################
@@ -115,7 +112,7 @@ def main():
         L’objectif de ce projet est le suivant :
 
         Nous sommes une équipe de Data Analysts freelance.
-        Un cinéma en perte de vitesse situé dans la Creuse nous contacte ca rl a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux.
+        Un cinéma en perte de vitesse situé dans la Creuse nous contacte car il a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux.
         Notre client nous demande de créer un moteur de recommandations de films qui à terme, enverra des notifications via internet.
 
         Aucun client du cinéma n'ayant à ce jour renseigné ses préférences, nous sommes donc dans une situation de __cold start__. Cependant, notre client nous a fourni une base de données basée sur la plateforme IMDb.
@@ -141,7 +138,7 @@ def main():
             st.image("https://d1qg2exw9ypjcp.cloudfront.net/assets/prod/24134/210x210-9_cropped_1377120495_p182hcd8rofaq1t491u06kih16o13.png")
 
         st.subheader('')
-        st.subheader("Notre client(e)")
+        st.subheader("Notre cliente")
 
         col1, col2, col3 = st.columns(3)
         with col1:
@@ -151,9 +148,9 @@ def main():
         """
         Notre cliente est Framboise de Papincourt, petite fille du Comte de Montmirail. Elle a 25 ans et dirige un cinéma en perte de vitesse qui s'appelle "LE KINO".
 
-        Elle fait appel à nous car elle est désespérée. Son cinéma ne fait pas de bénéfice, ses créanciers sont à sa porte et ses problèmes financiers sont tels qu'elle a dû demandé un nouveau prêt dans une banque alors que c'est contre ses principes.
+        Elle fait appel à nous car elle est désespérée. Son cinéma ne fait pas de bénéfice, ses créanciers sont à sa porte et ses problèmes financiers sont tels qu'elle a dû demander un nouveau prêt dans une banque. Ce qui va à l'encontre de ses principes.
 
-        Issue d'une famille de nobles, elle ne peut pas faire non plus appel à ses proches qui sont fortunés, car elle a renié sa famille. En effet ses derniers ne partagent pas sa vision des choses; exemple : elle est vegan alors que l'activité principale de sa famille est la chasse...
+        Issue d'une famille noble, elle ne peut pas faire appel à ses proches qui sont fortunés, car elle a renié sa famille. En effet, ces derniers ne partagent pas sa vision des choses; exemple : elle est vegan alors que l'activité principale de sa famille est la chasse...
 
         Elle diffusait initialement des films qui la touchaient afin d'essayer de partager sa vision du monde. Ainsi, la films diffusés étaient principalement des documentaires traitant de l'écologie, du féminisme et de la paix universelle.
 
@@ -195,12 +192,12 @@ def main():
         )
         st.markdown(
         """ 
-        - Présenter les TOP 10 des films par années et genre
+        - Présenter les TOP 10 des films par années et genres
         """
         )
         st.markdown(
         """ 
-        - Présenter les TOP 5 des acteurs/actrices par années et genre
+        - Présenter les TOP 5 des acteurs/actrices par années et genres
         """
         )
         st.markdown(
@@ -229,15 +226,14 @@ def main():
 
         st.markdown(
         """
-        Le projet est entièrement fait sous **Python**.
+        Le projet est entièrement fait sous **Python** avec une touche de CSS.
 
-        Nous avons utilisés entres autres les librairies suivantes :    
+        Nous avons utilisé les librairies suivantes :    
         - Pandas
         - Sklearn
         - Plotly
         - Streamlit
-
-        Nous avons utilisé du CSS pour la mise en page, nous permettant ainsi de centrer nos titres.
+        - IMDbPY
         """
         )
 
@@ -249,7 +245,7 @@ def main():
         Comme énoncé ci-avant, notre client nous a fourni une base de données basée sur la plateforme IMDb. 
         Nous pouvons les retrouver [**ici**](https://datasets.imdbws.com/), l'explicatif des datasets [**là**](https://www.imdb.com/interfaces/).
 
-        Nous laissons à dispositions notre analyse de ces bases de données sur Github dans notre espace collaboratif [**fichier colab**](https://github.com/BerengerQueune/ABC-Data)
+        Nous laissons à disposition notre analyse de ces bases de données sur Github dans notre espace collaboratif [**fichier colab**](https://github.com/BerengerQueune/ABC-Data)
         """
         )
 
@@ -260,7 +256,7 @@ def main():
 ######################################################################################
 
 # Result from your choice inside the menu
-    if choice == 'Système de recommandation':
+    elif choice == 'Système de recommandation':
 
         # CSS code within markdown to center the title
         st.markdown("<h1 style='text-align: center;'>Recommandation de Films</h1>", unsafe_allow_html=True)
@@ -274,8 +270,6 @@ def main():
         # This create a nice grey line between the title and the multiselect menu
         st.write("---------------------------------------------------------")
         
-
-
 
 
 
@@ -473,7 +467,6 @@ def main():
                     - dans la colonne 'category' nous avons gardé les 'actor' et 'actress'
                     - dans la colonne 'character', nous avons supprimé les ```\R```, les 'Narrator', 'Various' et 'Additional Voices'
                 - dans le df relatif à 'title.basics.tsv', nous avons gardé les colonnes 'tconst', 'nconst', 'category' et 'characters'
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
 
                 Afin de réaliser le graphique, un [dataframe attitré]('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/presence_acteurs.csv?token=AU6BUZU76KCNKK6X5NKIZ6DBTZPVI') reprenant les 20 acteurs les plus présents quelle que soit l'époque a été produit.
 
@@ -495,7 +488,7 @@ def main():
         st.write("")
         st.image("https://i.ibb.co/bHkZJb7/B-mod.png") 
         st.markdown("""
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
+                Conclusion : j'ai trouvé intéressant, dans le cadre de nos études de répondre à cette question car cela a été l'occasion de s'exercer à explorer et nettoyer une base de données. Cependant, je trouve que la réponse en elle-même n'apporte que peu d'élément, voire aucun, qui puisse aider notre cliente à prendre des décisions.
                 """
                 )
 
@@ -515,7 +508,7 @@ def main():
             st.markdown(
                 """
                 
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
+                Pour ce graphique, j'ai pu utiliser une partie du travail effectué à la question précédente. Voilà. Merci.
 
                 Afin de réaliser le graphique, un [dataframe attitré]('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/acteur_par_periode.csv?token=AU6BUZWYJ6GYLJLQVDQCLZTBSZ2NK') reprenant les 5 acteurs les plus présents pour chaque décennies depuis 1910.
 
@@ -545,7 +538,7 @@ def main():
         st.write("")
         st.image("https://i.ibb.co/bHkZJb7/B-mod.png") 
         st.markdown("""
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
+                Conclusion : j'ai trouvé intéressant, dans le cadre de nos études de répondre à cette question car cela a été l'occasion de s'exercer à explorer et nettoyer une base de données. Cependant, je trouve que la réponse en elle-même n'apporte que peu d'élément, voire aucun, qui puisse aider notre cliente à prendre des décisions. Je note tout de même que le graphique est le résultat d'un travail de groupe effectué avec Aurore ce qui, en soit, fut l'action la plus intéressante lors de mon travail sur cette question.
                 """
                 )
         st.write(' ')
@@ -657,8 +650,7 @@ def main():
                 """
                         **Top 20 des acteurs ayant tourné autant de films que de téléfilms**
 
-                        Il s’agit des acteurs des acteurs qui ont tourné le plus tout en faisant autant de téléfilm que de film.
-                        
+                         Il s’agit des acteurs des acteurs qui ont tourné le plus tout en faisant autant de téléfilm que de film.
                         La quantité de films par acteurs semble assez faible par rapport aux deux catégories suivantes.
                 """
                 )
@@ -691,7 +683,6 @@ def main():
                         **Top 20 des acteurs ayant tourné le plus de films**
 
                         Le graphique montre clairement que les acteurs ayant le plus tournés au cinéma ont fait très peu de téléfilms.
-                        
                         Il faut effectivement zoomer sur le graphique pour s’apercevoir que 4 d’entre aux ont tournés dans un ou deux téléfilms seulement.
                 """
                 )
@@ -724,7 +715,6 @@ def main():
                         **Top 20 des acteurs ayant tourné le plus de téléfilms**
 
                         On s’aperçoit qu’à l’inverse des acteurs de cinéma, les acteurs ayant tournés le plus de téléfilms ont également tournés des films au cinéma.
-                        
                         Cependant, au global ont remarque qu'ils ont tournés dans moins de films mais ont tous fait au moins des apparitions au cinéma.
                 """
             )
@@ -780,12 +770,7 @@ def main():
             st.markdown(
                 """
                 D'après ce boxplot, la moyenne d'âge, tout sexe confondu, est de 40 ans.
-                
-                Le graphique fait nettement apparaître une amplitude très large puisque l'âge des acteurs s’étend de 0 à 110 ans.
-                
-                Cependant, les âges supérieurs à 80 ans sont considérés comme des outliers. Les acteurs au-delà de cet âge sont donc malgré tout peu nombreux.
-                
-                Il est à noter également que l'âge des acteurs se concentre sur une plage limitée puisque 50% d’entre eux sont entre 29 ans et 49 ans avec une moyenne à 40 ans.
+                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
                 """
                 )
 
@@ -833,12 +818,7 @@ def main():
                 - Acteurs :     41 ans
                 - Actrices :    32 ans
 
-                Lorsque l’on sépare les hommes et les femmes dans l’analyse, on s’aperçoit que ces dernières terminent généralement leur carrières plus jeunes que leur homologues masculins. Elles commencent également plus jeunes.
-                
-                L’écart entre les ages médian illustre bien cette différence puisque l'âge médian des actrices est de 32 ans contre 41 ans pour les hommes.
-                
-                Nous constatons qu’il y a beaucoup d’outliers dans les deux cas mais pour les hommes ils sont au-delà de 80 ans alors que pour les femmes cela débute à 68 ans ce qui confirme le point précédent.
-
+                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
                 """
                 )
 
@@ -852,8 +832,8 @@ def main():
             
             st.plotly_chart(fig)
 
-        st.write("")    
-        st.write("")
+        #st.write("")    
+        #st.write("")
 
 
 
@@ -888,10 +868,7 @@ def main():
                     - Acteurs :     44 ans
                     - Actrices :    37 ans
 
-                Les observations sur le graphique par genre sont bien évidemment toujours vraies pour celui-ci. On note que le phénomène est le même que ce soit au cinéma ou à la télé. Cependant à la télé, les actrices et acteurs sont globalement plus âgés.
-                
-                Cela semble plus marqué pour les femmes puisque l'âge médian passe de 31 ans au cinéma à 37 ans à la télé soit 6 ans de plus, alors que chez les hommes l’écart est seulement de 3 ans (44 ans contre 41 ans).
-
+                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
                 """
                 )
 
@@ -1009,31 +986,6 @@ def main():
             
         st.plotly_chart(fig)
 
-        st.markdown("""
-                Nous remarquons qu'avec la quantité de données en notre possession, il est très difficile d'interpréter ce scatterplot pour déterminer quelle association de genres permettrait aux films de maximiser leurs chances d'être bien noté.
-                Zoomons donc sur les films dont la moyenne pondérée est supérieure à 8/10 :
-                """
-                )
-
-        #####################################
-        st.title('Quels sont les films les mieux notés (+ de 8/10) - Caractéristiques communes ?')
-        qualify_movies2 = qualify_movies.copy()
-        qualify_movies2 = qualify_movies2[qualify_movies2['moyenne_ponderee'] >= 8 ]
-        qualify_movies2 = qualify_movies2[qualify_movies2['moyenne_ponderee'] <= 9 ]
-
-        fig = px.scatter_3d(qualify_movies2,x="genre1",y ='genre2', z= 'genre3', color = 'moyenne_ponderee'  )
-        fig.update_layout(title_text="Caractéristiques communes des films les mieux notés", title_x=0.5, width=1000, height=600, template='plotly_dark')
-            
-        st.plotly_chart(fig)
-
-        st.markdown("""
-                La moyenne pondérée la plus élevée étant 8.96, nous avons aussi pris en borne haute 9/10 afin de mettre plus en avant les valeurs à interprêter dans ce scatterplot.
-                Nous pouvons remarquer que l'association de genres qui détient cette note est "Action/Crime/Drama".
-                """
-                )
-
-
-        ####################################
         col1, col2 = st.columns([1, 1])
         with col1:
             st.title('Note moyenne par genre de films')
@@ -1064,123 +1016,7 @@ def main():
             
             st.plotly_chart(fig)
 
-        st.markdown("""
-                Il paraît opportun d’analyser simultanément les deux graphiques.
 
-                En effet, nous constatons que Western est à la fois le genre ou la note moyenne est la plus élevée mais également celui où le nombre moyen de votes est le plus important. Cela permet d’affirmer qu’il s’agit vraisemblablement du genre préféré sur la période étudiée. Le genre “Famille”, bien qu’un peu moins bien noté, est également dans ce cas. 
-                
-                A l’inverse, le thriller qui arrive en 17ème et dernière position sur la note moyenne est en 16ème position sur le nombre moyen de votes Les amateurs de Thriller sont-ils moins enclins à voter ? Est ce qu’ils votent essentiellement quand le film ne leur plait pas ou est ce que les thrillers sont simplement moins bons que les westerns ? Nous n’avons pas ici suffisamment d’éléments pour le déterminer.
-                
-                Le troisième cas est celui des documentaires. Leur note moyenne est très bonne puisqu’ils sont en deuxième position. Par contre, ils sont en dernière position en ce qui concerne le nombre de votes. En ce qui concerne ce genre, on peut estimer que celà provient du nombre de personnes qui vont voir ces films. Celui doit en effet être moins important que pour les autres. Nous n’avons cependant pas d’élément ici pour nous le confirmer.
-
-                """
-                )
-        st.write(' ')
-        st.write(' ')
-        st.write(' ')
-
-        #######################################
-        ########  Q05 -Christophe  ############
-        #######################################
-        st.title('Pour aller plus loin... Quelques KPI !')
-        st.write(' ')
-        st.image("https://i.ibb.co/NV1RFNH/C-mod.png")
-        st.markdown("""
-        [Lien Notebook](https://github.com/BerengerQueune/ABC-Data/blob/main/Christophe/Scripts%20VF/KPI%20r%C3%A9alisateurs%20-%202021_11_17.ipynb)
-        """
-                )
-        st.write(' ')
-        st.markdown("""
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
-
-        [DataFrame](https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_final_director.csv?token=AVCI5TY6PATH3QY4C25CC5TBT5IIA)
-                """
-                )        
-
-        df_final = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_final_director.csv?token=AVCI5TY6PATH3QY4C25CC5TBT5IIA')
-
-        #Réalisation du graphique
-        fig = px.bar(df_final, x = 'count', y="rang", text ='director', color = 'director',
-        title = 'Les réalisateurs qui ont fait le plus de film par décennie',
-        labels = {'count':'Nombre de films','periode': 'Décennie', 'director': 'Réalisateur'},
-        orientation='h',
-        animation_frame="periode",
-        range_x=[0,9],
-        #range_y=[0,4],
-        width=700, height=450)
- 
-        fig.update_traces(textfont_size=12, textposition='outside')
-        fig.layout.updatemenus[0].buttons[0].args[1]["frame"]["duration"] = 1000
-
-        fig.update_layout(showlegend=False, title_x=0.5, width=1000, height=600, template='plotly_dark')
-            
-        st.plotly_chart(fig)
-
-        ###############################
-        #Création d'un dataframe avec les 3 réalisateurs ayant réalisé le plus de film depuis 1960
-        df_director_nbFilm = pd.DataFrame(df_final.value_counts('director'))
-        df_director_nbFilm.reset_index(inplace = True)
-        df_director_nbFilm.columns = ['director', 'nbFilm']
-
-        #Calcul du rang
-        df_director_nbFilm['Rang'] = df_director_nbFilm.index + 1
-        df_director_nbFilm = df_director_nbFilm.head(3)
-
-        st.write(' ')
-        st.write(' ')
-        ###############################
-        st.markdown("""
-        [DataFrame](https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_director_nbFilm.csv?token=AVCI5T7CVK5U4UHCL66ABS3BT5INA)
-                """
-                )
-        st.write(' ')
-        df_director_nbFilm = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_director_nbFilm.csv?token=AVCI5T7CVK5U4UHCL66ABS3BT5INA')
-
-        #Réalisation du graphique
-        fig = px.bar(df_director_nbFilm, x = 'nbFilm', y="Rang", text ='director', color = 'director',
-            title = 'Les réalisateurs qui ont fait le plus de film depuis 1960', 
-            labels = {'nbFilm': 'Nombre de films', 'director': 'Réalisateur'},orientation='h', range_x=[0,30], range_y=[0,4],width=700, height=450)
-
-        fig.update_layout(showlegend=False, title_x=0.5, width=1000, height=600, template='plotly_dark')
-            
-        st.plotly_chart(fig)
-        st.write(' ')
-        st.write(' ')       
-        
-        st.markdown("""
-        [Lien Notebook](https://github.com/BerengerQueune/ABC-Data/blob/main/Christophe/Scripts%20VF/Score%20acteurs%20-%202021_11_18.ipynb)
-        """
-                )
-        st.write(' ')
-        st.markdown("""
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
-
-        [DataFrame](https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_rating.csv?token=AVCI5T6KBWAVG7CL46KTL3DBT6GOU)
-                """
-                )
-        st.write(' ')
-        df_rating = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_rating.csv?token=AVCI5T6KBWAVG7CL46KTL3DBT6GOU')
-
-        fig = px.bar(df_rating.head(30), x = 'Acteur', y = 'averageRating', color='averageRating', 
-             title = 'Les acteurs ayant les meilleurs notes', 
-             labels={'Acteur':'Acteurs', 'averageRating':'Note moyenne'}, range_y=[8,9.5], width=900, height=600)
-
-        fig.update_layout(showlegend=False, title_x=0.5, width=1000, height=600, template='plotly_dark')
-            
-        st.plotly_chart(fig)
-
-
-
-
-        st.write("")
-
-        st.markdown("""
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
-                """
-                )
-        st.write(' ')
-        st.write(' ')
-        st.write(' ')
 
 
 ######################################################################################
@@ -1190,14 +1026,51 @@ def main():
 ######################################################################################
 
 
-
-
-
-    elif choice == "Axes d'Amélioration":
-                        # CSS code within markdown to center the title
+    if choice == "Axes d'Amélioration":
+        # CSS code within markdown to center the title
         st.markdown("<h1 style='text-align: center;'>Axes d'Amélioration</h1>", unsafe_allow_html=True)
-                # This create a nice grey line between the title and the multiselect menu
+
+        # This create a nice grey line between the title and the multiselect menu
         st.write("---------------------------------------------------------")
+
+
+        st.markdown("""
+                Pour redresser la barre de son cinéma, notre cliente souhaite diffuser uniquement des films récents grand public.
+
+                Elle souhaite également être informée des films à venir qui ont le plus de chances d'avoir du succès. Dans ce cadre et dans un premier temps, les méthodes de Machine Learning nécessaires pour un résultat optimal nous ont semblé difficiles à mettre en place puisque nous ne pouvions plus compter sur des résultats comme la note moyenne ou bien le nombre de vote.
+
+                Pour une première version, nous avons uniquement utilisé les genres des films pour notre algorithme et les tests que nous avons effectués nous ont semblé globalement fiables. L'une des raisons de cette fiabilité est que le DataFrame utilisé pour les recommandations se base uniquement sur les films à diffuser dans la région FR sur les années 2021 et 2022 ce qui donne un total d'environ 350 films.
+
+                Pour l'instant, notre algorithme fonctionne ainsi :
+
+                - Il regroupe tous les votes qu'il reçoit dans un DataFrame. Cela peut permettre à des centaines de spectateurs potentiels de voter pour leurs films préférés.
+                - Ensuite, l'algorithme fait la somme de chaque genre. Par exemple, 10 films du genre Action donne donc une note de 10 en Action.
+                - Puis, l'algorithme divise cette somme par le nombre de films sélectionnés afin de créer un nouveau film virtuel qui se retrouve au centre de tous les films choisis.
+                - Ce système fonctionne très bien avec un seul film. Il fonctionne mal avec deux films très différents mais plus il reçoit de films plus le résultat final se lisse et a des chances de plaire au plus grand nombre.
+
+                En l'état actuel, pour une première version, nous sommes satisfaits des recommandations proposées mais nous considérons qu'il s'agit davantage d'une aide à la décision et que notre cliente doit encore utiliser ses connaissances métiers afin de faire les bons choix. Notre algorithme est suffisamment bon pour l'y aider.
+
+                A l'avenir, en terme d'axe d'amélioration sur l'algorithme, nous souhaiterions que celui-ci prenne en compte de nouveaux critères comme les acteurs puis le réalisateur.
+
+                Il est également possible de tenter de faire une prédiction de note en prenant en compte de nombreux autres facteurs qui ne sont pas disponibles dans la base de données d'IMDB. On sait par exemple que les films Marvel ont tendance à faire un carton au cinéma. La mise en place d'un tel système nécessiterait davantage de temps et de recherches.
+
+                En ce qui concerne l'interface utilisateur, nous avons noté des ralentissements sur Streamlit ainsi que des soucis d'accès occasionnels. Dans notre cas spécifique il semble également que l'affichage des posters soit assez lent. L'algorithme a parfois du mal à se mettre à jour lorsque nous ajoutons plusieurs films rapidement et il faut parfois attendre qu'il charge tous les posters avant de pouvoir lui faire correctement prendre en compte l'ajout d'un autre film. Il faudrait tester d'autres méthodes d'affichages des posters afin de voir si cela a un impact positif. Le code ne semble pas optimisé à l'heure actuel.
+
+                Nous sommes satisfait du résultat global de notre application. Les résultats semblent fiables mais l'application nécessite encore du travail en terme d'interface utilisateur et de fiabilité de l'algorithme. Nous devrons en parler davantage avec Framboise afin de voir ce qu'elle souhaite.
+                """
+                )
+        st.write(' ')
+        st.write(' ')
+        st.write(' ')
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1213,3 +1086,6 @@ def main():
 
 
 main()
+
+
+
