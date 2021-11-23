@@ -1,7 +1,7 @@
 # PROJET ABC's 
 _Creation d’une WebApp de recommandation de films_
 
-[**Rendu final**](https://share.streamlit.io/alema86/movie_recommandation/main/Streamlit/streamlit_appVersion_finale.py)
+Cliquez ici pour retrouver le [**Rendu final**](https://share.streamlit.io/alema86/movie_recommandation/main/Streamlit/streamlit_appVersion_finale.py)
 
 ## SOMMAIRE :
 
