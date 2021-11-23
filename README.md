@@ -88,9 +88,9 @@ Nous avons utilisés entres autres les librairies suivantes :
 ## BASES DE DONNEES
 
 Comme énoncé ci-avant, notre client nous a fourni une base de données basée sur la plateforme IMDb. 
-        Nous pouvons les retrouver [**ici**](https://datasets.imdbws.com/), l'explicatif des datasets [**là**](https://www.imdb.com/interfaces/).
+Nous pouvons les retrouver [**ici**](https://datasets.imdbws.com/), l'explicatif des datasets [**là**](https://www.imdb.com/interfaces/).
 
-        Nous laissons à disposition notre analyse de ces bases de données sur Github dans [**notre espace collaboratif**](https://github.com/BerengerQueune/ABC-Data).
+Nous laissons à disposition notre analyse de ces bases de données sur Github dans [**notre espace collaboratif**](https://github.com/BerengerQueune/ABC-Data).
 
 
 ## STREAMLIT : INTERFACE DE LA WEB APP
