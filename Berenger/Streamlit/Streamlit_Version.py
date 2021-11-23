@@ -91,100 +91,6 @@ def main():
     menu = ["Présentation du Projet", "Analyses et KPI","Système de recommandation", "Axes d'Amélioration"]
     choice = st.sidebar.selectbox("", menu) 
 
-    # Result from your choice inside the menu
-    if choice == 'Système de recommandation':
-
-        # CSS code within markdown to center the title
-        st.markdown("<h1 style='text-align: center;'>Recommandation de Films</h1>", unsafe_allow_html=True)
-
-        # Variable X used for Machine Learning
-        X = df_output_movies[['Action',
-            'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
-            'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
-            'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
-
-        # This create a nice grey line between the title and the multiselect menu
-        st.write("---------------------------------------------------------")
-        
-
-
-
-
-
-        # Variables to insert df_input inside the multiselect menu
-        MOVIES = df_input_movies['primaryTitle'].unique()
-        MOVIES_SELECTED = st.multiselect(' ', MOVIES)
-
-        # Mask to filter dataframe
-        mask_movies = df_input_movies['primaryTitle'].isin(MOVIES_SELECTED)
-        data = df_input_movies[mask_movies]
-
-        # Variables to gather the genre of all movies selected within the multiselect menu
-        user_choice6 = data[['Action',
-            'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
-            'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
-            'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
-
-        # KNN nearest neighbors to find the 5 nearest neighbors
-        distanceKNN = NearestNeighbors(n_neighbors=5).fit(X)
-        # I divide the genre of all movies based on the number of movies
-        genres_divided_by_number_of_movies = user_choice6/len(data)
-        # I make the sum of all genres into a new dataframe in order to find a central point for all the movies selected
-        sum_of_genres = genres_divided_by_number_of_movies.sum()
-        df_sum_of_genres = pd.DataFrame(sum_of_genres)
-
-        # I transpose rows to columns so the dataframe shape matches the expectation for the recommandation
-        df_final_genres = df_sum_of_genres.T
-
-        # KNN method to find the nearest neighbors
-        df_final_genres = distanceKNN.kneighbors(df_final_genres)
-        # A reshape again... not sure if really required
-        df_final_genres = df_final_genres[1].reshape(1,5)[0]
-        # Looking for best matches using index of movies
-        liste_finale = df_output_movies.iloc[df_final_genres]
-
-        # Creation of a variable used later to each instance of nearest neighbors (5) within a different columns
-        numero_colonne = 0
-
-        # Small space
-        st.write(" ")
-        st.write(" ")
-
-        # creating instance of IMDb this is a library to easily get the poster of the movie recommanded
-        ia = imdb.IMDb()
-        # if/else: if there is 0 movie selected, then there is no recommandation
-        if len(user_choice6) == 0:
-            pass
-        else:
-            # CSS title followed by space
-            st.markdown("<h5 style='text-align: center;'>Ces films devraient plaire à vos clients :</h5>", unsafe_allow_html=True)
-            st.write(" ")
-            st.write(" ")
-            # Creation of 5 columns
-            cols = st.columns(5)
-            for i in range(len(liste_finale)):
-                
-                # For Each columns
-                with cols[numero_colonne]:
-                    # Get the name of the movie
-                    movie_name = liste_finale.iloc[i]["primaryTitle"]
-                    # Get the tconst (used to gather poster image)
-                    code = liste_finale.iloc[i]["tconst"]
-                    # Remove the "tt" string at start of the tconst
-                    code = code.replace("tt", "")
-                    # getting information from the movie related to previous tconst
-                    series = ia.get_movie(code)
-                    try:
-                        # If there is a cover for this movie, print the cover + the name of the movie as caption and use automatically full size of the column
-                        st.image(imdb.helpers.fullSizeCoverURL(series), use_column_width='auto', caption=movie_name)
-                    except:
-                        # If there is no cover, use this image picked randomly over internet + the name of the movie as caption and use automatically full size of the column
-                        st.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYEBKhlYYZa4Saksn04meXChE44J1PU9BCZA&usqp=CAU", 
-                        use_column_width="always", caption=movie_name)
-                # Add one to the numero_colonne variable so next nearest neighbors will be inside the following column
-                numero_colonne +=1
-
-
 
 ######################################################################################
 ######################################################################################
@@ -246,7 +152,7 @@ def main():
 
         Issue d'une famille noble, elle ne peut pas faire appel à ses proches qui sont fortunés, car elle a renié sa famille. En effet, ces derniers ne partagent pas sa vision des choses; exemple : elle est vegan alors que l'activité principale de sa famille est la chasse...
 
-        Elle diffusait initialement des films qui la touchaient afin d'essayer de partager sa vision du monde. Ainsi, la films diffusés étaient principalement des documentaires traitant de l'écologie, du féminisme et de la paix universelle.
+        Elle diffusait initialement des films qui la touchaient afin d'essayer de partager sa vision du monde. Ainsi, la films diffusés étaient principalement des documentaires traitant de l'écologie, du féminisme indiens, en VOSTFR, et de la paix universelle.
 
         Elle est obligée de faire changer de cap son cinéma et est prête à diffuser des films qui vont à l'encontre de ses convictions si ça lui permet de ne pas mettre la clé sous la porte et éviter d'être la raillerie de sa famille.
         Faire du bénéfice à terme serait un plus, car ça lui permettrait d'offrir à ses futurs enfants Harmony, Safran et Kiwi un environnement dans lequel ils pourront s'épanouir comme elle en rêve.
@@ -339,7 +245,7 @@ def main():
         Comme énoncé ci-avant, notre client nous a fourni une base de données basée sur la plateforme IMDb. 
         Nous pouvons les retrouver [**ici**](https://datasets.imdbws.com/), l'explicatif des datasets [**là**](https://www.imdb.com/interfaces/).
 
-        Nous laissons à disposition notre analyse de ces bases de données sur Github dans notre espace collaboratif [**fichier colab**](https://github.com/BerengerQueune/ABC-Data)
+        Nous laissons à disposition notre analyse de ces bases de données sur Github dans [**notre espace collaboratif**](https://github.com/BerengerQueune/ABC-Data).
         """
         )
 
@@ -349,9 +255,98 @@ def main():
 ######################################################################################
 ######################################################################################
 
-    if choice == 'Movie recommandation':
-        st.subheader("Movie recommandation")
+# Result from your choice inside the menu
+    elif choice == 'Système de recommandation':
+
+        # CSS code within markdown to center the title
+        st.markdown("<h1 style='text-align: center;'>Recommandation de Films</h1>", unsafe_allow_html=True)
+
+        # Variable X used for Machine Learning
+        X = df_output_movies[['Action',
+            'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
+            'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
+            'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
+
+        # This create a nice grey line between the title and the multiselect menu
+        st.write("---------------------------------------------------------")
+        
+
+
+
+        # Variables to insert df_input inside the multiselect menu
+        MOVIES = df_input_movies['primaryTitle'].unique()
+        MOVIES_SELECTED = st.multiselect(' ', MOVIES)
+
+        # Mask to filter dataframe
+        mask_movies = df_input_movies['primaryTitle'].isin(MOVIES_SELECTED)
+        data = df_input_movies[mask_movies]
+
+        # Variables to gather the genre of all movies selected within the multiselect menu
+        user_choice6 = data[['Action',
+            'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary',
+            'Drama', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
+            'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'Western']]
+
+        # KNN nearest neighbors to find the 5 nearest neighbors
+        distanceKNN = NearestNeighbors(n_neighbors=5).fit(X)
+        # I divide the genre of all movies based on the number of movies
+        genres_divided_by_number_of_movies = user_choice6/len(data)
+        # I make the sum of all genres into a new dataframe in order to find a central point for all the movies selected
+        sum_of_genres = genres_divided_by_number_of_movies.sum()
+        df_sum_of_genres = pd.DataFrame(sum_of_genres)
+
+        # I transpose rows to columns so the dataframe shape matches the expectation for the recommandation
+        df_final_genres = df_sum_of_genres.T
+
+        # KNN method to find the nearest neighbors
+        df_final_genres = distanceKNN.kneighbors(df_final_genres)
+        # A reshape again... not sure if really required
+        df_final_genres = df_final_genres[1].reshape(1,5)[0]
+        # Looking for index of movies that matches the most
+        liste_finale = df_output_movies.iloc[df_final_genres]
+
+        # Creation of a variable used later to each instance of nearest neighbors (5) within a different columns
+        numero_colonne = 0
+
+        # Small space
+        st.write(" ")
+        st.write(" ")
+
+        # creating instance of IMDb this is a library to easily get the poster of the movie recommanded
+        ia = imdb.IMDb()
+        # if/else: if there is 0 movie selected, then there is no recommandation
+        if len(user_choice6) == 0:
+            pass
+        else:
+            # CSS title followed by space
+            st.markdown("<h5 style='text-align: center;'>Ces films devraient plaire à vos clients :</h5>", unsafe_allow_html=True)
+            st.write(" ")
+            st.write(" ")
+            # Creation of 5 columns
+            cols = st.columns(5)
+            for i in range(len(liste_finale)):
                 
+                # For Each columns
+                with cols[numero_colonne]:
+                    # Get the name of the movie
+                    movie_name = liste_finale.iloc[i]["primaryTitle"]
+                    # Get the tconst (used to gather poster image)
+                    code = liste_finale.iloc[i]["tconst"]
+                    # Remove the "tt" string at start of the tconst
+                    code = code.replace("tt", "")
+                    # getting information from the movie related to previous tconst
+                    series = ia.get_movie(code)
+                    try:
+                        # If there is a cover for this movie, print the cover + the name of the movie as caption and use automatically full size of the column
+                        st.image(imdb.helpers.fullSizeCoverURL(series), use_column_width='auto', caption=movie_name)
+                    except:
+                        # If there is no cover, use this image picked randomly over internet + the name of the movie as caption and use automatically full size of the column
+                        st.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYEBKhlYYZa4Saksn04meXChE44J1PU9BCZA&usqp=CAU", 
+                        use_column_width="always", caption=movie_name)
+                # Add one to the numero_colonne variable so next nearest neighbors will be inside the following column
+                numero_colonne +=1
+
+    
 ######################################################################################
 ######################################################################################
 ###########################     AURORE     ###########################################
@@ -364,10 +359,8 @@ def main():
 
         
         
-        
-        
-        
-        link2 = 'https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/film3.csv?token=AU6BUZQSZO7FES64E636CRLBS2IWM'
+
+        link2 = 'https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/film3.csv?token=AUTGRH7SSI52W67SWYW35Z3BT7VCQ'
         film = pd.read_csv(link2)
 
 
@@ -412,7 +405,7 @@ def main():
         st.subheader("Quels sont les pays qui distribuent le plus de films ?") # add a subtitle
 
 
-        top10 = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/top10.csv?token=AU6BUZSEQED65VJVLNSX4FLBS2IYO')
+        top10 = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/top10.csv?token=AUTGRH3VKF2D42DBVDKVIADBT7VO6')
 
         col1, col2 = st.columns([1, 2])
         with col1:
@@ -494,7 +487,7 @@ def main():
         st.write("")
         st.image("https://i.ibb.co/bHkZJb7/B-mod.png") 
         st.markdown("""
-                Conclusion : j'ai trouvé intéressant, dans le cadre de nos études de répondre à cette question car cela a été l'occasion de s'exercer à explorer et nettoyer une base de données. Cependant, je trouve que la réponse en elle-même n'apporte que peu d'élément, voire aucun, qui puisse aider notre cliente à prendre des décisions.
+                Nous avons trouvé intéressant, dans le cadre de nos études, de répondre à cette question car cela a été l'occasion de s'exercer à explorer et nettoyer une base de données. Cependant, nous trouvons que la réponse en elle-même n'apporte que peu d'éléments, voire aucun, qui puissent aider notre cliente à prendre des décisions.
                 """
                 )
 
@@ -511,10 +504,13 @@ def main():
         col1, col2 = st.columns([1, 2])
         with col1:
             st.write(' ')
+            st.write('')
+            st.write(' ')
+            st.write(' ')
             st.markdown(
                 """
-                
-                Pour ce graphique, j'ai pu utiliser une partie du travail effectué à la question précédente. Voilà. Merci.
+            
+                Pour ce graphique, nous avons pu utiliser une partie du travail effectué dans la question précédente.
 
                 Afin de réaliser le graphique, un [dataframe attitré]('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/acteur_par_periode.csv?token=AU6BUZWYJ6GYLJLQVDQCLZTBSZ2NK') reprenant les 5 acteurs les plus présents pour chaque décennies depuis 1910.
 
@@ -524,6 +520,7 @@ def main():
                 )
 
         with col2:
+            
             fig = px.bar(acteur_par_periode, x = 'count', y="rank", text ='primaryName', color = 'primaryName',
             title = 'Quels sont les acteurs les plus présents par périodes ?',
             labels = {'startYear': 'Période', 'primaryName': 'Acteurs'},
@@ -544,7 +541,10 @@ def main():
         st.write("")
         st.image("https://i.ibb.co/bHkZJb7/B-mod.png") 
         st.markdown("""
-                Conclusion : j'ai trouvé intéressant, dans le cadre de nos études de répondre à cette question car cela a été l'occasion de s'exercer à explorer et nettoyer une base de données. Cependant, je trouve que la réponse en elle-même n'apporte que peu d'élément, voire aucun, qui puisse aider notre cliente à prendre des décisions. Je note tout de même que le graphique est le résultat d'un travail de groupe effectué avec Aurore ce qui, en soit, fut l'action la plus intéressante lors de mon travail sur cette question.
+                Dans le cadre de nos études, il est intéressant de répondre à cette question car cela a été l'occasion de s'exercer à l'exploration et au nettoyage d'une base de données. 
+                
+                Cependant, la réponse en elle-même n'apporte elle aussi que peu d'éléments, voire aucun, qui puissent aider notre cliente à prendre des décisions. 
+
                 """
                 )
         st.write(' ')
@@ -566,7 +566,7 @@ def main():
 
                 Afin de réaliser le graphique, un [dataframe attitré](https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Database_projet/presence_acteurs.csv?token=AU6BUZU76KCNKK6X5NKIZ6DBTZPVI) reprennant toutes les informations requises a été produit.
 
-                [Lien Notebook]('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/Projet%202%20-%20La%20dur%C3%A9e%20moyenne%20des%20films%20s%E2%80%99allonge%20ou%20se%20raccourcit%20avec%20les%20ann%C3%A9es.ipynb?token=AUTGRH3TRSZ7CDJ62ME6XU3BT44DO')
+                [Lien Notebook](https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/Projet%202%20-%20La%20dur%C3%A9e%20moyenne%20des%20films%20s%E2%80%99allonge%20ou%20se%20raccourcit%20avec%20les%20ann%C3%A9es.ipynb?token=AUTGRH3TRSZ7CDJ62ME6XU3BT44DO)
 
                 """
             )
@@ -612,9 +612,9 @@ def main():
         #######################################
         st.subheader("Les acteurs de série sont-ils les mêmes qu’au cinéma ?") # add a subtitle
  
-        concat_liste_50 = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/concat_liste50.csv?token=AU6BUZSY6OPPE25EYFUWFELBS2IS4')
-        concat_listeTopFilm = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/concat_listeTopFilm.csv?token=AU6BUZUX7HJJXUSIP47YANLBS2IVA')
-        concat_listeTopTV = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/concat_listeTopTV.csv?token=AU6BUZWRESNKYQ36Y652SJLBS2IVW')
+        concat_liste_50 = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/concat_liste50.csv?token=AUTGRH3NFGVAAGE7BWNHXW3BT7VXW')
+        concat_listeTopFilm = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/concat_listeTopFilm.csv?token=AUTGRHZX2ORHPD4O4BU5KL3BT7V2I')
+        concat_listeTopTV = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Berenger/Streamlit/concat_listeTopTV.csv?token=AUTGRH6HV3KXHBV5F5IJWHTBT7V3S')
 
         st.markdown(
                 """
@@ -776,12 +776,16 @@ def main():
             st.markdown(
                 """
                 D'après ce boxplot, la moyenne d'âge, tout sexe confondu, est de 40 ans.
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
+                
+                Le graphique fait nettement apparaître une amplitude très large puisque l'âge des acteurs s’étend de 0 à 110 ans.
+                
+                Cependant, les âges supérieurs à 80 ans sont considérés comme des outliers. Les acteurs au-delà de cet âge sont donc malgré tout peu nombreux.
+                
+                Il est à noter également que l'âge des acteurs se concentre sur une plage limitée puisque 50% d’entre eux sont entre 29 ans et 49 ans avec une moyenne à 40 ans.
                 """
                 )
 
         with col1:
-
 
             fig = go.Figure()
             fig.add_trace(go.Box(y=Age_DF_clean["Age"], name = 'Population', marker_color='lightgreen', boxmean=True # represent mean
@@ -824,11 +828,17 @@ def main():
                 - Acteurs :     41 ans
                 - Actrices :    32 ans
 
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
+                Lorsque l’on sépare les hommes et les femmes dans l’analyse, on s’aperçoit que ces dernières terminent généralement leur carrières plus jeunes que leur homologues masculins. Elles commencent également plus jeunes.
+                
+                L’écart entre les ages médians illustre bien cette différence puisque l'âge médian des actrices est de 32 ans contre 41 ans pour les hommes.
+                
+                Nous constatons qu’il y a beaucoup d’outliers dans les deux cas mais pour les hommes ils sont au-delà de 80 ans alors que pour les femmes cela débute à 68 ans ce qui confirme le point précédent.
+
                 """
                 )
 
         with col1:
+
             fig = go.Figure()
             fig = px.box(Age_DF_clean,y="Age", color="category")
             fig.update_yaxes(title= 'Age')
@@ -838,8 +848,8 @@ def main():
             
             st.plotly_chart(fig)
 
-        #st.write("")    
-        #st.write("")
+        st.write("")    
+        st.write("")
 
 
 
@@ -874,7 +884,10 @@ def main():
                     - Acteurs :     44 ans
                     - Actrices :    37 ans
 
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
+                Les observations sur le graphique par genre sont bien évidemment toujours vraies pour celui-ci. On note que le phénomène est le même que ce soit au cinéma ou à la télé. Cependant à la télé, les actrices et acteurs sont globalement plus âgés.
+                
+                Cela semble plus marqué pour les femmes puisque l'âge médian passe de 31 ans au cinéma à 37 ans à la télé soit 6 ans de plus, alors que chez les hommes l’écart est seulement de 3 ans (44 ans contre 41 ans).
+
                 """
                 )
 
@@ -888,13 +901,6 @@ def main():
 
             st.plotly_chart(fig)
         st.write("")
-
-        st.markdown("""
-                
-                **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
-                """
-                )
-
         st.write('')
         st.write(' ')
         st.write(' ')
@@ -915,11 +921,13 @@ def main():
                 Nous avons principalement utilisé les mêmes filtres que pour la question suivante afin de garder une cohérence dans notre analyse, et toujours aussi pour des raisons techniques (Dataset hébergés sur Github).
 
                 Dans ce dataset, nous avons aussi ajouté une colonne 'moyenne_pondérée', qui pondère les valeurs de la colonne 'averageRating' selon celles de la colonne 'numVotes', selon la formule de pondération de la note fournie par IMDb :
-
-                st.latex(r```
+                """
+                )
+        st.latex(r'''
                     Weighted\; Rating (WR) = (\frac{v}{v + m} . R) + (\frac{m}{v + m} . C)
-                    ```)
-
+                    ''')
+        st.markdown(
+                """
                 Où :
                 - v est le nombre de votes (= numVotes)
                 - m est le nombre minimum de votes requis pour être listé
@@ -927,15 +935,17 @@ def main():
                 - C est le vote moyen sur l'ensemble du dataset
 
                 Nous avons établi une fonction qui est la suivante pour cela :
-
-                code = '''def movie_ponderation(x,m=m,C=C):
+                """
+                )
+        code = '''def movie_ponderation(x,m=m,C=C):
                             v=x['numVotes']
                             R=x['averageRating']
                             # calculation based on IMDB formula
     
                             return (v/(v+m)*R) + (m/(m+v)*C)'''
-                st.code(code, language='python')
-            
+        st.code(code, language='python')
+        st.markdown(
+                """            
 
                 Afin de réaliser le graphique, un [dataframe attitré](https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Aurore/KPI/DF_FULL_GENRES211117.csv?token=AUTGRH2J25FKEQLFK7VPH5TBT7DVE) reprenant toutes les informations dont nous avions besoin pour cette analyse a été produit.
 
@@ -992,6 +1002,31 @@ def main():
             
         st.plotly_chart(fig)
 
+        st.markdown("""
+                Nous remarquons qu'avec la quantité de données en notre possession, il est très difficile d'interpréter ce scatterplot pour déterminer quelle association de genres permettrait aux films de maximiser leurs chances d'être bien noté.
+                Zoomons donc sur les films dont la moyenne pondérée est supérieure à 8/10 :
+                """
+                )
+
+        #####################################
+        st.title('Quels sont les films les mieux notés (+ de 8/10) - Caractéristiques communes ?')
+        qualify_movies2 = qualify_movies.copy()
+        qualify_movies2 = qualify_movies2[qualify_movies2['moyenne_ponderee'] >= 8 ]
+        qualify_movies2 = qualify_movies2[qualify_movies2['moyenne_ponderee'] <= 9 ]
+
+        fig = px.scatter_3d(qualify_movies2,x="genre1",y ='genre2', z= 'genre3', color = 'moyenne_ponderee'  )
+        fig.update_layout(title_text="Caractéristiques communes des films les mieux notés", title_x=0.5, width=1000, height=600, template='plotly_dark')
+            
+        st.plotly_chart(fig)
+
+        st.markdown("""
+                La moyenne pondérée la plus élevée étant 8.96, nous avons aussi pris en borne haute 9/10 afin de mettre plus en avant les valeurs à interprêter dans ce scatterplot.
+                Nous pouvons remarquer que l'association de genres qui détient cette note est "Action/Crime/Drama".
+                """
+                )
+
+
+        ####################################
         col1, col2 = st.columns([1, 1])
         with col1:
             st.title('Note moyenne par genre de films')
@@ -1021,6 +1056,124 @@ def main():
             fig.update_xaxes(tickangle=-45)
             
             st.plotly_chart(fig)
+
+        st.markdown("""
+                Il paraît opportun d’analyser simultanément les deux graphiques.
+
+                En effet, nous constatons que Western est à la fois le genre ou la note moyenne est la plus élevée mais également celui où le nombre moyen de votes est le plus important. Cela permet d’affirmer qu’il s’agit vraisemblablement du genre préféré sur la période étudiée. Le genre “Famille”, bien qu’un peu moins bien noté, est également dans ce cas. 
+                
+                A l’inverse, le thriller qui arrive en 17ème et dernière position sur la note moyenne est en 16ème position sur le nombre moyen de votes Les amateurs de Thriller sont-ils moins enclins à voter ? Est ce qu’ils votent essentiellement quand le film ne leur plait pas ou est ce que les thrillers sont simplement moins bons que les westerns ? Nous n’avons pas ici suffisamment d’éléments pour le déterminer.
+                
+                Le troisième cas est celui des documentaires. Leur note moyenne est très bonne puisqu’ils sont en deuxième position. Par contre, ils sont en dernière position en ce qui concerne le nombre de votes. En ce qui concerne ce genre, on peut estimer que celà provient du nombre de personnes qui vont voir ces films. Celui doit en effet être moins important que pour les autres. Nous n’avons cependant pas d’élément ici pour nous le confirmer.
+
+                """
+                )
+        st.write(' ')
+        st.write(' ')
+        st.write(' ')
+
+        #######################################
+        ########  KPI -Christophe  ############
+        #######################################
+        st.title('Pour aller plus loin... Quelques KPI !')
+        st.write(' ')
+        st.image("https://i.ibb.co/NV1RFNH/C-mod.png")
+        st.markdown("""
+        [Lien Notebook](https://github.com/BerengerQueune/ABC-Data/blob/main/Christophe/Scripts%20VF/KPI%20r%C3%A9alisateurs%20-%202021_11_17.ipynb)
+        """
+                )
+        st.write(' ')
+        st.markdown("""
+        [DataFrame](https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_final_director.csv?token=AVCI5TY6PATH3QY4C25CC5TBT5IIA)
+                """
+                )        
+
+        df_final = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_final_director.csv?token=AVCI5TY6PATH3QY4C25CC5TBT5IIA')
+
+        #Réalisation du graphique
+        fig = px.bar(df_final, x = 'count', y="rang", text ='director', color = 'director',
+        title = 'Les réalisateurs qui ont fait le plus de film par décennie',
+        labels = {'count':'Nombre de films','periode': 'Décennie', 'director': 'Réalisateur'},
+        orientation='h',
+        animation_frame="periode",
+        range_x=[0,9],
+        #range_y=[0,4],
+        width=700, height=450)
+ 
+        fig.update_traces(textfont_size=12, textposition='outside')
+        fig.layout.updatemenus[0].buttons[0].args[1]["frame"]["duration"] = 1000
+
+        fig.update_layout(showlegend=False, title_x=0.5, width=1000, height=600, template='plotly_dark')
+            
+        st.plotly_chart(fig)
+
+        ###############################
+        #Création d'un dataframe avec les 3 réalisateurs ayant réalisé le plus de film depuis 1960
+        df_director_nbFilm = pd.DataFrame(df_final.value_counts('director'))
+        df_director_nbFilm.reset_index(inplace = True)
+        df_director_nbFilm.columns = ['director', 'nbFilm']
+
+        #Calcul du rang
+        df_director_nbFilm['Rang'] = df_director_nbFilm.index + 1
+        df_director_nbFilm = df_director_nbFilm.head(3)
+
+        st.write(' ')
+        st.write(' ')
+        ###############################
+        st.markdown("""
+        [DataFrame](https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_director_nbFilm.csv?token=AVCI5T7CVK5U4UHCL66ABS3BT5INA)
+                """
+                )
+        st.write(' ')
+        df_director_nbFilm = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_director_nbFilm.csv?token=AVCI5T7CVK5U4UHCL66ABS3BT5INA')
+
+        #Réalisation du graphique
+        fig = px.bar(df_director_nbFilm, x = 'nbFilm', y="Rang", text ='director', color = 'director',
+            title = 'Les réalisateurs qui ont fait le plus de film depuis 1960', 
+            labels = {'nbFilm': 'Nombre de films', 'director': 'Réalisateur'},orientation='h', range_x=[0,30], range_y=[0,4],width=700, height=450)
+
+        fig.update_layout(showlegend=False, title_x=0.5, width=1000, height=600, template='plotly_dark')
+            
+        st.plotly_chart(fig)
+        st.write(' ')
+        st.write(' ')       
+        
+        st.markdown("""
+        [Lien Notebook](https://github.com/BerengerQueune/ABC-Data/blob/main/Christophe/Scripts%20VF/Score%20acteurs%20-%202021_11_18.ipynb)
+        """
+                )
+        st.write(' ')
+        st.markdown("""
+        [DataFrame](https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_rating.csv?token=AVCI5T6KBWAVG7CL46KTL3DBT6GOU)
+                """
+                )
+        st.write(' ')
+        df_rating = pd.read_csv('https://raw.githubusercontent.com/BerengerQueune/ABC-Data/main/Christophe/df_rating.csv?token=AVCI5T6KBWAVG7CL46KTL3DBT6GOU')
+
+        fig = px.bar(df_rating.head(30), x = 'Acteur', y = 'averageRating', color='averageRating', 
+             title = 'Les acteurs ayant les meilleurs notes', 
+             labels={'Acteur':'Acteurs', 'averageRating':'Note moyenne'}, range_y=[8,9.5], width=900, height=600)
+
+        fig.update_layout(showlegend=False, title_x=0.5, width=1000, height=600, template='plotly_dark')
+            
+        st.plotly_chart(fig)
+
+        st.write(' ')
+        st.write(' ')
+        st.write(' ')
+
+
+
+
+
+
+
+######################################################################################
+######################################################################################
+###########################     RELEASES     #########################################
+######################################################################################
+######################################################################################
+
 
     if choice == "Axes d'Amélioration":
         # CSS code within markdown to center the title
@@ -1058,50 +1211,6 @@ def main():
         st.write(' ')
         st.write(' ')
         st.write(' ')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        # st.write("")
-
-        # st.markdown("""
-        #         **EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE EN ATTENTE**
-        #         """
-        #         )
-        # st.write(' ')
-        # st.write(' ')
-        # st.write(' ')
-
-
-
-
-
-
-
-
-
-
-
-        # st.markdown(
-        #         """
-        #         EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            
-        #                      EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            
-        #         EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            EN COURS DE CONSTRUCTION            
-            
-
-        #         """
-        #         )
 
 
 
