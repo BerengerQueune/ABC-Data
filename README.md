@@ -104,4 +104,4 @@ Nos prédictions sont mises à disposition au travers d’une __WebApp__ sur de 
 
 Elle est hébergée directement sur les serveurs mis à disposition par *Streamlit* :
 
-"Mettre URL de la web app"
+https://share.streamlit.io/alema86/movie_recommandation/main/Streamlit/streamlit_appVersion_finale.py
