@@ -1,7 +1,7 @@
 # PROJET ABC's 
 _Creation d’une WebApp de recommandation de films_
 
-Le projet a été remis souf forme de présentation auprès d'autres étudiants de l'école. 
+Le projet a été remis sous forme de présentation auprès d'autres étudiants de l'école. 
 
 Cliquez ici pour retrouver le [**rendu final**](https://share.streamlit.io/alema86/movie_recommandation/main/Streamlit/streamlit_appVersion_finale.py)
 
@@ -83,7 +83,7 @@ Nous devons :
 
 Le projet est entièrement fait sous **Python**.
 
-Nous avons utilisés entres autres les librairies suivantes :
+Nous avons utilisé entre autres les librairies suivantes :
  - Pandas
  - Sklearn
  - Plotly
